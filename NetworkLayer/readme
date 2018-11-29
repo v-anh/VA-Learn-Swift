@@ -1,0 +1,8 @@
+Đây là tầng network layer đơn giản, để sử dụng tầng network này:
+ - Tạo Entity Struct hoặc class kế thừa Codable (cần thiết cho việc Encode/Decode)
+ - Tạo Struct hoặc Class implement Protocol VAService, khai báo 'associatedtype' của response cần trả về
+ - Khởi tạo Struct vừa implement sau đó gọi hàm execute()
+ 
+ 
+ Tìm hiểu thêm : https://medium.com/ios-os-x-development/minimal-networking-layer-from-scratch-in-swift-4-a151af786dc5
+ 
