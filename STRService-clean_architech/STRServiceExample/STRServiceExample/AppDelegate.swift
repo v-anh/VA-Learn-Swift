@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        STRConfig.shared.setupSTRService(config: Config(), delegate: self )
         strConfig(config: Config(), viewable: self)
+        
+        configure(dependency: AppDependency())
         return true
     }
 
@@ -49,4 +51,7 @@ extension AppDelegate: STRViewable {
     func showError(error: Error?) {
     }
     
+}
+
+class AppDependency: CoreDependency {
 }

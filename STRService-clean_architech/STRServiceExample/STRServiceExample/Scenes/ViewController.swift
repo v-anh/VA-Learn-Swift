@@ -9,15 +9,24 @@
 import UIKit
 import STRService
 import OHHTTPStubs
-class ViewController: UIViewController {
+class ViewController: UIViewController,HasDependencies {
+    
+    
+    private lazy var authenticationWorker: AuthenticationWorkerType = dependencies.resolveWorker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setTapGesture()
         createStubForTest()
-        
     }
     func testLoginService() {
+        
+        
+        authenticationWorker.login(with: "bla") {
+            print("blablabla")
+        }
+        
+        
 //        STRConfig.shared.config?.enableToken = true
 //        LoginService().execute(onSuccess: { (data) in
 //            print(data)

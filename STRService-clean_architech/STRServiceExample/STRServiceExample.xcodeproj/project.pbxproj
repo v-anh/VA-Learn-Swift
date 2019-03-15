@@ -23,6 +23,13 @@
 		3711694C2224DD7D00E5B26E /* STRServiceExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711694B2224DD7D00E5B26E /* STRServiceExampleTests.swift */; };
 		371169572224ED5F00E5B26E /* ListChargeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371169562224ED5F00E5B26E /* ListChargeService.swift */; };
 		3711695C2225212F00E5B26E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711695B2225212F00E5B26E /* LoginService.swift */; };
+		66843FD9223B995000720783 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FD8223B995000720783 /* Dependency.swift */; };
+		66843FDD223B99B800720783 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FDC223B99B800720783 /* HTTPService.swift */; };
+		66843FE0223B9AE200720783 /* AuthenticationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FDF223B9AE200720783 /* AuthenticationInterface.swift */; };
+		66843FE2223B9B5A00720783 /* AuthenticationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FE1223B9B5A00720783 /* AuthenticationWorker.swift */; };
+		66843FE4223B9BF900720783 /* AuthenticationNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FE3223B9BF900720783 /* AuthenticationNetworkService.swift */; };
+		66843FE6223B9CBA00720783 /* CoreDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FE5223B9CBA00720783 /* CoreDependency.swift */; };
+		66843FE8223B9DC000720783 /* HasDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66843FE7223B9DC000720783 /* HasDependency.swift */; };
 		A20CD76204FDA51F2F517EA5 /* Pods_STRServiceExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304B9306989DA1968C5FDAA0 /* Pods_STRServiceExampleTests.framework */; };
 		B6162F7232412B8B3247A2A1 /* Pods_STRServiceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABE779FEEE11A9CAFE343A2 /* Pods_STRServiceExample.framework */; };
 		D1F96F08222CDF61006E7272 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F96F07222CDF61006E7272 /* ProfileService.swift */; };
@@ -62,6 +69,13 @@
 		3711694D2224DD7D00E5B26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371169562224ED5F00E5B26E /* ListChargeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChargeService.swift; sourceTree = "<group>"; };
 		3711695B2225212F00E5B26E /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		66843FD8223B995000720783 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		66843FDC223B99B800720783 /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		66843FDF223B9AE200720783 /* AuthenticationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInterface.swift; sourceTree = "<group>"; };
+		66843FE1223B9B5A00720783 /* AuthenticationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationWorker.swift; sourceTree = "<group>"; };
+		66843FE3223B9BF900720783 /* AuthenticationNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNetworkService.swift; sourceTree = "<group>"; };
+		66843FE5223B9CBA00720783 /* CoreDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDependency.swift; sourceTree = "<group>"; };
+		66843FE7223B9DC000720783 /* HasDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDependency.swift; sourceTree = "<group>"; };
 		B70055D2B0E4619695536F44 /* Pods-STRServiceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRServiceExample.debug.xcconfig"; path = "Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BABE779FEEE11A9CAFE343A2 /* Pods_STRServiceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STRServiceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F96F07222CDF61006E7272 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -156,6 +170,7 @@
 		3711692A2224DD7600E5B26E = {
 			isa = PBXGroup;
 			children = (
+				66843FD7223B992F00720783 /* Core */,
 				371169352224DD7600E5B26E /* STRServiceExample */,
 				3711694A2224DD7D00E5B26E /* STRServiceExampleTests */,
 				371169342224DD7600E5B26E /* Products */,
@@ -194,6 +209,44 @@
 				3711694D2224DD7D00E5B26E /* Info.plist */,
 			);
 			path = STRServiceExampleTests;
+			sourceTree = "<group>";
+		};
+		66843FD7223B992F00720783 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				66843FDE223B9ABE00720783 /* Account */,
+				66843FDB223B99A500720783 /* Dependency */,
+				66843FDA223B999B00720783 /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		66843FDA223B999B00720783 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				66843FDC223B99B800720783 /* HTTPService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		66843FDB223B99A500720783 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				66843FD8223B995000720783 /* Dependency.swift */,
+				66843FE5223B9CBA00720783 /* CoreDependency.swift */,
+				66843FE7223B9DC000720783 /* HasDependency.swift */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		66843FDE223B9ABE00720783 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				66843FDF223B9AE200720783 /* AuthenticationInterface.swift */,
+				66843FE1223B9B5A00720783 /* AuthenticationWorker.swift */,
+				66843FE3223B9BF900720783 /* AuthenticationNetworkService.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		82DAB67CC6B7346408B4EAA6 /* Pods */ = {
@@ -402,13 +455,20 @@
 				005B659722378930001460E2 /* AppRoutable.swift in Sources */,
 				00A4BCD52236583B00A64228 /* AppDisplayable.swift in Sources */,
 				00A4BCDD2236678800A64228 /* ListProductsModels.swift in Sources */,
+				66843FDD223B99B800720783 /* HTTPService.swift in Sources */,
 				00A4BCDB223666A800A64228 /* ListProductsInterfaces.swift in Sources */,
 				371169572224ED5F00E5B26E /* ListChargeService.swift in Sources */,
+				66843FE0223B9AE200720783 /* AuthenticationInterface.swift in Sources */,
 				005B65942237879E001460E2 /* ListProductsViewController.swift in Sources */,
 				3711695C2225212F00E5B26E /* LoginService.swift in Sources */,
 				371169372224DD7600E5B26E /* AppDelegate.swift in Sources */,
 				005B659922378CD3001460E2 /* ListProductsInteractor.swift in Sources */,
+				66843FE4223B9BF900720783 /* AuthenticationNetworkService.swift in Sources */,
+				66843FD9223B995000720783 /* Dependency.swift in Sources */,
+				66843FE6223B9CBA00720783 /* CoreDependency.swift in Sources */,
 				D1F96F08222CDF61006E7272 /* ProfileService.swift in Sources */,
+				66843FE2223B9B5A00720783 /* AuthenticationWorker.swift in Sources */,
+				66843FE8223B9DC000720783 /* HasDependency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

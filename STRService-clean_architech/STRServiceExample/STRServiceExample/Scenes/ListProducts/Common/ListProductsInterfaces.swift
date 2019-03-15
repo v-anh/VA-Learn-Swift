@@ -23,6 +23,6 @@ protocol ListProductsPresentable { //Presenter
     func presentFetchedProducts(for error:Error)
 }
 
-protocol ListProductsRoutable:AppRoutable {
-    func showProduct(id:String)
-}
+//protocol ListProductsRoutable:AppRoutable {
+//    func showProduct(id:String)
+//}
