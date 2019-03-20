@@ -6,6 +6,14 @@
 //
 
 open class CoreDependency:Dependency{
+    public func resolveWorker() -> CharacterWorkerType {
+        return CharacterWorker(service: resolveService())
+    }
+    
+    public func resolveService() -> CharacterService {
+        return CharacterService()
+    }
+    
     //need update
     public func resolveStore() -> HTTPService {
         return HTTPService()

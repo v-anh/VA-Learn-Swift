@@ -12,4 +12,8 @@ public protocol Dependency {
     func resolveService() -> AuthenticationService
     func resolveStore() -> HTTPService
     func resolveCache() -> HTTPService
+    
+    func resolveWorker() -> CharacterWorkerType
+    
+    func resolveService() -> CharacterService
 }

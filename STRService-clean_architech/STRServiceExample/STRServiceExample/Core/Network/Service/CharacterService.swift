@@ -8,7 +8,7 @@
 import ObjectMapper
 import STRService
 
-struct Character: Mappable {
+public struct Character: Mappable {
     var name: String = ""
     var description: String = ""
     
@@ -21,11 +21,11 @@ struct Character: Mappable {
     }
 }
 
-class CharacterService: STRService {
-    typealias ResponseType = Character
+public struct CharacterService: STRService {
+    public typealias ResponseType = Character
     
     private var _data : RequestData = RequestData(path: "https://test.com/character", method: .get, params: [:], headers: nil)
-    var data : RequestData {
+    public var data : RequestData {
         get {
             return _data
         }

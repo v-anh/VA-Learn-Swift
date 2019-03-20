@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        STRConfig.shared.setupSTRService(config: Config(), delegate: self )
         strConfig(config: Config(), viewable: self)
+        configure(dependency: CoreDependency())
         return true
     }
 

@@ -8,21 +8,21 @@
 import ObjectMapper
 import STRService
 
-struct ListCharacters: Mappable {
+public struct ListCharacters: Mappable {
     var characters: [Character]? = nil
 
-    init?(map: Map) {
+    public init?(map: Map) {
     }
 
-    mutating func mapping(map: Map) {
+    mutating public func mapping(map: Map) {
         characters         <- map["characters"]
     }
 }
 
-class ListCharactersService: STRService {
-    typealias ResponseType = ListCharacters
+public class ListCharactersService: STRService {
+    public typealias ResponseType = ListCharacters
     
-    var data : RequestData {
+    public var data : RequestData {
         return RequestData(path: "https://test.com/listCharacters", method: .get, params: [:], headers: nil)
     }
     

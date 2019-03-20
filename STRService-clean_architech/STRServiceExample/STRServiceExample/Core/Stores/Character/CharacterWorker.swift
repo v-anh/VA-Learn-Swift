@@ -18,7 +18,6 @@ struct CharacterWorker: CharacterWorkerType {
 extension CharacterWorker {
     
     func fetch(name: String, completion: @escaping (Result<Character, DataError>) -> Void) {
-        service.data = RequestData(path: service.data.path + name.replacingOccurrences(of: " ", with: "")) //Hard code for test
         service.execute(onSuccess: { (result) in
             completion(.success(result))
         }) { (error) in
