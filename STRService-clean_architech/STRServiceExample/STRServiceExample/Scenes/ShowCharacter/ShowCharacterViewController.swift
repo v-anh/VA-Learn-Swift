@@ -8,15 +8,12 @@
 import UIKit
 import OHHTTPStubs
 
-class ShowCharacterViewController: UIViewController {
+class ShowCharacterViewController: UIViewController,HasDependencies {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var descriptions: UILabel!
     
-    lazy var interactor: ShowCharacterBusinessLogic = ShowCharacterInteractor(
-        presenter: ShowCharacterPresenter(viewController: self),
-        characterWorker: CharacterWorker(service: CharacterService())
-    )
+    private lazy var interactor: ShowCharacterBusinessLogic = ShowCharacterInteractor(presenter: ShowCharacterPresenter(viewController: self), characterWorker: dependencies.resolveWorker())
     
     private lazy var router: ShowCharacterRoutable = ShowCharacterRouter(
         viewController: self

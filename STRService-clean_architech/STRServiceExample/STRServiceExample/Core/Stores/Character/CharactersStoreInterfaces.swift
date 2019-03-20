@@ -5,18 +5,18 @@
 //  Created by Ngo Chi Hai on 3/18/19.
 //
 
-protocol CharactersStore {
+public protocol CharactersStore {
     func fetch(completion: @escaping (Result<[Character], DataError>) -> Void)
 }
 
-protocol CharactersWorkerType: CharactersStore {
+public protocol CharactersWorkerType: CharactersStore {
     
 }
 
-protocol CharacterStore {
+public protocol CharacterStore {
     func fetch(name: String, completion: @escaping (Result<Character, DataError>) -> Void)
 }
 
-protocol CharacterWorkerType: CharacterStore {
+public protocol CharacterWorkerType: CharacterStore {
     
 }

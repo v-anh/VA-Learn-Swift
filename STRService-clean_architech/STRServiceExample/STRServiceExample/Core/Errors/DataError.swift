@@ -5,7 +5,7 @@
 //  Created by Ngo Chi Hai on 3/18/19.
 //
 
-enum DataError: Error {
+public enum DataError: Error {
     case nonExistent
     case unauthorized
     case noInternet
