@@ -1,58 +1,17 @@
 //
-//  ShowCharacterViewController.swift
-//  STRServiceExample
+//  ShowCharacterViewControllerTest.swift
+//  STRServiceExampleTests
 //
-//  Created by Ngo Chi Hai on 3/19/19.
+//  Created by Ngo Chi Hai on 3/20/19.
 //
 
-import UIKit
+import XCTest
 import OHHTTPStubs
+@testable import STRServiceExample
 
-class ShowCharacterViewController: UIViewController {
-    
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var descriptions: UILabel!
-    
-    lazy var interactor: ShowCharacterBusinessLogic = ShowCharacterInteractor(
-        presenter: ShowCharacterPresenter(viewController: self),
-        characterWorker: CharacterWorker(service: CharacterService())
-    )
-    
-    private lazy var router: ShowCharacterRoutable = ShowCharacterRouter(
-        viewController: self
-    )
-    
-    // View Model
-    private var viewModel: ShowCharacterModels.ViewModel?
-    
-    var characterName: String!
+class ShowCharacterViewControllerTest: XCTestCase {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupOHHTTPStubForTest()
-        loadData()
-    }
-
-    func loadData() {
-        interactor.fetchCharacter(
-            with: ShowCharacterModels.FetchRequest(
-                name: characterName
-            )
-        )
-    }
-}
-
-extension ShowCharacterViewController: ShowCharacterDisplayable {
-    
-    func displayFetchedCharacter(with viewModel: ShowCharacterModels.ViewModel) {
-        name.text = viewModel.name
-        descriptions.text = viewModel.description
-    }
-}
-
-extension ShowCharacterViewController {
-    func setupOHHTTPStubForTest() {
+    override func setUp() {
         stub(condition: isPath("/characterBarbarian") ) { _ in
             return OHHTTPStubsResponse(
                 jsonObject: [
@@ -129,5 +88,66 @@ extension ShowCharacterViewController {
                 headers: [ "Content-Type": "application/json" ]
             )
         }
+    }
+
+    func testFetchCharacterWithName() {
+        let nameCharacter = "Wizard"
+        
+        let showCharacterVC = ShowCharacterViewController()
+        let showCharacterTestDelegate = ShowCharacterTest()
+        showCharacterVC.interactor = ShowCharacterInteractor(
+            presenter: ShowCharacterPresenter(viewController: showCharacterTestDelegate),
+            characterWorker: CharacterWorker(service: CharacterService())
+        )
+        
+        let expectationCharacter = expectation(description: "SomethingWithDelegate calls the delegate as the result of an async method completion")
+        showCharacterTestDelegate.asyncExpectation = expectationCharacter
+        
+        showCharacterVC.characterName = nameCharacter
+        showCharacterVC.loadData()
+        
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            
+            guard let result = showCharacterTestDelegate.viewModel else {
+                XCTFail("Expected delegate to be called or result is nil")
+                return
+            }
+            XCTAssertEqual(nameCharacter, result.name)
+        }
+    }
+
+}
+
+class ShowCharacterTest: ShowCharacterDisplayable {
+    
+    var viewModel: ShowCharacterModels.ViewModel? = nil
+    var error: AppModels.Error? = nil
+    
+    // Async test code needs to fulfill the XCTestExpecation used for the test
+    // when all the async operations have been completed. For this reason we need
+    // to store a reference to the expectation
+    var asyncExpectation: XCTestExpectation?
+    
+    func displayFetchedCharacter(with viewModel: ShowCharacterModels.ViewModel) {
+        guard let expectation = asyncExpectation else {
+            XCTFail("ShowCharacterTest was not setup correctly. Missing XCTExpectation reference")
+            return
+        }
+        
+        self.viewModel = viewModel
+        expectation.fulfill()
+    }
+    
+    func display(error: AppModels.Error) {
+        guard let expectation = asyncExpectation else {
+            XCTFail("ShowCharacterTest was not setup correctly. Missing XCTExpectation reference")
+            return
+        }
+        
+        self.error = error
+        expectation.fulfill()
     }
 }

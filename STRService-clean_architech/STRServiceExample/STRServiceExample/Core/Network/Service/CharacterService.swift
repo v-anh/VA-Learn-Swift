@@ -24,8 +24,14 @@ struct Character: Mappable {
 class CharacterService: STRService {
     typealias ResponseType = Character
     
+    private var _data : RequestData = RequestData(path: "https://test.com/character", method: .get, params: [:], headers: nil)
     var data : RequestData {
-        return RequestData(path: "https://test.com/character", method: .get, params: [:], headers: nil)
+        get {
+            return _data
+        }
+        set {
+            self._data = newValue
+        }
     }
     
     init(){}
