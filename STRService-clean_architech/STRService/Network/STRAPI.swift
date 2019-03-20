@@ -91,27 +91,35 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
             
         case 400: // Bad Request
             STRConfig.shared.viewable?.showError(error: ConnError.badRequest)
+            onError(ConnError.badRequest)
         
         case 401: //Unauthorized
             STRConfig.shared.viewable?.showError(error: ConnError.unauthorized)
+            onError(ConnError.unauthorized)
         
         case 403: //Forbidden
             STRConfig.shared.viewable?.showError(error: ConnError.forbidden)
+            onError(ConnError.forbidden)
             
         case 404: //Not Found
             STRConfig.shared.viewable?.showError(error: ConnError.notFound)
+            onError(ConnError.notFound)
             
         case 408: //Request Timeout
             STRConfig.shared.viewable?.showError(error: ConnError.requestTimeout)
+            onError(ConnError.requestTimeout)
             
         case 500: //Internal Server Error
             STRConfig.shared.viewable?.showError(error: ConnError.internalServerError)
+            onError(ConnError.internalServerError)
             
         case 502: //Bad Gateway
             STRConfig.shared.viewable?.showError(error: ConnError.badGateway)
+            onError(ConnError.badGateway)
             
         case 504: //Gateway Timeout
             STRConfig.shared.viewable?.showError(error: ConnError.gatewayTimeout)
+            onError(ConnError.gatewayTimeout)
         
         
         case STRConfig.shared.config?.refreshTokenConfig?.tokenStatusCodeExpire: //Token expire
