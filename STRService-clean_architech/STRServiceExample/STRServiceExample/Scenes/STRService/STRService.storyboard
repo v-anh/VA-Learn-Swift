@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eB-rN-fmB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Service-->
+        <scene sceneID="lJe-Ts-VEZ">
+            <objects>
+                <viewController id="8eB-rN-fmB" customClass="STRServiceViewController" customModule="STRServiceExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i4k-pv-8v0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-8B-VhX">
+                                <rect key="frame" x="0.0" y="145" width="375" height="30"/>
+                                <state key="normal" title="Users"/>
+                                <connections>
+                                    <action selector="abtnUsers:" destination="8eB-rN-fmB" eventType="touchUpInside" id="lAF-sC-VBY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIH-6K-o7b">
+                                <rect key="frame" x="0.0" y="260" width="375" height="30"/>
+                                <state key="normal" title="Test refresh token"/>
+                                <connections>
+                                    <action selector="btnRefreshToken:" destination="8eB-rN-fmB" eventType="touchUpInside" id="BeD-47-gRJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AAk-8B-VhX" firstAttribute="leading" secondItem="RPn-85-t29" secondAttribute="leading" id="Bpg-B6-JmM"/>
+                            <constraint firstItem="uIH-6K-o7b" firstAttribute="leading" secondItem="RPn-85-t29" secondAttribute="leading" id="ENc-H6-YYe"/>
+                            <constraint firstItem="uIH-6K-o7b" firstAttribute="top" secondItem="AAk-8B-VhX" secondAttribute="bottom" constant="85" id="Faz-mp-8l3"/>
+                            <constraint firstItem="AAk-8B-VhX" firstAttribute="trailing" secondItem="RPn-85-t29" secondAttribute="trailing" id="cdG-Ig-qBg"/>
+                            <constraint firstAttribute="trailing" secondItem="uIH-6K-o7b" secondAttribute="trailing" id="mN4-YL-iyS"/>
+                            <constraint firstItem="AAk-8B-VhX" firstAttribute="top" secondItem="RPn-85-t29" secondAttribute="top" constant="125" id="qQX-Nl-qbR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RPn-85-t29"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Service" image="service" id="fSN-U0-7Wf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asA-mg-1Nv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="61"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="service" width="16" height="16"/>
+    </resources>
+</document>

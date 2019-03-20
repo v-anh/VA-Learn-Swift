@@ -1,11 +1,3 @@
-//
-//  STRServiceExampleTests.swift
-//  STRServiceExampleTests
-//
-//  Created by Quyen Nguyen The on 2/26/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import XCTest
 @testable import STRServiceExample
 

@@ -1,14 +1,7 @@
-//
-//  STRAPI.swift
-//  STRService
-//
-//  Created by Quyen Nguyen The on 2/22/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 import ObjectMapper
+import AlamofireObjectMapper
 
 public enum ConnError: Swift.Error {
     case invalidURL
@@ -51,25 +44,23 @@ public protocol STRService {
     associatedtype ResponseType: Mappable
     var data: RequestData { get }
 }
-public protocol NetworkDispatcher {
-    func dispatch(request: RequestData, onSuccess: @escaping (Any) -> Void, onError: @escaping (Error) -> Void)
-}
-public struct URLSessionNetworkDispatcher {
+//public protocol NetworkDispatcher {
+//    func dispatch(requestData: RequestData, onSuccess: @escaping (Any) -> Void, onError: @escaping (Error) -> Void)
+//}
+public struct URLSessionNetworkDispatcher<T: Mappable> {
     
-    public static let instance = URLSessionNetworkDispatcher()
+//    public static let instance = URLSessionNetworkDispatcher()
     
-    private init() {}
+    public init() {}
     
-    public func dispatch(requestData: RequestData, onSuccess: @escaping (Any) -> Void, onError: @escaping (Error) -> Void) {
+    public func dispatch(requestData: RequestData, onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void) {
         var parameters = requestData.params
         
         if STRConfig.shared.config?.enableToken ?? false {
             parameters?[STRConfig.shared.config?.refreshTokenConfig?.tokenParameterKey ?? "token"] = UserDefaults.getToken()
         }
         
-        STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseJSON {
-            response in
-
+        STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseObject { (response: DataResponse<T>) in
             self.responseHandler(response: response, onSuccess: { (dic) in
                 onSuccess(dic)
             }, onError: { (error) in
@@ -79,12 +70,11 @@ public struct URLSessionNetworkDispatcher {
                     onError(error)
                 }
             })
-            
         }
     }
     
     
-    func responseHandler(response:DataResponse<Any>, onSuccess: @escaping(Any) -> Void, onError:@escaping(Error) -> Void) {
+    func responseHandler(response:DataResponse<T>, onSuccess: @escaping(T) -> Void, onError:@escaping(Error) -> Void) {
         guard let statusCode = response.response?.statusCode else {
             onError(ConnError.noResponse)
             return
@@ -159,9 +149,8 @@ public struct URLSessionNetworkDispatcher {
         var parameters = requestData.params
         parameters?[STRConfig.shared.config?.refreshTokenConfig?.tokenParameterKey ?? "token"] = UserDefaults.getToken()
         
-        STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseJSON {
-            response in
-            
+        STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseObject { (response: DataResponse<T>) in
+
             self.responseHandler(response: response, onSuccess: { (dic) in
                 if let dicData = dic as? [String: Any], let token = dicData["token"] as? String {
                     UserDefaults.setToken(token: token)
@@ -176,20 +165,13 @@ public struct URLSessionNetworkDispatcher {
 
 public extension STRService {
     
-    public func execute(dispatcher: URLSessionNetworkDispatcher = URLSessionNetworkDispatcher.instance,
-                        onSuccess: @escaping (Any) -> Void,
+    public func execute(dispatcher: URLSessionNetworkDispatcher<ResponseType> = URLSessionNetworkDispatcher<ResponseType>(),
+                        onSuccess: @escaping (ResponseType) -> Void,
                         onError: @escaping (Error) -> Void) {
+        
         dispatcher.dispatch(requestData: self.data, onSuccess: { (data) in
-            if let arrayData = data as? [[String : Any]] {
-                onSuccess(Mapper<ResponseType>().mapArray(JSONArray: arrayData))
-            } else if let data = data as? [String : Any] {
-                guard let result = Mapper<ResponseType>().map(JSON: data) else {
-                    onError(ConnError.dataError)
-                    return
-                }
-                UserDefaults.setLoopValue(value: 0)
-                onSuccess(result)
-            }
+            UserDefaults.setLoopValue(value: 0)
+            onSuccess(data)
         }) { (error) in
             UserDefaults.setLoopValue(value: 0)
             DispatchQueue.main.async {

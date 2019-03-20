@@ -1,11 +1,3 @@
-//
-//  STRNetworkManager.swift
-//  STRService
-//
-//  Created by Quyen Nguyen The on 2/22/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 

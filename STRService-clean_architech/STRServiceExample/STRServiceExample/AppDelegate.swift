@@ -1,13 +1,6 @@
-//
-//  AppDelegate.swift
-//  STRServiceExample
-//
-//  Created by Quyen Nguyen The on 2/26/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import UIKit
 import STRService
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,8 +11,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        STRConfig.shared.setupSTRService(config: Config(), delegate: self )
         strConfig(config: Config(), viewable: self)
-        
-        configure(dependency: AppDependency())
         return true
     }
 
@@ -51,7 +42,4 @@ extension AppDelegate: STRViewable {
     func showError(error: Error?) {
     }
     
-}
-
-class AppDependency: CoreDependency {
 }

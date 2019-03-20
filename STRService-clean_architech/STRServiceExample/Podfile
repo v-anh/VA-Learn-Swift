@@ -4,10 +4,10 @@
 target 'STRServiceExample' do
   use_frameworks!
 
-#pod 'STRService',:git => 'https://github.com/QuyenNguyenThe/STRService'
 pod 'STRService',:path => '../'
-pod 'ObjectMapper'
-pod 'Alamofire'
+pod 'ObjectMapper', '~> 3.4.2'
+pod 'Alamofire', '~> 4.8.1'
+pod 'AlamofireObjectMapper', '~> 5.2'
 pod 'OHHTTPStubs/Swift'
   target 'STRServiceExampleTests' do
     inherit! :search_paths

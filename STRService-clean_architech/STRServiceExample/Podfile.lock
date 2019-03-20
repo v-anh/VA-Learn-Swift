@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.8.1)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
   - ObjectMapper (3.4.2)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
@@ -15,18 +18,21 @@ PODS:
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
   - STRService (0.0.1):
-    - Alamofire (~> 4.8.0)
+    - Alamofire (~> 4.8.1)
+    - AlamofireObjectMapper (~> 5.2)
     - ObjectMapper (~> 3.4.2)
 
 DEPENDENCIES:
-  - Alamofire
-  - ObjectMapper
+  - Alamofire (~> 4.8.1)
+  - AlamofireObjectMapper (~> 5.2)
+  - ObjectMapper (~> 3.4.2)
   - OHHTTPStubs/Swift
   - STRService (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AlamofireObjectMapper
     - ObjectMapper
     - OHHTTPStubs
 
@@ -36,10 +42,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  STRService: 83a5fbd01dc7720af42ef184a4d21f7620ef3ce2
+  STRService: 5ba0f848b2ce7d2df7262c88a2b993f12e559631
 
-PODFILE CHECKSUM: d63211b2ba9c912cddee71961f07a16213b48973
+PODFILE CHECKSUM: a3665303d9fb0db4f81e716405ea01b4f11f9fc7
 
 COCOAPODS: 1.6.1

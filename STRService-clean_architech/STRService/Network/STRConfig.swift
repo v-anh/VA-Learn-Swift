@@ -1,11 +1,3 @@
-//
-//  STRConfig.swift
-//  STRService
-//
-//  Created by Quyen Nguyen The on 2/22/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import Foundation
 
 public protocol STRViewable {
@@ -43,16 +35,6 @@ public protocol STRDelegate {
     func showError(error: Error?)
 //    func getToken() -> String
 //    func refreshTokenData() -> RequestData
-}
-
-public extension STRDelegate {
-//    func getToken() -> String {
-//        return ""
-//    }
-    
-//    func refreshTokenData() -> RequestData {
-//        return RequestData(path: "")
-//    }
 }
 
 class STRConfig {

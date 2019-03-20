@@ -1,11 +1,3 @@
-//
-//  STRUserDefault.swift
-//  STRService
-//
-//  Created by Ngo Chi Hai on 2/28/19.
-//  Copyright © 2019 Quyen Nguyen The. All rights reserved.
-//
-
 import Foundation
 
 extension UserDefaults {
