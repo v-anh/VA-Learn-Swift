@@ -9,15 +9,15 @@ import XCTest
 import OHHTTPStubs
 @testable import STRServiceExample
 
-class ShowCharacterViewControllerTest: XCTestCase {
+class ShowCharacterInteractorTest: XCTestCase {
 
     override func setUp() {
         
     }
 
-    func testFetchCharacterWithNameSuccess() {
+    func test_fetchCharacter_WithName_ReturnEqualNameValue() {
         
-        stub(condition: isPath("/characterWizard") ) { _ in
+        stub(condition: isPath("/character") ) { _ in
             return OHHTTPStubsResponse(
                 jsonObject: [
                     "name": "Wizard",
@@ -29,10 +29,8 @@ class ShowCharacterViewControllerTest: XCTestCase {
         }
         
         let nameCharacter = "Wizard"
-        
-        let showCharacterVC = ShowCharacterViewController()
         let showCharacterTestDelegate = ShowCharacterTest()
-        showCharacterVC.interactor = ShowCharacterInteractor(
+        let showCharacterInteractor = ShowCharacterInteractor(
             presenter: ShowCharacterPresenter(viewController: showCharacterTestDelegate),
             characterWorker: CharacterWorker(service: CharacterService())
         )
@@ -40,8 +38,7 @@ class ShowCharacterViewControllerTest: XCTestCase {
         let expectationCharacter = expectation(description: "SomethingWithDelegate calls the delegate as the result of an async method completion")
         showCharacterTestDelegate.asyncExpectation = expectationCharacter
         
-        showCharacterVC.characterName = nameCharacter
-        showCharacterVC.loadData()
+        showCharacterInteractor.fetchCharacter(with: ShowCharacterModels.FetchRequest(name: nameCharacter))
         
         waitForExpectations(timeout: 1) { error in
             if let error = error {
@@ -56,8 +53,8 @@ class ShowCharacterViewControllerTest: XCTestCase {
         }
     }
 
-    func testFetchCharacterWithNameFailed() {
-        stub(condition: isPath("/characterWizard") ) { _ in
+    func test_fetchCharacter_WithName_ReturnError() {
+        stub(condition: isPath("/character") ) { _ in
             return OHHTTPStubsResponse(
                 jsonObject: [
                     "name": "Wizard",
@@ -69,10 +66,8 @@ class ShowCharacterViewControllerTest: XCTestCase {
         }
         
         let nameCharacter = "Wizard"
-        
-        let showCharacterVC = ShowCharacterViewController()
         let showCharacterTestDelegate = ShowCharacterTest()
-        showCharacterVC.interactor = ShowCharacterInteractor(
+        let showCharacterInteractor = ShowCharacterInteractor(
             presenter: ShowCharacterPresenter(viewController: showCharacterTestDelegate),
             characterWorker: CharacterWorker(service: CharacterService())
         )
@@ -80,10 +75,9 @@ class ShowCharacterViewControllerTest: XCTestCase {
         let expectationCharacter = expectation(description: "SomethingWithDelegate calls the delegate as the result of an async method completion")
         showCharacterTestDelegate.asyncExpectation = expectationCharacter
         
-        showCharacterVC.characterName = nameCharacter
-        showCharacterVC.loadData()
+        showCharacterInteractor.fetchCharacter(with: ShowCharacterModels.FetchRequest(name: nameCharacter))
         
-        waitForExpectations(timeout: 2) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -92,7 +86,7 @@ class ShowCharacterViewControllerTest: XCTestCase {
         }
     }
 }
-
+    
 class ShowCharacterTest: UIViewController, ShowCharacterDisplayable {
     
     var viewModel: ShowCharacterModels.ViewModel? = nil

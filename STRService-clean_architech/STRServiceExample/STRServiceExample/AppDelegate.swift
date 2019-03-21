@@ -8,10 +8,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        STRConfig.shared.setupSTRService(config: Config(), delegate: self )
+        
+        setupOHHTTPStubForRunDemo()
+        
         strConfig(config: Config(), viewable: self)
         configure(dependency: CoreDependency())
+        
         return true
     }
 
@@ -39,8 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 extension AppDelegate: STRViewable {
+    
     func showError(error: Error?) {
     }
-    
 }
+
+
