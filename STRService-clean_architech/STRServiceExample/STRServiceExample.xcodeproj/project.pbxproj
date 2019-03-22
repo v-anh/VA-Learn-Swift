@@ -29,6 +29,8 @@
 		D10ED0602240FD0600B5CFD4 /* CharacterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED05F2240FD0600B5CFD4 /* CharacterWorker.swift */; };
 		D1142B752240E28700FF7BFB /* ShowCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1142B732240E28700FF7BFB /* ShowCharacterViewController.swift */; };
 		D1142B782240EA2A00FF7BFB /* ShowCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1142B772240EA2A00FF7BFB /* ShowCharacter.storyboard */; };
+		D1162E1D2244D4600064A131 /* ListHearthstoneCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1162E1C2244D4600064A131 /* ListHearthstoneCardsViewController.swift */; };
+		D1162E1F2244D4810064A131 /* ListHearthstoneCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1162E1E2244D4810064A131 /* ListHearthstoneCards.storyboard */; };
 		D118CB18223B9CD2009C6802 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118CB17223B9CD2009C6802 /* MainViewController.swift */; };
 		D118CB1B223B9F80009C6802 /* STRService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D118CB1A223B9F80009C6802 /* STRService.storyboard */; };
 		D118CB1E223BA478009C6802 /* ListCharacters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D118CB1D223BA478009C6802 /* ListCharacters.storyboard */; };
@@ -98,6 +100,8 @@
 		D10ED05F2240FD0600B5CFD4 /* CharacterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterWorker.swift; sourceTree = "<group>"; };
 		D1142B732240E28700FF7BFB /* ShowCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterViewController.swift; sourceTree = "<group>"; };
 		D1142B772240EA2A00FF7BFB /* ShowCharacter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowCharacter.storyboard; sourceTree = "<group>"; };
+		D1162E1C2244D4600064A131 /* ListHearthstoneCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHearthstoneCardsViewController.swift; sourceTree = "<group>"; };
+		D1162E1E2244D4810064A131 /* ListHearthstoneCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListHearthstoneCards.storyboard; sourceTree = "<group>"; };
 		D118CB17223B9CD2009C6802 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D118CB1A223B9F80009C6802 /* STRService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = STRService.storyboard; sourceTree = "<group>"; };
 		D118CB1D223BA478009C6802 /* ListCharacters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListCharacters.storyboard; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				D118CB19223B9F42009C6802 /* STRService */,
 				D118CB1C223BA42F009C6802 /* ListCharacters */,
 				D1142B702240E1E500FF7BFB /* ShowCharacter */,
+				D1162E1B2244D3D00064A131 /* HearthstoneCards */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -261,6 +266,15 @@
 				D10ED05B2240F4F700B5CFD4 /* ShowCharacterModels.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		D1162E1B2244D3D00064A131 /* HearthstoneCards */ = {
+			isa = PBXGroup;
+			children = (
+				D1162E1E2244D4810064A131 /* ListHearthstoneCards.storyboard */,
+				D1162E1C2244D4600064A131 /* ListHearthstoneCardsViewController.swift */,
+			);
+			path = HearthstoneCards;
 			sourceTree = "<group>";
 		};
 		D118CB14223B9C33009C6802 /* Core */ = {
@@ -523,6 +537,7 @@
 				D118CB38223BB704009C6802 /* ListItemViewCell.xib in Resources */,
 				371169412224DD7D00E5B26E /* LaunchScreen.storyboard in Resources */,
 				3711693E2224DD7D00E5B26E /* Assets.xcassets in Resources */,
+				D1162E1F2244D4810064A131 /* ListHearthstoneCards.storyboard in Resources */,
 				D118CB1B223B9F80009C6802 /* STRService.storyboard in Resources */,
 				3711693C2224DD7600E5B26E /* Main.storyboard in Resources */,
 				D1142B782240EA2A00FF7BFB /* ShowCharacter.storyboard in Resources */,
@@ -621,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D10ED05C2240F4F700B5CFD4 /* ShowCharacterModels.swift in Sources */,
+				D1162E1D2244D4600064A131 /* ListHearthstoneCardsViewController.swift in Sources */,
 				D1FC28FF223F78BF001C0F70 /* ListCharactersRouter.swift in Sources */,
 				00A4BCD72236590D00A64228 /* AppModels.swift in Sources */,
 				D118CB18223B9CD2009C6802 /* MainViewController.swift in Sources */,

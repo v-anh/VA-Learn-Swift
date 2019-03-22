@@ -5,19 +5,7 @@
 //  Created by Ngo Chi Hai on 3/18/19.
 //
 
-import ObjectMapper
 import STRService
-
-public struct ListCharacters: Mappable {
-    var characters: [Character]? = nil
-
-    public init?(map: Map) {
-    }
-
-    mutating public func mapping(map: Map) {
-        characters         <- map["characters"]
-    }
-}
 
 public class ListCharactersService: STRService {
     
