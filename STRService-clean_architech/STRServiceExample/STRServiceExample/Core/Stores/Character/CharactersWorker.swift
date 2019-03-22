@@ -7,9 +7,9 @@
 import STRService
 
 struct CharactersWorker: CharactersWorkerType {
-    private let service: ListCharactersService
+    private let service: STRService
     
-    init(service: ListCharactersService) {
+    init(service: STRService) {
         self.service = service
     }
 }
@@ -17,7 +17,7 @@ struct CharactersWorker: CharactersWorkerType {
 extension CharactersWorker {
     
     func fetch(completion: @escaping (Result<[Character], DataError>) -> Void) {
-        service.execute(onSuccess: { (result) in
+        service.execute(onSuccess: { (result : ListCharacters) in
             guard let characters = result.characters else {
                 completion(.failure(.nonExistent))
                 return

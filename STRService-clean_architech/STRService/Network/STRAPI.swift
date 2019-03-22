@@ -41,16 +41,11 @@ public struct RequestData {
 }
 
 public protocol STRService {
-    associatedtype ResponseType: Mappable
     var data: RequestData { get }
 }
-//public protocol NetworkDispatcher {
-//    func dispatch(requestData: RequestData, onSuccess: @escaping (Any) -> Void, onError: @escaping (Error) -> Void)
-//}
+
 public struct URLSessionNetworkDispatcher<T: Mappable> {
-    
-//    public static let instance = URLSessionNetworkDispatcher()
-    
+
     public init() {}
     
     public func dispatch(requestData: RequestData, onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void) {
@@ -173,11 +168,9 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
 
 public extension STRService {
     
-    public func execute(dispatcher: URLSessionNetworkDispatcher<ResponseType> = URLSessionNetworkDispatcher<ResponseType>(),
-                        onSuccess: @escaping (ResponseType) -> Void,
-                        onError: @escaping (Error) -> Void) {
-        
-        dispatcher.dispatch(requestData: self.data, onSuccess: { (data) in
+    public func execute<T: Mappable>(onSuccess: @escaping (T) -> Void,
+                                     onError: @escaping (Error) -> Void) {
+        URLSessionNetworkDispatcher<T>().dispatch(requestData: self.data, onSuccess: { (data) in
             UserDefaults.setLoopValue(value: 0)
             onSuccess(data)
         }) { (error) in

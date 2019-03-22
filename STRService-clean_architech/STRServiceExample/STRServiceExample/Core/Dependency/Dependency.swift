@@ -4,16 +4,17 @@
 //
 //  Created by Anh Tran on 3/15/19.
 //
-
+import STRService
 
 public protocol Dependency {
-    func resoveService() -> HTTPService
     func resolveWorker() -> AuthenticationWorkerType
     func resolveService() -> AuthenticationService
-    func resolveStore() -> HTTPService
-    func resolveCache() -> HTTPService
+//    func resolveStore() -> HTTPService
+//    func resolveCache() -> HTTPService
     
+    //Dependency for Character
     func resolveWorker() -> CharacterWorkerType
     
-    func resolveService() -> CharacterService
+    //Dependency for List Character
+    func resolveWorker() -> CharactersWorkerType
 }

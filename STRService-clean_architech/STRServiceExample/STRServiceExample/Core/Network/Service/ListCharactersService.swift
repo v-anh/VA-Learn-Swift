@@ -20,7 +20,6 @@ public struct ListCharacters: Mappable {
 }
 
 public class ListCharactersService: STRService {
-    public typealias ResponseType = ListCharacters
     
     public var data : RequestData {
         return RequestData(path: "https://test.com/listCharacters", method: .get, params: [:], headers: nil)

@@ -29,11 +29,11 @@ class STRServiceViewController: UIViewController, HasDependencies {
     }
     
     func testRefreshToken() {
-        ProfileService().execute(onSuccess: { (data) in
-            print(data)
-        }) { (error) in
-            print(error)
-        }
+//        ProfileService().execute(onSuccess: { (data) in
+//            print(data)
+//        }) { (error) in
+//            print(error)
+//        }
     }
     
     @IBAction func abtnUsers(_ sender: Any) {

@@ -8,7 +8,7 @@
 import UIKit
 import OHHTTPStubs
 
-class ListCharactersViewController: UIViewController {
+class ListCharactersViewController: UIViewController, HasDependencies {
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -21,8 +21,7 @@ class ListCharactersViewController: UIViewController {
     
     private lazy var interactor: ListCharactersBusinessLogic = ListCharactersInteractor(
         presenter: ListCharactersPresenter(viewController: self),
-        charactersWorker: CharactersWorker(service: ListCharactersService())
-    )
+        charactersWorker: dependencies.resolveWorker())
     
     private lazy var router: ListCharactersRoutable = ListCharactersRouter(
         viewController: self

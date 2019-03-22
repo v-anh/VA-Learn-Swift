@@ -4,14 +4,15 @@
 //
 //  Created by Anh Tran on 3/15/19.
 //
+import STRService
 
 open class CoreDependency:Dependency{
     public func resolveWorker() -> CharacterWorkerType {
-        return CharacterWorker(service: resolveService())
+        return CharacterWorker(service: CharacterService())
     }
     
-    public func resolveService() -> CharacterService {
-        return CharacterService()
+    public func resolveWorker() -> CharactersWorkerType {
+        return CharactersWorker(service: ListCharactersService())
     }
     
     //need update
@@ -24,8 +25,8 @@ open class CoreDependency:Dependency{
         return HTTPService()
     }
     
-    init() {
-    }
+//    init() {
+//    }
     
     public func resoveService() -> HTTPService {
         return HTTPService()
