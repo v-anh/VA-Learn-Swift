@@ -25,9 +25,6 @@ open class CoreDependency:Dependency{
         return HTTPService()
     }
     
-//    init() {
-//    }
-    
     public func resoveService() -> HTTPService {
         return HTTPService()
     }

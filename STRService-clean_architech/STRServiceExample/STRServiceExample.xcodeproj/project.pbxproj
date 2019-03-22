@@ -154,7 +154,6 @@
 				00A4BCD42236583B00A64228 /* AppDisplayable.swift */,
 				00A4BCD62236590D00A64228 /* AppModels.swift */,
 				005B659622378930001460E2 /* AppRoutable.swift */,
-				D109DA4F224344BD000DC076 /* AppDelegateExtensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -216,6 +215,7 @@
 		3711694A2224DD7D00E5B26E /* STRServiceExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				D109DA4F224344BD000DC076 /* AppDelegateExtensions.swift */,
 				D124845922422A25009E68CC /* Scenes */,
 				3711694D2224DD7D00E5B26E /* Info.plist */,
 			);

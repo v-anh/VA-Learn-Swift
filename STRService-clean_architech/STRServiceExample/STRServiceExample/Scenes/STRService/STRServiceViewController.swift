@@ -14,26 +14,9 @@ class STRServiceViewController: UIViewController, HasDependencies {
         authenticationWorker.login(with: "bla") {
             print("blablabla")
         }
-        
-//        STRConfig.shared.config?.enableToken = true
-//        LoginService().execute(onSuccess: { (data) in
-//            print(data)
-//            if let dataLogin = data as? User {
-//
-//                STRConfig.shared.setupRefreshToken(tokenConfig: RefreshTokenConfig(tokenFirstTime: dataLogin.token, tokenParameterKey: "token", requestTokenData: RequestData(path: "https://test.com/refreshToken")))
-//            }
-//
-//        }) { (error) in
-//            print(error)
-//        }
     }
     
     func testRefreshToken() {
-//        ProfileService().execute(onSuccess: { (data) in
-//            print(data)
-//        }) { (error) in
-//            print(error)
-//        }
     }
     
     @IBAction func abtnUsers(_ sender: Any) {

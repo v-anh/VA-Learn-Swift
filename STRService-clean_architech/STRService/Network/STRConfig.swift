@@ -2,6 +2,9 @@ import Foundation
 
 public protocol STRViewable {
     func showError(error: Error?)
+    
+    
+    func getToken(key:String) -> String
 }
 
 public struct Config {
@@ -31,28 +34,42 @@ public struct RefreshTokenConfig {
     }
 }
 
-public protocol STRDelegate {
-    func showError(error: Error?)
-//    func getToken() -> String
-//    func refreshTokenData() -> RequestData
-}
-
-class STRConfig {
+class STRCore {
     
-    static let shared : STRConfig = {
-        let instance = STRConfig()
+    private static let shared : STRCore = {
+        let instance = STRCore()
         return instance
     }()
     
-    var config : Config?
-    var viewable: STRViewable?
+    private var config : Config?
+    private var viewable: STRViewable?
+    
+    static func getConfig() -> Config {
+        guard let config = STRCore.shared.config else {
+            fatalError("Config is nil")
+        }
+        
+        return config
+    }
+    
+    static func getViewable() -> STRViewable {
+        guard let viewable = STRCore.shared.viewable else {
+            fatalError("viewable is nil")
+        }
+        
+        return viewable
+    }
+    
+    static func setup(config : Config, viewable:STRViewable) {
+        STRCore.shared.config = config
+        STRCore.shared.viewable = viewable
+    }
 }
 
 
 extension UIApplicationDelegate {
     public func strConfig(config : Config, viewable:STRViewable) {
-        STRConfig.shared.config = config
-        STRConfig.shared.viewable = viewable
+        STRCore.setup(config: config, viewable: viewable)
         STRNetworkManager.shared.setupNetwork()
     }
 }

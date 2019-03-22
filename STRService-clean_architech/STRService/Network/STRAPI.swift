@@ -51,8 +51,8 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
     public func dispatch(requestData: RequestData, onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void) {
         var parameters = requestData.params
         
-        if STRConfig.shared.config?.enableToken ?? false {
-            parameters?[STRConfig.shared.config?.refreshTokenConfig?.tokenParameterKey ?? "token"] = UserDefaults.getToken()
+        if STRCore.getConfig().enableToken {
+            parameters?[STRCore.getConfig().refreshTokenConfig?.tokenParameterKey ?? "token"] = STRCore.getViewable().getToken(key: "Token")
         }
         
         STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseObject { (response: DataResponse<T>) in
@@ -85,40 +85,40 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
             onSuccess(data)
             
         case 400: // Bad Request
-            STRConfig.shared.viewable?.showError(error: ConnError.badRequest)
+            STRCore.getViewable().showError(error: ConnError.badRequest)
             onError(ConnError.badRequest)
         
         case 401: //Unauthorized
-            STRConfig.shared.viewable?.showError(error: ConnError.unauthorized)
+            STRCore.getViewable().showError(error: ConnError.unauthorized)
             onError(ConnError.unauthorized)
         
         case 403: //Forbidden
-            STRConfig.shared.viewable?.showError(error: ConnError.forbidden)
+            STRCore.getViewable().showError(error: ConnError.forbidden)
             onError(ConnError.forbidden)
             
         case 404: //Not Found
-            STRConfig.shared.viewable?.showError(error: ConnError.notFound)
+            STRCore.getViewable().showError(error: ConnError.notFound)
             onError(ConnError.notFound)
             
         case 408: //Request Timeout
-            STRConfig.shared.viewable?.showError(error: ConnError.requestTimeout)
+            STRCore.getViewable().showError(error: ConnError.requestTimeout)
             onError(ConnError.requestTimeout)
             
         case 500: //Internal Server Error
-            STRConfig.shared.viewable?.showError(error: ConnError.internalServerError)
+            STRCore.getViewable().showError(error: ConnError.internalServerError)
             onError(ConnError.internalServerError)
             
         case 502: //Bad Gateway
-            STRConfig.shared.viewable?.showError(error: ConnError.badGateway)
+            STRCore.getViewable().showError(error: ConnError.badGateway)
             onError(ConnError.badGateway)
             
         case 504: //Gateway Timeout
-            STRConfig.shared.viewable?.showError(error: ConnError.gatewayTimeout)
+            STRCore.getViewable().showError(error: ConnError.gatewayTimeout)
             onError(ConnError.gatewayTimeout)
         
         
-        case STRConfig.shared.config?.refreshTokenConfig?.tokenStatusCodeExpire: //Token expire
-            if STRConfig.shared.config?.enableToken ?? false {
+        case STRCore.getConfig().refreshTokenConfig?.tokenStatusCodeExpire: //Token expire
+            if STRCore.getConfig().enableToken ?? false {
                 refreshToken(onSuccess: { data in
                     onError(ConnError.refreshTokenExpire)
                 }) { error in
@@ -137,20 +137,20 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
     }
     
     func refreshToken(onSuccess: @escaping (Any) -> Void, onError: @escaping (Error) -> Void) {
-        guard let loopTime = STRConfig.shared.config?.refreshTokenConfig?.loopTime,
+        guard let loopTime = STRCore.getConfig().refreshTokenConfig?.loopTime,
             UserDefaults.getLoopValue() < loopTime else {
                 onError(ConnError.refreshTokenError)
                 return
         }
         UserDefaults.setLoopValue(value: UserDefaults.getLoopValue() + 1)
         
-        guard let requestData = STRConfig.shared.config?.refreshTokenConfig?.requestTokenData else {
+        guard let requestData = STRCore.getConfig().refreshTokenConfig?.requestTokenData else {
             onError(ConnError.noRefreshTokenData)
             return
         }
         
         var parameters = requestData.params
-        parameters?[STRConfig.shared.config?.refreshTokenConfig?.tokenParameterKey ?? "token"] = UserDefaults.getToken()
+        parameters?[STRCore.getConfig().refreshTokenConfig?.tokenParameterKey ?? "token"] = UserDefaults.getToken()
         
         STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseObject { (response: DataResponse<T>) in
 
