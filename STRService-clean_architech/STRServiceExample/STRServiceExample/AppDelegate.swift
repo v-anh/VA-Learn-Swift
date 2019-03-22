@@ -43,8 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: STRViewable {
+    func getToken(key: String) -> String {
+        return "Token store in Keychain"
+    }
+    
+    func showLog(log: String) {
+        print(log)
+    }
+    
     
     func showError(error: Error?) {
+         print(error ?? "")
     }
 }
 
