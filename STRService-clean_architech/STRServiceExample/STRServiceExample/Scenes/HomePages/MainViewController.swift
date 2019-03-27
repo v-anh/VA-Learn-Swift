@@ -9,6 +9,6 @@ import UIKit
 
 class MainViewController: UITabBarController {
     override func viewDidLoad() {
-        self.selectedIndex = 1
+        self.selectedIndex = 2
     }
 }

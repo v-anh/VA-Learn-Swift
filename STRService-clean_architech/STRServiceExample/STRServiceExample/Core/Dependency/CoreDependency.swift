@@ -7,6 +7,10 @@
 import STRService
 
 open class CoreDependency:Dependency{
+    public func resolveWorker() -> HearthstoneCardsWorkerType {
+        return HearthstoneCardsWorker(service: ListHearthstoneCardsService())
+    }
+    
     //need update
 //    public func resolveStore() -> HTTPService {
 //        return HTTPService()

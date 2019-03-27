@@ -21,6 +21,8 @@ public enum ConnError: Swift.Error {
     case refreshTokenError
     case tokenExpire
     case refreshTokenExpire
+    
+    case unknown
 }
 
 public struct RequestData {
@@ -68,6 +70,26 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
         }
     }
     
+    public func dispatchWithArrayResponse(requestData: RequestData, onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void) {
+        var parameters = requestData.params
+        
+        if STRCore.getConfig().enableToken {
+            parameters?[STRCore.getConfig().refreshTokenConfig?.tokenParameterKey ?? "token"] = STRCore.getViewable().getToken(key: "Token")
+        }
+        
+        STRNetworkManager.shared.networkManager?.request(requestData.path, method: requestData.method, parameters: parameters, encoding: JSONEncoding.default, headers: requestData.headers).responseArray { (response: DataResponse<[T]>) in
+            self.responseArrayHandler(response: response, onSuccess: { (dic) in
+                onSuccess(dic)
+            }, onError: { (error) in
+                if let connError = error as? ConnError, connError == .refreshTokenExpire {
+                    self.dispatchWithArrayResponse(requestData: requestData, onSuccess: onSuccess, onError: onError)
+                } else {
+                    onError(error)
+                }
+            })
+        }
+    }
+    
     
     func responseHandler(response:DataResponse<T>, onSuccess: @escaping(T) -> Void, onError:@escaping(Error) -> Void) {
         guard let statusCode = response.response?.statusCode else {
@@ -75,23 +97,52 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
             return
         }
         
-        switch statusCode {
-        case 200:
+        if statusCode == 200 {
             guard let data = response.result.value else {
                 onError(ConnError.noData)
                 return
             }
             
             onSuccess(data)
+        } else {
+            responseHandlerError(statusCode: statusCode) { (error) in
+                onError(error)
+            }
+        }
+    }
+    
+    func responseArrayHandler(response:DataResponse<[T]>, onSuccess: @escaping([T]) -> Void, onError:@escaping(Error) -> Void) {
+        guard let statusCode = response.response?.statusCode else {
+            onError(ConnError.noResponse)
+            return
+        }
+        
+        if statusCode == 200 {
+            guard let data = response.result.value else {
+                onError(ConnError.noData)
+                return
+            }
+            
+            onSuccess(data)
+        } else {
+            responseHandlerError(statusCode: statusCode) { (error) in
+                onError(error)
+            }
+        }
+    }
+    
+    func responseHandlerError(statusCode: Int, onError: @escaping (Error) -> Void) {
+        
+        switch statusCode {
             
         case 400: // Bad Request
             STRCore.getViewable().showError(error: ConnError.badRequest)
             onError(ConnError.badRequest)
-        
+            
         case 401: //Unauthorized
             STRCore.getViewable().showError(error: ConnError.unauthorized)
             onError(ConnError.unauthorized)
-        
+            
         case 403: //Forbidden
             STRCore.getViewable().showError(error: ConnError.forbidden)
             onError(ConnError.forbidden)
@@ -115,10 +166,10 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
         case 504: //Gateway Timeout
             STRCore.getViewable().showError(error: ConnError.gatewayTimeout)
             onError(ConnError.gatewayTimeout)
-        
-        
+            
+            
         case STRCore.getConfig().refreshTokenConfig?.tokenStatusCodeExpire: //Token expire
-            if STRCore.getConfig().enableToken ?? false {
+            if STRCore.getConfig().enableToken {
                 refreshToken(onSuccess: { data in
                     onError(ConnError.refreshTokenExpire)
                 }) { error in
@@ -129,10 +180,7 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
             }
             
         default:
-            if let error = response.error {
-                onError(error)
-                return
-            }
+            onError(ConnError.unknown)
         }
     }
     
@@ -171,6 +219,19 @@ public extension STRService {
     public func execute<T: Mappable>(onSuccess: @escaping (T) -> Void,
                                      onError: @escaping (Error) -> Void) {
         URLSessionNetworkDispatcher<T>().dispatch(requestData: self.data, onSuccess: { (data) in
+            UserDefaults.setLoopValue(value: 0)
+            onSuccess(data)
+        }) { (error) in
+            UserDefaults.setLoopValue(value: 0)
+            DispatchQueue.main.async {
+                onError(error)
+            }
+        }
+    }
+    
+    public func executeWithArrayResponse<T: Mappable>(onSuccess: @escaping ([T]) -> Void,
+                                     onError: @escaping (Error) -> Void) {
+        URLSessionNetworkDispatcher<T>().dispatchWithArrayResponse(requestData: self.data, onSuccess: { (data) in
             UserDefaults.setLoopValue(value: 0)
             onSuccess(data)
         }) { (error) in

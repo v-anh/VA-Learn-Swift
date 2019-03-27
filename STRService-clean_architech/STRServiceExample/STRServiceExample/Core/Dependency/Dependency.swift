@@ -17,4 +17,7 @@ public protocol Dependency {
     
     //Dependency for List Character
     func resolveWorker() -> CharactersWorkerType
+    
+    //Dependency for List Character
+    func resolveWorker() -> HearthstoneCardsWorkerType
 }

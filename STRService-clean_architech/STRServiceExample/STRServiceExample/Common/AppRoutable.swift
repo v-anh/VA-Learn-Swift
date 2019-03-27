@@ -36,4 +36,6 @@ extension AppRoutable {
 enum Storyboard: String {
     case listCharacters = "ListCharacters"
     case showCharacter = "ShowCharacter"
+    case listHearthstoneCard = "ListHearthstoneCards"
+    case showHearthstoneCard = "HearthstoneCard"
 }
