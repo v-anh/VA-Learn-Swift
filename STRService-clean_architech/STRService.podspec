@@ -13,9 +13,9 @@ Pod::Spec.new do |spec|
   spec.summary      = "my"
   spec.homepage     = "http://www.tma.com"
   spec.license      = "TMA"
-  spec.author             = { "TMA" => "tma@tma.com.vn" }
+  spec.author       = { "TMA" => "tma@tma.com.vn" }
   spec.source       = { :git => ".", :tag => spec.version }
-  spec.source_files  = "STRService/*/*"
+  spec.source_files  = "STRService/**/*.{swift}"
   
   spec.dependency "Alamofire", "~> 4.8.1"
   spec.dependency "ObjectMapper", "~> 3.4.2"
