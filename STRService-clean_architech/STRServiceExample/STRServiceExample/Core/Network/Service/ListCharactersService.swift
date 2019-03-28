@@ -9,11 +9,9 @@ import STRService
 
 public class ListCharactersService: STRService {
     
-    public var data : RequestData {
-        return RequestData(path: "https://test.com/listCharacters", method: .get, params: [:], headers: nil)
+    public override var path: String {
+        return "https://test.com/listCharacters"
     }
-    
-    init(){}
 }
 
 

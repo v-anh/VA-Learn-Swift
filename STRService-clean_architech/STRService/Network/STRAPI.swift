@@ -31,26 +31,52 @@ public struct RequestData {
     public var params: [String:Any]?
     public let headers: [String: String]?
     
-    public init(path: String,
-         method: HTTPMethod = .get,
-         params: [String: Any]? = nil,
-         headers: [String: String]? = nil) {
-        self.path = path
-        self.method = method
-        self.params = params
-        self.headers = headers
-    }
+//    public init(path: String,
+//         method: HTTPMethod = .get,
+//         params: [String: Any]? = nil,
+//         headers: [String: String]? = nil) {
+//        self.path = path
+//        self.method = method
+//        self.params = params
+//        self.headers = headers
+//    }
 }
 
-public protocol STRService {
-    var data: RequestData { get }
-}
-
-public struct URLSessionNetworkDispatcher<T: Mappable> {
-
-    public init() {}
+protocol STRAPI {
+    var path: String { get }
+    var method: HTTPMethod { get }
+    var params: [String: Any]? { get }
+    var headers: [String: String]? { get }
     
-    public func dispatch(requestData: RequestData, onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void) {
+    func execute<T: Mappable>(onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void)
+    func execute<T: Mappable>(onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void)
+}
+
+open class STRService: STRAPI {
+    open var path: String {
+        fatalError("The path is require")
+    }
+    
+    open var method: HTTPMethod {
+        return .get
+    }
+    
+    open var params: [String : Any]? {
+        return nil
+    }
+    
+    open var headers: [String : String]? {
+        return nil
+    }
+    
+    public init() {}
+}
+
+struct URLSessionNetworkDispatcher<T: Mappable> {
+
+    init() {}
+    
+    func dispatch(requestData: RequestData, onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void) {
         var parameters = requestData.params
         
         if STRCore.getConfig().enableToken {
@@ -70,7 +96,7 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
         }
     }
     
-    public func dispatchWithArrayResponse(requestData: RequestData, onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void) {
+    func dispatch(requestData: RequestData, onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void) {
         var parameters = requestData.params
         
         if STRCore.getConfig().enableToken {
@@ -82,7 +108,7 @@ public struct URLSessionNetworkDispatcher<T: Mappable> {
                 onSuccess(dic)
             }, onError: { (error) in
                 if let connError = error as? ConnError, connError == .refreshTokenExpire {
-                    self.dispatchWithArrayResponse(requestData: requestData, onSuccess: onSuccess, onError: onError)
+                    self.dispatch(requestData: requestData, onSuccess: onSuccess, onError: onError)
                 } else {
                     onError(error)
                 }
@@ -218,7 +244,8 @@ public extension STRService {
     
     public func execute<T: Mappable>(onSuccess: @escaping (T) -> Void,
                                      onError: @escaping (Error) -> Void) {
-        URLSessionNetworkDispatcher<T>().dispatch(requestData: self.data, onSuccess: { (data) in
+        let requestData = RequestData(path: path, method: method, params: params, headers: headers)
+        URLSessionNetworkDispatcher<T>().dispatch(requestData: requestData, onSuccess: { (data: T) in
             UserDefaults.setLoopValue(value: 0)
             onSuccess(data)
         }) { (error) in
@@ -229,9 +256,10 @@ public extension STRService {
         }
     }
     
-    public func executeWithArrayResponse<T: Mappable>(onSuccess: @escaping ([T]) -> Void,
-                                     onError: @escaping (Error) -> Void) {
-        URLSessionNetworkDispatcher<T>().dispatchWithArrayResponse(requestData: self.data, onSuccess: { (data) in
+    public func execute<T: Mappable>(onSuccess: @escaping ([T]) -> Void,
+                                                      onError: @escaping (Error) -> Void) {
+        let requestData = RequestData(path: path, method: method, params: params, headers: headers)
+        URLSessionNetworkDispatcher<T>().dispatch(requestData: requestData, onSuccess: { (data: [T]) in
             UserDefaults.setLoopValue(value: 0)
             onSuccess(data)
         }) { (error) in

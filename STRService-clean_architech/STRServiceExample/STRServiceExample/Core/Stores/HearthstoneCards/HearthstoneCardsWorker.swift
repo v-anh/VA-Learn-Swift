@@ -19,7 +19,7 @@ struct HearthstoneCardsWorker: HearthstoneCardsWorkerType {
 extension HearthstoneCardsWorker {
     
     func fetch(completion: @escaping (Result<[HearthstoneCard], DataError>) -> Void) {
-        service.executeWithArrayResponse(onSuccess: { (result : [HearthstoneCard]) in
+        service.execute(onSuccess: { (result : [HearthstoneCard]) in
             completion(.success(result))
         }) { (error) in
             completion(.failure(.nonExistent))

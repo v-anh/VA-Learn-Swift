@@ -7,11 +7,13 @@
 
 import STRService
 
-public class ListHearthstoneCardsService: STRService {
+final class ListHearthstoneCardsService: STRService {
     
-    public var data : RequestData {
-        return RequestData(path: "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/Mage", method: .get, params: nil, headers: ["X-RapidAPI-Key": "AlXj8hIfHbmshz5oW8mZuzrAPXkzp1QeQzcjsntSLI7vjAaA6x"])
+    override var path: String {
+        return "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/Mage"
     }
     
-    init(){}
+    override var headers: [String: String]? {
+        return ["X-RapidAPI-Key": "AlXj8hIfHbmshz5oW8mZuzrAPXkzp1QeQzcjsntSLI7vjAaA6x"]
+    }
 }

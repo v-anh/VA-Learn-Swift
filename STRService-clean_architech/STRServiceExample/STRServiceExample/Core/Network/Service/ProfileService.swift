@@ -15,11 +15,8 @@ struct Profile: Mappable {
 }
 
 class ProfileService: STRService {
-    typealias ResponseType = Profile
     
-    var data : RequestData {
-        return RequestData(path: "https://test.com/profile")
+    override var path: String {
+        return "https://test.com/profile"
     }
-    
-    init(){}
 }

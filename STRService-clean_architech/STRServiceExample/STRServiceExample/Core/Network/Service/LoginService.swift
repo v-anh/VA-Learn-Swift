@@ -16,13 +16,10 @@ struct User: Mappable {
     }
 }
 
-class LoginService: STRService {
-    typealias ResponseType = User
+final class LoginService: STRService {
     
-    var data : RequestData {
-        return RequestData(path: "https://test.com/login", method: .get, params: [:], headers: nil)
+    override var path: String {
+        return "https://test.com/login"
     }
-    
-    init(){}
 }
 

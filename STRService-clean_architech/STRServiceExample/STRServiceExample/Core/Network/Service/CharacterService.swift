@@ -7,18 +7,9 @@
 
 import STRService
 
-public struct CharacterService: STRService {
-    public typealias ResponseType = Character
+final class CharacterService: STRService {
     
-    private var _data : RequestData = RequestData(path: "https://test.com/character", method: .get, params: [:], headers: nil)
-    public var data : RequestData {
-        get {
-            return _data
-        }
-        set {
-            self._data = newValue
-        }
+    override var path: String {
+        return "https://test.com/character"
     }
-    
-    init(){}
 }
