@@ -1,5 +1,6 @@
 import UIKit
 import STRService
+import netfox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         strConfig(config: Config(), viewable: self)
         configure(dependency: CoreDependency())
+        
+        #if DEBUG
+        NFX.sharedInstance().start()
+        #endif
         
         return true
     }
