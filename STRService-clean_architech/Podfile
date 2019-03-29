@@ -8,6 +8,7 @@ target 'STRService' do
   # Pods for STRService
 pod 'Alamofire'
 pod 'ObjectMapper'
+pod 'AlamofireObjectMapper'
 
   target 'STRServiceTests' do
     inherit! :search_paths
