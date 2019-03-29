@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public enum STRError: Error {
     case invalidURL
@@ -28,4 +29,18 @@ public enum STRError: Error {
     case refreshTokenExpire
     
     case unknown
+}
+
+public enum APIMethod {
+    case GET
+    case POST
+    
+    var key:HTTPMethod{
+        switch self {
+        case .GET:
+            return HTTPMethod.get
+        case .POST:
+            return HTTPMethod.post
+        }
+    }
 }
