@@ -27,6 +27,7 @@
 		D10ED05C2240F4F700B5CFD4 /* ShowCharacterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED05B2240F4F700B5CFD4 /* ShowCharacterModels.swift */; };
 		D10ED05E2240FC7200B5CFD4 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED05D2240FC7200B5CFD4 /* CharacterService.swift */; };
 		D10ED0602240FD0600B5CFD4 /* CharacterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED05F2240FD0600B5CFD4 /* CharacterWorker.swift */; };
+		D1137C43224DDA0E00988ED7 /* STRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1137C42224DDA0E00988ED7 /* STRService.swift */; };
 		D1142B752240E28700FF7BFB /* ShowCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1142B732240E28700FF7BFB /* ShowCharacterViewController.swift */; };
 		D1142B782240EA2A00FF7BFB /* ShowCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1142B772240EA2A00FF7BFB /* ShowCharacter.storyboard */; };
 		D1162E1D2244D4600064A131 /* ListHearthstoneCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1162E1C2244D4600064A131 /* ListHearthstoneCardsViewController.swift */; };
@@ -109,6 +110,7 @@
 		D10ED05B2240F4F700B5CFD4 /* ShowCharacterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterModels.swift; sourceTree = "<group>"; };
 		D10ED05D2240FC7200B5CFD4 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		D10ED05F2240FD0600B5CFD4 /* CharacterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterWorker.swift; sourceTree = "<group>"; };
+		D1137C42224DDA0E00988ED7 /* STRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRService.swift; sourceTree = "<group>"; };
 		D1142B732240E28700FF7BFB /* ShowCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterViewController.swift; sourceTree = "<group>"; };
 		D1142B772240EA2A00FF7BFB /* ShowCharacter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowCharacter.storyboard; sourceTree = "<group>"; };
 		D1162E1C2244D4600064A131 /* ListHearthstoneCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHearthstoneCardsViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				D1FC2908223F880A001C0F70 /* ListCharactersService.swift */,
 				D10ED05D2240FC7200B5CFD4 /* CharacterService.swift */,
 				D17BB9C2224A24110027E5F2 /* ListHearthstoneCardsService.swift */,
+				D1137C42224DDA0E00988ED7 /* STRService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/STRService/STRService.framework",
+				"${BUILT_PRODUCTS_DIR}/netfox/netfox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -666,6 +670,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STRService.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/netfox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -750,6 +755,7 @@
 				D1FC28F9223F5D4F001C0F70 /* Routable.swift in Sources */,
 				D1F96F08222CDF61006E7272 /* ProfileService.swift in Sources */,
 				66BEB4F92241F45200D021AE /* ShowCharacterPresenter.swift in Sources */,
+				D1137C43224DDA0E00988ED7 /* STRService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

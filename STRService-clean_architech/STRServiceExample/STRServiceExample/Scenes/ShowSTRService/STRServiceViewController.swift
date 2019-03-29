@@ -1,6 +1,8 @@
 import UIKit
 import STRService
 import OHHTTPStubs
+import netfox
+
 class STRServiceViewController: UIViewController, HasDependencies {
     
     private lazy var authenticationWorker: AuthenticationWorkerType = dependencies.resolveWorker()
@@ -9,6 +11,7 @@ class STRServiceViewController: UIViewController, HasDependencies {
         super.viewDidLoad()
 
         createStubForTest()
+
     }
     func testLoginService() {
         authenticationWorker.login(with: "bla") {
@@ -25,6 +28,26 @@ class STRServiceViewController: UIViewController, HasDependencies {
     
     @IBAction func btnRefreshToken(_ sender: Any) {
         testRefreshToken()
+    }
+    
+    @IBAction func showNetFox(_ sender: Any) {
+        NFX.sharedInstance().show()
+    }
+    
+    @IBAction func btnGetAllCountries(_ sender: Any) {
+        STRServiceCountries().execute(onSuccess: { (result: [STRServiceCountriesModel]) in
+            UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
+        }) { (error) in
+            
+        }
+    }
+    
+    @IBAction func btnUrbanDictionaryTest(_ sender: Any) {
+        STRServiceUrbanDictionary().execute(onSuccess: { (result: STRServiceUrbanDictionaryModel) in
+            UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
+        }) { (error) in
+            
+        }
     }
     
     func createStubForTest() {
@@ -72,3 +95,11 @@ class STRServiceViewController: UIViewController, HasDependencies {
     }
 }
 
+extension UIAlertController {
+    class func showMessageWithOKButton(message: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        viewController.present(alert, animated: true, completion: nil)
+    }
+}
