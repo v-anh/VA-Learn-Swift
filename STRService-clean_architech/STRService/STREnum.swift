@@ -9,7 +9,50 @@
 import Foundation
 import Alamofire
 
+
+enum StatusCode:Int {
+    case success = 200
+    case badRequest = 400
+    case unauthorized = 401
+    case forbidden = 403
+    case notFound = 404
+    case timeout = 408
+    case internalServerError = 500
+    case badGateway = 502
+    case gatewayTimeout = 504
+    case unknown = 999
+    case noConnection = -1
+    
+    func toError() -> STRError? {
+        switch self {
+        case .success:
+            return nil
+        case .badRequest:
+            return .badRequest
+        case .unauthorized:
+            return .unauthorized
+        case .forbidden:
+            return .forbidden
+        case .notFound:
+            return .notFound
+        case .timeout:
+            return .requestTimeout
+        case .internalServerError:
+            return .internalServerError
+        case .badGateway:
+            return .badGateway
+        case .gatewayTimeout:
+            return .gatewayTimeout
+        case .unknown:
+            return .unknown
+        case .noConnection:
+            return .noConnection
+        }
+    }
+}
+
 public enum STRError: Error {
+    case noConnection
     case invalidURL
     case noData
     case dataError
@@ -22,11 +65,6 @@ public enum STRError: Error {
     case gatewayTimeout
     case badGateway
     case internalServerError
-    
-    case noRefreshTokenData
-    case refreshTokenError
-    case tokenExpire
-    case refreshTokenExpire
     
     case unknown
 }

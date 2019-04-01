@@ -9,7 +9,9 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
+
 open class STRService: STRAPI {
+    
     open var path: String {
         fatalError("The path is require")
     }
@@ -26,32 +28,60 @@ open class STRService: STRAPI {
         return nil
     }
     
+    
     public init() {}
+    
+    
+    private var handlerErrorManually:Bool = false
+    public func set(handlerErrorManually:Bool) -> STRService {
+        self.handlerErrorManually = handlerErrorManually
+        return self
+    }
+    
+    private var handlerErrorCompletion:((Error) -> Void)?
+    public func set(handlerErrorCompletion:((Error) -> Void)?) -> STRService {
+        self.handlerErrorCompletion = handlerErrorCompletion
+        return self
+    }
 }
 
 public extension STRService {
     
-    func execute<T: Mappable>(onSuccess: @escaping (T) -> Void,
+    func execute<T: Mappable>(shouldMock:Bool = false,onSuccess: @escaping (T) -> Void,
                                      onError: @escaping (Error) -> Void) {
+        
+        //TODO:- Check mock data
+        if shouldMock == true {
+            self.mockHandler()
+        }
+        
+        //TODO:- Check network connection
+        guard let isReachable = NetworkReachabilityManager()?.isReachable,isReachable else{
+            self.responseHandlerError(statusCode: .noConnection) { (error) in
+                onError(error)
+            }
+            return
+        }
+        
+        //TODO:- Check config for retry when no-connection
+        
+        //TODO:- retry when no-connection
+        
+        //TODO:- Get Scheme and host for Callservice
+        
+        //TODO:- Callservice
+        
         let requestData = RequestData(path: path,
                                       method: method,
                                       params: getParameters(),
                                       headers: headers)
         STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<T>) in
-            self.responseHandler(response: response, onSuccess: { (dic) in
-                onSuccess(dic)
-            }, onError: { (error) in
-                if let STRError = error as? STRError,
-                    STRError == .refreshTokenExpire {
-                    //TODO: - refresh token here
-                } else {
-                    onError(error)
-                }
-            })
+            
+            self.responseHandler(response: response, onSuccess: onSuccess, onError: onError)
         }
     }
     
-    func execute<T: Mappable>(onSuccess: @escaping ([T]) -> Void,
+    func execute<T: Mappable>(shouldMock:Bool = false,onSuccess: @escaping ([T]) -> Void,
                                      onError: @escaping (Error) -> Void) {
         
         let requestData = RequestData(path: path,
@@ -59,110 +89,95 @@ public extension STRService {
                                       params: getParameters(),
                                       headers: headers)
         
+        
+        //TODO:- Check mock data
+        
+        //TODO:- Check network connection
+        
+        //TODO:- Check config for retry when no-connection
+        
+        //TODO:- retry when no-connection
+        
+        //TODO:- Get Scheme and host for Callservice
+        
+        //TODO:- Callservice
+        
         STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<[T]>) in
-            self.responseHandler(response: response, onSuccess: { (dic) in
-                onSuccess(dic)
-            }, onError: { (error) in
-                if let STRError = error as? STRError,
-                    STRError == .refreshTokenExpire {
-                    //TODO: - refresh token here
-                } else {
-                    onError(error)
-                }
-            })
+            self.responseHandler(response: response, onSuccess: onSuccess, onError: onError)
         }
     }
+}
+
+extension STRService {
     
-    func responseHandler<T: Mappable>(response: DataResponse<T>, onSuccess: @escaping(T) -> Void, onError:@escaping(Error) -> Void) {
-        guard let statusCode = response.response?.statusCode else {
+    private func getParameters() -> [String : Any]? {
+        
+        var parameters = params
+        if STRSessionManager.shared.config.shouldEnableToken() {
+            parameters = params == nil ? [:] : params
+            parameters?[STRSessionManager.shared.config.tokenParameterKey() ?? "token"] = STRSessionManager.shared.delegate.getToken(key: "Token")
+        }
+        return parameters
+    }
+}
+
+extension STRService {
+    private func responseHandler<T: Mappable>(response: DataResponse<T>, onSuccess: @escaping(T) -> Void, onError:@escaping(Error) -> Void) {
+        guard let statusCode = StatusCode(rawValue: response.response?.statusCode ?? StatusCode.unknown.hashValue) else {
             onError(STRError.noResponse)
             return
         }
-        
-        if statusCode == 200 {
-            guard let data = response.result.value else {
-                onError(STRError.noData)
-                return
-            }
-            
-            onSuccess(data)
-        } else {
-            responseHandlerError(statusCode: statusCode) { (error) in
-                onError(error)
-            }
-        }
-    }
-    
-    func responseHandler<T: Mappable>(response: DataResponse<[T]>, onSuccess: @escaping([T]) -> Void, onError:@escaping(Error) -> Void) {
-        guard let statusCode = response.response?.statusCode else {
-            onError(STRError.noResponse)
-            return
-        }
-        
-        if statusCode == 200 {
-            guard let data = response.result.value else {
-                onError(STRError.noData)
-                return
-            }
-            
-            onSuccess(data)
-        } else {
-            responseHandlerError(statusCode: statusCode) { (error) in
-                onError(error)
-            }
-        }
-    }
-    
-    func responseHandlerError(statusCode: Int, onError: @escaping (Error) -> Void) {
         
         switch statusCode {
+        case .success:
+            guard let data = response.result.value else {
+                onError(STRError.noData)
+                return
+            }
             
-        case 400: // Bad Request
-            STRSessionManager.shared.delegate.showError(error: STRError.badRequest)
-            onError(STRError.badRequest)
-            
-        case 401: //Unauthorized
-            STRSessionManager.shared.delegate.showError(error: STRError.unauthorized)
-            onError(STRError.unauthorized)
-            
-        case 403: //Forbidden
-            STRSessionManager.shared.delegate.showError(error: STRError.forbidden)
-            onError(STRError.forbidden)
-            
-        case 404: //Not Found
-            STRSessionManager.shared.delegate.showError(error: STRError.notFound)
-            onError(STRError.notFound)
-            
-        case 408: //Request Timeout
-            STRSessionManager.shared.delegate.showError(error: STRError.requestTimeout)
-            onError(STRError.requestTimeout)
-            
-        case 500: //Internal Server Error
-            STRSessionManager.shared.delegate.showError(error: STRError.internalServerError)
-            onError(STRError.internalServerError)
-            
-        case 502: //Bad Gateway
-            STRSessionManager.shared.delegate.showError(error: STRError.badGateway)
-            onError(STRError.badGateway)
-            
-        case 504: //Gateway Timeout
-            STRSessionManager.shared.delegate.showError(error: STRError.gatewayTimeout)
-            onError(STRError.gatewayTimeout)
-            
-            
-        case STRSessionManager.shared.config.tokenStatusCodeExpire(): break //Token expire
-//            if STRSessionManager.shared.config.shouldEnableToken() {
-//                refreshToken(onSuccess: { data in
-//                    onError(STRError.refreshTokenExpire)
-//                }) { error in
-//                    onError(error)
-//                }
-//            } else {
-//                onError(STRError.tokenExpire)
-//            }
-            
+            onSuccess(data)
         default:
-            onError(STRError.unknown)
+            responseHandlerError(statusCode: statusCode) { (error) in
+                onError(error)
+            }
+        }
+    }
+    
+    private func responseHandler<T: Mappable>(response: DataResponse<[T]>, onSuccess: @escaping([T]) -> Void, onError:@escaping(Error) -> Void) {
+        guard let statusCode = StatusCode(rawValue: response.response?.statusCode ?? StatusCode.unknown.hashValue) else {
+            onError(STRError.noResponse)
+            return
+        }
+        
+        switch statusCode {
+        case .success:
+            guard let data = response.result.value else {
+                onError(STRError.noData)
+                return
+            }
+            
+            onSuccess(data)
+        default:
+            responseHandlerError(statusCode: statusCode) { (error) in
+                onError(error)
+            }
+        }
+    }
+    
+    private func responseHandlerError(statusCode: StatusCode, onError: @escaping (Error) -> Void) {
+        
+        guard let error = statusCode.toError() else {
+            print("STRService Can not found Error with status: \(statusCode.hashValue)")
+            return
+        }
+        
+        
+        if self.handlerErrorManually == true {
+            if let handleError = self.handlerErrorCompletion {
+                handleError(error)
+            }
+        }else{
+            STRSessionManager.shared.delegate.showError(error: error)
         }
     }
     
@@ -196,15 +211,10 @@ public extension STRService {
     //    }
 }
 
-extension STRService {
-    
-    func getParameters() -> [String : Any]? {
+
+public extension STRService {
+    private func mockHandler() {
         
-        var parameters = params
-        if STRSessionManager.shared.config.shouldEnableToken() {
-            parameters = params == nil ? [:] : params
-            parameters?[STRSessionManager.shared.config.tokenParameterKey() ?? "token"] = STRSessionManager.shared.delegate.getToken(key: "Token")
-        }
-        return parameters
+        //TODO:- Handle Mock data from file JSON
     }
 }

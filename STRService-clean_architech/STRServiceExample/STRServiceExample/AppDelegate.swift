@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupOHHTTPStubForRunDemo()
         
-        strConfig(config: Config(), viewable: self)
+        strConfig(config: self)
         configure(dependency: CoreDependency())
         
         #if DEBUG
@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: STRViewable {
+extension AppDelegate: STRDelegate, STRConfig{
+    
     func getToken(key: String) -> String {
         return "Token store in Keychain"
     }
@@ -57,7 +58,7 @@ extension AppDelegate: STRViewable {
     }
     
     
-    func showError(error: Error?) {
+    func showError(error: Error) {
          print(error ?? "")
     }
 }

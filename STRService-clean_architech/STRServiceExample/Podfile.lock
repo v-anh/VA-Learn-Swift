@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - netfox (1.15.0)
   - ObjectMapper (3.4.2)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.8.1)
   - AlamofireObjectMapper (~> 5.2)
+  - netfox
   - ObjectMapper (~> 3.4.2)
   - OHHTTPStubs/Swift
   - STRService (from `../`)
@@ -33,6 +35,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - netfox
     - ObjectMapper
     - OHHTTPStubs
 
@@ -43,10 +46,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  netfox: 6ddcca687ad0a58550054fea481cb487461b5e0c
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   STRService: f66aca64117bd6bb75fc8e5fcfa6e3224d8d1628
 
-PODFILE CHECKSUM: a3665303d9fb0db4f81e716405ea01b4f11f9fc7
+PODFILE CHECKSUM: d142f68ce8f104c24c1ea79c2e43ebea2586481b
 
 COCOAPODS: 1.6.1
