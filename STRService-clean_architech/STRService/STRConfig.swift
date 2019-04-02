@@ -1,10 +1,18 @@
 import Foundation
+import PromiseKit
 
-public typealias STRConfiguration = STRDelegate & STRConfig
+public typealias STRConfiguration = STRDelegate & STRConfig & STRAPIErrorHandling
 
 public protocol STRDelegate {
+    @available(*, deprecated, message: "STRAPIErrorHandling instead")
     func showError(error: Error)
     func getToken(key:String) -> String
+}
+
+
+public typealias Retry = Bool
+public protocol STRAPIErrorHandling {
+    func onNetworkError(api:STRService) -> Promise<Retry>
 }
 
 public protocol STRConfig {

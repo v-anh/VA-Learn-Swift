@@ -64,3 +64,19 @@ extension AppDelegate: STRDelegate, STRConfig{
 }
 
 
+protocol ThisIsOptionalProtocol {
+    optional func thisIsOptionalFunc()
+}
+
+extension ThisIsOptionalProtocol {
+    func thisIsOptionalFunc() {
+        
+    }
+}
+
+struct Test:ThisIsOptionalProtocol {
+}
+
+
+
+

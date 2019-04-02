@@ -9,6 +9,7 @@ target 'STRService' do
 pod 'Alamofire'
 pod 'ObjectMapper'
 pod 'AlamofireObjectMapper'
+pod "PromiseKit", "~> 6.8"
 
   target 'STRServiceTests' do
     inherit! :search_paths

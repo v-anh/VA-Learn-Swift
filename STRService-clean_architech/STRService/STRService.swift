@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
-
+import PromiseKit
 
 open class STRService: STRAPI {
     
@@ -48,7 +48,7 @@ open class STRService: STRAPI {
 public extension STRService {
     
     func execute<T: Mappable>(shouldMock:Bool = false,onSuccess: @escaping (T) -> Void,
-                                     onError: @escaping (Error) -> Void) {
+                              onError: @escaping (Error) -> Void) {
         
         //TODO:- Check mock data
         if shouldMock == true {
@@ -82,7 +82,7 @@ public extension STRService {
     }
     
     func execute<T: Mappable>(shouldMock:Bool = false,onSuccess: @escaping ([T]) -> Void,
-                                     onError: @escaping (Error) -> Void) {
+                              onError: @escaping (Error) -> Void) {
         
         let requestData = RequestData(path: path,
                                       method: method,
@@ -104,6 +104,58 @@ public extension STRService {
         
         STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<[T]>) in
             self.responseHandler(response: response, onSuccess: onSuccess, onError: onError)
+        }
+    }
+    
+    
+    
+    func execute<T: Mappable>(shouldMock: Bool) -> Promise<T> {
+        
+        //TODO:- Check config for retry when no-connection
+        
+        //TODO:- retry when no-connection
+        
+        //TODO:- Get Scheme and host for Callservice
+        
+        //TODO:- Callservice
+        
+        //        let requestData = RequestData(path: path,
+        //                                      method: method,
+        //                                      params: getParameters(),
+        //                                      headers: headers)
+        //        STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<T>) in
+        //
+        //            self.responseHandler(response: response, onSuccess: onSuccess, onError: onError)
+        //        }
+        
+        //TODO:- Check mock data
+        if shouldMock == true {
+            return self.mockHandler()
+        }
+        return Promise<T>{ seal in
+            
+            //TODO:- Check network connection
+            guard let isReachable = NetworkReachabilityManager()?.isReachable,isReachable else{
+                STRSessionManager.shared.errorHandler.onNetworkError(api: self)
+                    .done { (retry) in
+                        if retry == true {
+                            self.executeAgain().done{ res in
+                                seal.fulfill(res)
+                                }.catch{error in
+                                    seal.reject(error)
+                            }
+                        }
+                    }.catch{(error) in
+                        seal.reject(error)
+                }
+                return
+            }
+        }
+    }
+    
+    func executeAgain<T: Mappable>(shouldMock: Bool = false) -> Promise<T> {
+        return Promise<T>{ seal in
+            
         }
     }
 }
@@ -213,8 +265,14 @@ extension STRService {
 
 
 public extension STRService {
+    @available(*,deprecated,message:  "mockHandler<T: Mappable>() -> Promise<T> instead")
     private func mockHandler() {
-        
-        //TODO:- Handle Mock data from file JSON
+    }
+    
+    
+    private func mockHandler<T: Mappable>() -> Promise<T> {
+        return Promise<T>{ seal in
+            seal.reject(STRError.unknown)
+        }
     }
 }

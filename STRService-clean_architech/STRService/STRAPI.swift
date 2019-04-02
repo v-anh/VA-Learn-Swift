@@ -1,6 +1,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import PromiseKit
 
 public struct RequestData {
     let path: String
@@ -39,7 +40,7 @@ protocol STRAPI {
             - Return the error data object after make the call
             @@ Description: aawdawd
      **/
-    func execute<T: Mappable>(shouldMock:Bool,onSuccess: @escaping (T) -> Void, onError: @escaping (Error) -> Void)
+    func execute<T: Mappable>(shouldMock:Bool,onSuccess: @escaping (T) -> Void, onError: @escaping  (Error) -> Void)
     
     
     
@@ -54,6 +55,10 @@ protocol STRAPI {
      @@ Description: aawdawd
      **/
     func execute<T: Mappable>(shouldMock:Bool,onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void)
+    
+    
+    
+    func execute<T: Mappable>(shouldMock:Bool) -> Promise<T>
 }
 
 

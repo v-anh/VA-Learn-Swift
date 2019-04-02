@@ -9,8 +9,7 @@
 import Foundation
 import Alamofire
 
-
-enum StatusCode:Int {
+public enum StatusCode:Int {
     case success = 200
     case badRequest = 400
     case unauthorized = 401
@@ -23,6 +22,8 @@ enum StatusCode:Int {
     case unknown = 999
     case noConnection = -1
     
+    
+    @available(*, deprecated, message: "Need to create function to create the Error")
     func toError() -> STRError? {
         switch self {
         case .success:
@@ -50,7 +51,7 @@ enum StatusCode:Int {
         }
     }
 }
-
+@available(*, deprecated, message: "Using Struct & more detail instead")
 public enum STRError: Error {
     case noConnection
     case invalidURL
@@ -67,6 +68,17 @@ public enum STRError: Error {
     case internalServerError
     
     case unknown
+}
+
+
+public struct STRError1:Error {
+    public var status : StatusCode
+    public var messageCode:String
+    public var messageDesc:String
+    public var displayText:String
+    public var request:STRService
+    public var responseBody:Data
+    
 }
 
 public enum APIMethod {

@@ -16,6 +16,8 @@ public final class STRSessionManager {
     
     public var config : STRConfig!
     public var delegate: STRDelegate!
+    public var errorHandler: STRAPIErrorHandling!
+    
     public static let shared = STRSessionManager()
     
     private var networkManager: SessionManager!
@@ -70,6 +72,7 @@ extension STRSessionManager {
     static func setup(config : STRConfiguration) {
         STRSessionManager.shared.config = config
         STRSessionManager.shared.delegate = config
+        STRSessionManager.shared.errorHandler = config
     }
     
 }
