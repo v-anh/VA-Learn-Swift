@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: STRDelegate, STRConfig{
+extension AppDelegate: STRDelegate, STRConfig,STRAPIErrorHandling{
+    
     
     func getToken(key: String) -> String {
         return "Token store in Keychain"
@@ -61,20 +62,6 @@ extension AppDelegate: STRDelegate, STRConfig{
     func showError(error: Error) {
          print(error ?? "")
     }
-}
-
-
-protocol ThisIsOptionalProtocol {
-    optional func thisIsOptionalFunc()
-}
-
-extension ThisIsOptionalProtocol {
-    func thisIsOptionalFunc() {
-        
-    }
-}
-
-struct Test:ThisIsOptionalProtocol {
 }
 
 
