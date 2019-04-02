@@ -113,20 +113,10 @@ public extension STRService {
         
         //TODO:- Check config for retry when no-connection
         
-        //TODO:- retry when no-connection
-        
+       
         //TODO:- Get Scheme and host for Callservice
         
-        //TODO:- Callservice
         
-        //        let requestData = RequestData(path: path,
-        //                                      method: method,
-        //                                      params: getParameters(),
-        //                                      headers: headers)
-        //        STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<T>) in
-        //
-        //            self.responseHandler(response: response, onSuccess: onSuccess, onError: onError)
-        //        }
         
         //TODO:- Check mock data
         if shouldMock == true {
@@ -136,6 +126,8 @@ public extension STRService {
             
             //TODO:- Check network connection
             guard let isReachable = NetworkReachabilityManager()?.isReachable,isReachable else{
+                
+                 //TODO:- retry when no-connection
                 STRSessionManager.shared.errorHandler.onNetworkError(api: self)
                     .done { (retry) in
                         if retry == true {
@@ -150,12 +142,39 @@ public extension STRService {
                 }
                 return
             }
+            
+            //TODO:- Callservice
+            let requestData = RequestData(path: path,
+                                          method: method,
+                                          params: getParameters(),
+                                          headers: headers)
+            STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<T>) in
+                
+                self.responseHandler(response: response, onSuccess: { (data) in
+                    seal.fulfill(data)
+                }, onError: { (error) in
+                    seal.reject(error)
+                })
+            }
         }
+        
+        
     }
     
     func executeAgain<T: Mappable>(shouldMock: Bool = false) -> Promise<T> {
         return Promise<T>{ seal in
-            
+            let requestData = RequestData(path: path,
+                                          method: method,
+                                          params: getParameters(),
+                                          headers: headers)
+            STRSessionManager.shared.callService(requestData: requestData) { (response: DataResponse<T>) in
+                
+                self.responseHandler(response: response, onSuccess: { (data) in
+                    seal.fulfill(data)
+                }, onError: { (error) in
+                    seal.reject(error)
+                })
+            }
         }
     }
 }
