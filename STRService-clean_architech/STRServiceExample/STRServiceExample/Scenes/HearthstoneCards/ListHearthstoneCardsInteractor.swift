@@ -21,20 +21,20 @@ extension ListHearthstoneCardsInteractor: ListHearthstoneCardsBusinessLogic {
     
     func fetchHearthstoneCards(with request: ListHearthstoneCardsModels.FetchRequest) {
         
-        let service = ListHearthstoneCardsService()
-            .set(handlerErrorManually: true)
-            .set(handlerErrorCompletion: { (error) in
-                //Manual show error advoid default error
-                
-            })
-        
-        service.execute(onSuccess: { (result : [HearthstoneCard]) in
-            
-            
-        }) { (error) in
-            
-            
-        }
+//        let service = ListHearthstoneCardsService()
+//            .set(handlerErrorManually: true)
+//            .set(handlerErrorCompletion: { (error) in
+//                //Manual show error advoid default error
+//                
+//            })
+//        
+//        service.execute(onSuccess: { (result : [HearthstoneCard]) in
+//            
+//            
+//        }) { (error) in
+//            
+//            
+//        }
         
         hearthstoneCardsWorker.fetch { result in
             guard let value = result.value, result.isSuccess else {

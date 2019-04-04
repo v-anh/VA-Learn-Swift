@@ -36,20 +36,14 @@ class STRServiceViewController: UIViewController, HasDependencies {
     }
     
     @IBAction func btnGetAllCountries(_ sender: Any) {
-        STRServiceCountries().execute(onSuccess: { (result: [STRServiceCountriesModel]) in
+        STRServiceCountries().execute().done { (result: [STRServiceCountriesModel]) in
             UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
-        }) { (error) in
-            
+            }.catch { (error) in
+                
         }
     }
     
     @IBAction func btnUrbanDictionaryTest(_ sender: Any) {
-//        STRServiceUrbanDictionary().execute(onSuccess: { (result: STRServiceUrbanDictionaryModel) in
-//            UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
-//        }) { (error) in
-//            
-//        }
-        
         STRServiceUrbanDictionary().execute().done { (result: STRServiceUrbanDictionaryModel) in
             print(result)
             }.catch { (error) in

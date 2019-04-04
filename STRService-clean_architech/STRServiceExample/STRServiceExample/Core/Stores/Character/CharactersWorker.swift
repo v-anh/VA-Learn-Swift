@@ -17,13 +17,13 @@ struct CharactersWorker: CharactersWorkerType {
 extension CharactersWorker {
     
     func fetch(completion: @escaping (Result<[Character], DataError>) -> Void) {
-        service.execute(onSuccess: { (result : ListCharacters) in
+        service.execute().done { (result : ListCharacters) in
             guard let characters = result.characters else {
                 completion(.failure(.nonExistent))
                 return
             }
             completion(.success(characters))
-        }) { (error) in
+        }.catch { (error) in
             completion(.failure(.nonExistent))
         }
     }

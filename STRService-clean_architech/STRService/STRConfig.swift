@@ -4,8 +4,6 @@ import PromiseKit
 public typealias STRConfiguration = STRDelegate & STRConfig & STRAPIErrorHandling
 
 public protocol STRDelegate {
-    @available(*, deprecated, message: "STRAPIErrorHandling instead")
-    func showError(error: Error)
     func getToken(key:String) -> String
 }
 

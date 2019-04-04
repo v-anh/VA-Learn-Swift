@@ -18,9 +18,9 @@ struct CharacterWorker: CharacterWorkerType {
 extension CharacterWorker {
     
     func fetch(name: String, completion: @escaping (Result<Character, DataError>) -> Void) {
-        service.execute(onSuccess: { (result : Character) in
+        service.execute().done { (result : Character) in
             completion(.success(result))
-        }) { (error) in
+        }.catch { (error) in
             completion(.failure(.nonExistent))
         }
     }

@@ -12,7 +12,6 @@
 		371168A7221F9FC700E5B26E /* STRService.h in Headers */ = {isa = PBXBuildFile; fileRef = 37116899221F9FC700E5B26E /* STRService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		371168B5221FA49A00E5B26E /* STRAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371168B4221FA49A00E5B26E /* STRAPI.swift */; };
 		371168BD221FB4F300E5B26E /* STRConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371168BC221FB4F300E5B26E /* STRConfig.swift */; };
-		5D2DC46822278FAC0001A527 /* STRUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2DC46722278FAC0001A527 /* STRUserDefaults.swift */; };
 		663487F9224DD29D00396ECE /* STRSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663487F8224DD29D00396ECE /* STRSessionManager.swift */; };
 		6DCB2F2AFBBD79D6593A53AC /* Pods_STRServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1777BE3A1B96E8CF6C6172C7 /* Pods_STRServiceTests.framework */; };
 		8C141CDCBBE3B15D05A52420 /* Pods_STRService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DB409409BCD29A43452AE5 /* Pods_STRService.framework */; };
@@ -43,7 +42,6 @@
 		371168B4221FA49A00E5B26E /* STRAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRAPI.swift; sourceTree = "<group>"; };
 		371168BC221FB4F300E5B26E /* STRConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRConfig.swift; sourceTree = "<group>"; };
 		40D77C8596CBF9F0DA0D7C99 /* Pods-STRService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRService.debug.xcconfig"; path = "Target Support Files/Pods-STRService/Pods-STRService.debug.xcconfig"; sourceTree = "<group>"; };
-		5D2DC46722278FAC0001A527 /* STRUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRUserDefaults.swift; sourceTree = "<group>"; };
 		663487F8224DD29D00396ECE /* STRSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRSessionManager.swift; sourceTree = "<group>"; };
 		A420FD4990298EA9D672BC6A /* Pods-STRServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRServiceTests.release.xcconfig"; path = "Target Support Files/Pods-STRServiceTests/Pods-STRServiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		D120F4F8224CBD270020EDED /* STRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRService.swift; sourceTree = "<group>"; };
@@ -107,11 +105,10 @@
 				371168B4221FA49A00E5B26E /* STRAPI.swift */,
 				D120F4F8224CBD270020EDED /* STRService.swift */,
 				371168BC221FB4F300E5B26E /* STRConfig.swift */,
-				5D2DC46722278FAC0001A527 /* STRUserDefaults.swift */,
 				D120F4FB224CC0EF0020EDED /* STREnum.swift */,
+				663487F8224DD29D00396ECE /* STRSessionManager.swift */,
 				37116899221F9FC700E5B26E /* STRService.h */,
 				3711689A221F9FC700E5B26E /* Info.plist */,
-				663487F8224DD29D00396ECE /* STRSessionManager.swift */,
 			);
 			path = STRService;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2DC46822278FAC0001A527 /* STRUserDefaults.swift in Sources */,
 				663487F9224DD29D00396ECE /* STRSessionManager.swift in Sources */,
 				371168BD221FB4F300E5B26E /* STRConfig.swift in Sources */,
 				371168B5221FA49A00E5B26E /* STRAPI.swift in Sources */,

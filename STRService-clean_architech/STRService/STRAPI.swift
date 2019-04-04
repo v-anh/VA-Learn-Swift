@@ -31,16 +31,15 @@ protocol STRAPI {
     /**
      # The execute function to make the call to the REST API
      ## This execute funtion will return single object when it sucessfull call the API - If you need to return the Array format instead, using this :
-     ````execute<T: Mappable>(onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void)````
+     ````execute<T: Mappable>() -> Promise<[T]>````
      - Parameters:
         - shouldMock:
-        - onSuccess:
+     - Promise<[T]>:
             - Return the successfull data object after make the call
-        - onError:
             - Return the error data object after make the call
             @@ Description: aawdawd
      **/
-    func execute<T: Mappable>(shouldMock:Bool,onSuccess: @escaping (T) -> Void, onError: @escaping  (Error) -> Void)
+    func execute<T: Mappable>(shouldMock:Bool) -> Promise<[T]>
     
     
     
@@ -48,16 +47,11 @@ protocol STRAPI {
      # The execute function to make the call to the REST API
      ## This execute funtion will return aray of object when it sucessfull call the API
      - Parameters:
-     - onSuccess:
-     - Return the successfull data object after make the call
-     - onError:
-     - Return the error data object after make the call
+     - Promise<T>:
+         - Return the successfull data object after make the call
+         - Return the error data object after make the call
      @@ Description: aawdawd
      **/
-    func execute<T: Mappable>(shouldMock:Bool,onSuccess: @escaping ([T]) -> Void, onError: @escaping (Error) -> Void)
-    
-    
-    
     func execute<T: Mappable>(shouldMock:Bool) -> Promise<T>
 }
 

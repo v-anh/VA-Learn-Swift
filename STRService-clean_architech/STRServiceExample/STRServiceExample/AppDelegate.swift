@@ -48,7 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: STRDelegate, STRConfig, STRAPIErrorHandling{
+extension AppDelegate: STRDelegate, STRConfig {
+    func getToken(key: String) -> String {
+        return "Token store in Keychain"
+    }
+    
+    func showLog(log: String) {
+        print(log)
+    }
+}
+
+extension AppDelegate: STRAPIErrorHandling {
     func onNetworkNotReachable(api: STRService) -> Promise<Retry> {
         return Promise<Retry> { seal in
             seal.fulfill(false)
@@ -64,23 +74,6 @@ extension AppDelegate: STRDelegate, STRConfig, STRAPIErrorHandling{
     func onNetworkError(error: STRError) {
         
     }
-    
-    
-    
-    func getToken(key: String) -> String {
-        return "Token store in Keychain"
-    }
-    
-    func showLog(log: String) {
-        print(log)
-    }
-    
-    
-    func showError(error: Error) {
-         print(error ?? "")
-    }
 }
-
-
 
 

@@ -23,7 +23,6 @@ public enum StatusCode:Int {
     case unknown = 999
     case noConnection = -1
     
-    @available(*, deprecated, message: "Need to create function to create the Error")
     func toError(error: Error) -> STRError? {
         switch self {
         case .success:
@@ -50,29 +49,7 @@ public enum StatusCode:Int {
             return STRError(statusCode: .noConnection, error: error)
         }
     }
-    
-    
 }
-//@available(*, deprecated, message: "Using Struct & more detail instead")
-//public enum STRError: Error {
-//    case noConnection(error: Error)
-//    case invalidURL
-//    case noData
-//    case dataError
-//    case noResponse
-//    case badRequest
-//    case unauthorized
-//    case forbidden
-//    case notFound
-//    case requestTimeout
-//    case gatewayTimeout
-//    case badGateway
-//    case internalServerError
-//
-//    case unknown
-//
-//}
-
 
 public enum STRMessageCode: Error {
     case noConnection
