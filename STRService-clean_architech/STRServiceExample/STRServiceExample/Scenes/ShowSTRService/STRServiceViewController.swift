@@ -2,6 +2,7 @@ import UIKit
 import STRService
 import OHHTTPStubs
 import netfox
+import PromiseKit
 
 class STRServiceViewController: UIViewController, HasDependencies {
     
@@ -43,10 +44,16 @@ class STRServiceViewController: UIViewController, HasDependencies {
     }
     
     @IBAction func btnUrbanDictionaryTest(_ sender: Any) {
-        STRServiceUrbanDictionary().execute(onSuccess: { (result: STRServiceUrbanDictionaryModel) in
-            UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
-        }) { (error) in
-            
+//        STRServiceUrbanDictionary().execute(onSuccess: { (result: STRServiceUrbanDictionaryModel) in
+//            UIAlertController.showMessageWithOKButton(message: "Done", viewController: self)
+//        }) { (error) in
+//            
+//        }
+        
+        STRServiceUrbanDictionary().execute().done { (result: STRServiceUrbanDictionaryModel) in
+            print(result)
+            }.catch { (error) in
+               print(error)
         }
     }
     

@@ -1,6 +1,7 @@
 import UIKit
 import STRService
 import netfox
+import PromiseKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -47,7 +48,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: STRDelegate, STRConfig,STRAPIErrorHandling{
+extension AppDelegate: STRDelegate, STRConfig, STRAPIErrorHandling{
+    func onNetworkNotReachable(api: STRService) -> Promise<Retry> {
+        return Promise<Retry> { seal in
+            seal.fulfill(false)
+        }
+    }
+    
+    func onServerTimeout(api: STRService) -> Promise<Retry> {
+        return Promise<Retry> { seal in
+            seal.fulfill(false)
+        }
+    }
+    
+    func onNetworkError(error: STRError) {
+        
+    }
+    
     
     
     func getToken(key: String) -> String {

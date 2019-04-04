@@ -20,5 +20,5 @@ Pod::Spec.new do |spec|
   spec.dependency "Alamofire", "~> 4.8.1"
   spec.dependency "ObjectMapper", "~> 3.4.2"
   spec.dependency "AlamofireObjectMapper", "~> 5.2"
-  
+  spec.dependency "PromiseKit", "~> 6.8.3"
 end

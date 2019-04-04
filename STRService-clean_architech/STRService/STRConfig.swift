@@ -12,7 +12,11 @@ public protocol STRDelegate {
 
 public typealias Retry = Bool
 public protocol STRAPIErrorHandling {
-    func onNetworkError(api:STRService) -> Promise<Retry>
+    func onNetworkNotReachable(api: STRService) -> Promise<Retry>
+    
+    func onServerTimeout(api: STRService) -> Promise<Retry>
+    
+    func onNetworkError(error: STRError)
 }
 
 public protocol STRConfig {
