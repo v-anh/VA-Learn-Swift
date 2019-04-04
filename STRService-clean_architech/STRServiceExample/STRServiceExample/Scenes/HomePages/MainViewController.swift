@@ -11,10 +11,10 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         self.selectedIndex = 2
         
-        guard let viewController = Bundle.main.loadNibNamed("NameOfTheNib", owner: nil, options: nil)?.first else {
-            print("Can not find nib with that name")
-            return
-        }
+//        guard let viewController = Bundle.main.loadNibNamed("NameOfTheNib", owner: nil, options: nil)?.first else {
+//            print("Can not find nib with that name")
+//            return
+//        }
         
         
     }

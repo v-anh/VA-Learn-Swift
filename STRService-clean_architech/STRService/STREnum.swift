@@ -11,6 +11,7 @@ import Alamofire
 
 public enum StatusCode:Int {
     case success = 200
+    
     case badRequest = 400
     case unauthorized = 401
     case forbidden = 403
@@ -22,37 +23,58 @@ public enum StatusCode:Int {
     case unknown = 999
     case noConnection = -1
     
-    
     @available(*, deprecated, message: "Need to create function to create the Error")
-    func toError() -> STRError? {
+    func toError(error: Error) -> STRError? {
         switch self {
         case .success:
             return nil
         case .badRequest:
-            return .badRequest
+            return STRError(statusCode: .badRequest, error: error)
         case .unauthorized:
-            return .unauthorized
+            return STRError(statusCode: .unauthorized, error: error)
         case .forbidden:
-            return .forbidden
+            return STRError(statusCode: .forbidden, error: error)
         case .notFound:
-            return .notFound
+            return STRError(statusCode: .notFound, error: error)
         case .timeout:
-            return .requestTimeout
+            return STRError(statusCode: .timeout, error: error)
         case .internalServerError:
-            return .internalServerError
+            return STRError(statusCode: .internalServerError, error: error)
         case .badGateway:
-            return .badGateway
+            return STRError(statusCode: .badGateway, error: error)
         case .gatewayTimeout:
-            return .gatewayTimeout
+            return STRError(statusCode: .gatewayTimeout, error: error)
         case .unknown:
-            return .unknown
+            return STRError(statusCode: .unknown, error: error)
         case .noConnection:
-            return .noConnection
+            return STRError(statusCode: .noConnection, error: error)
         }
     }
+    
+    
 }
-@available(*, deprecated, message: "Using Struct & more detail instead")
-public enum STRError: Error {
+//@available(*, deprecated, message: "Using Struct & more detail instead")
+//public enum STRError: Error {
+//    case noConnection(error: Error)
+//    case invalidURL
+//    case noData
+//    case dataError
+//    case noResponse
+//    case badRequest
+//    case unauthorized
+//    case forbidden
+//    case notFound
+//    case requestTimeout
+//    case gatewayTimeout
+//    case badGateway
+//    case internalServerError
+//
+//    case unknown
+//
+//}
+
+
+public enum STRMessageCode: Error {
     case noConnection
     case invalidURL
     case noData
@@ -66,26 +88,54 @@ public enum STRError: Error {
     case gatewayTimeout
     case badGateway
     case internalServerError
-    
+
     case unknown
 }
 
-
-public struct STRError1:Error {
+public struct STRError:Error {
     public var status : StatusCode
     public var messageCode:String
     public var messageDesc:String
     public var displayText:String
     public var request:STRService
-    public var responseBody:Data
+    public var responseBody: Data?
     
+    public init(statusCode: StatusCode = .unknown, error: Error? = nil) {
+        self.status = statusCode
+        self.messageCode = (error != nil) ? "NETWORK_ERROR" : ""
+        self.messageDesc = (error != nil) ? error!.localizedDescription : ""
+        self.displayText = (error != nil) ? error!.localizedDescription : ""
+        self.request = STRService()
+    }
+    
+    public init(messageCode: STRMessageCode = .unknown, error: Error? = nil) {
+        self.status = .unknown
+        self.messageCode = messageCode.localizedDescription
+        self.messageDesc = (error != nil) ? error!.localizedDescription : ""
+        self.displayText = (error != nil) ? error!.localizedDescription : ""
+        self.request = STRService()
+    }
+    
+    public init(statusCode: StatusCode = .unknown,
+                messageCode: String = "",
+                messageDesc: String = "",
+                displayText: String = "",
+                request: STRService = STRService(),
+                responseBody: Data? = nil) {
+        self.status = statusCode
+        self.messageCode = messageCode
+        self.messageDesc = messageDesc
+        self.displayText = displayText
+        self.request = request
+        self.responseBody = responseBody
+    }
 }
 
 public enum APIMethod {
     case GET
     case POST
     
-    var key:HTTPMethod{
+    var key: HTTPMethod {
         switch self {
         case .GET:
             return HTTPMethod.get
