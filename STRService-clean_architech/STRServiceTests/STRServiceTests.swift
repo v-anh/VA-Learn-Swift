@@ -1,5 +1,9 @@
+
 import XCTest
+@testable import STRServiceHost
 @testable import STRService
+@testable import PromiseKit
+@testable import ObjectMapper
 
 class STRServiceTests: XCTestCase {
 
@@ -15,12 +19,28 @@ class STRServiceTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let e = expectation(description: "dgdfg")
+        STRServiceUrbanDictionary().execute().done { (result: STRServiceUrbanDictionaryModel) in
+            print(result)
+            e.fulfill()
+            }.catch { (error) in
+                e.fulfill()
         }
+        // This is an example of a performance test case.
+        
+        
+        
+        
+        waitForExpectations(timeout: 10) { error in
+            
+            XCTAssertNil(error, "success")
+        }
+        
+        
+        
+        
     }
 
 }
