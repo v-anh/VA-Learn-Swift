@@ -48,12 +48,13 @@ open class STRService: STRAPI {
 //MARK: Public
 public extension STRService {
     
-    func execute<T: Mappable>(shouldMock: Bool = false) -> Promise<T> {
+    
+    func execute<T: Mappable>() -> Promise<T> {
         
         //TODO:- Check mock data
-        if shouldMock == true {
-            return self.mockHandler()
-        }
+//        if shouldMock == true {
+//            return self.mockHandler()
+//        }
         
         return Promise<T>{ seal in
             
@@ -71,7 +72,7 @@ public extension STRService {
                                     seal.reject(error)
                             }
                         }
-                    }.catch{(error) in
+                    }.catch{    (error) in
                         seal.reject(error)
                 }
                 return
@@ -93,12 +94,12 @@ public extension STRService {
         }
     }
     
-    func execute<T: Mappable>(shouldMock: Bool = false) -> Promise<[T]> {
+    func execute<T: Mappable>() -> Promise<[T]> {
         
         //TODO:- Check mock data
-        if shouldMock == true {
-            return self.mockHandler()
-        }
+//        if shouldMock == true {
+//            return self.mockHandler()
+//        }
         return Promise<[T]>{ seal in
             //
             //TODO:- Check network connection

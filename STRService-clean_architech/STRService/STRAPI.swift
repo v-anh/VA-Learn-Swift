@@ -12,8 +12,6 @@ public struct RequestData {
 
 protocol STRAPI {
     
-    
-    
     /// The URL for Request
     var path: String { get }
     
@@ -39,7 +37,7 @@ protocol STRAPI {
             - Return the error data object after make the call
             @@ Description: aawdawd
      **/
-    func execute<T: Mappable>(shouldMock:Bool) -> Promise<[T]>
+    func execute<T: Mappable>() -> Promise<[T]>
     
     
     
@@ -52,7 +50,7 @@ protocol STRAPI {
          - Return the error data object after make the call
      @@ Description: aawdawd
      **/
-    func execute<T: Mappable>(shouldMock:Bool) -> Promise<T>
+    func execute<T: Mappable>() -> Promise<T>
 }
 
 

@@ -6,13 +6,18 @@ target 'STRService' do
   use_frameworks!
 
   # Pods for STRService
-pod 'Alamofire'
-pod 'ObjectMapper'
-pod 'AlamofireObjectMapper'
+pod 'Alamofire', '4.8.0'
+pod 'ObjectMapper','3.4.2'
+pod 'AlamofireObjectMapper','5.2'
 pod "PromiseKit", "~> 6.8"
 
   target 'STRServiceTests' do
-    inherit! :search_paths
+    inherit! :complete
+    # Pods for testing
+  end
+  
+  target 'STRServiceHost' do
+    inherit! :complete
     # Pods for testing
   end
 
