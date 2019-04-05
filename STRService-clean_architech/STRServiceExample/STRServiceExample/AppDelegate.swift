@@ -76,4 +76,13 @@ extension AppDelegate: STRAPIErrorHandling {
     }
 }
 
-
+extension AppDelegate: STREnvironmentConfiguration {
+    
+    func getEnvironmentHostTest() -> String {
+        return "omgvamp-hearthstone-v1.p.rapidapi.com"
+    }
+    
+    func getServicePathSit() -> String {
+        return ""
+    }
+}

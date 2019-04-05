@@ -15,14 +15,18 @@ typealias JSONResponseHandler = ((_ result:Any?,_ error:Error?) -> Void)?
 public final class STRSessionManager {
     
     public var config : STRConfig!
+    public var environmentConfig: STREnvironmentConfiguration!
     public var delegate: STRDelegate!
     public var errorHandler: STRAPIErrorHandling!
     
     public static let shared = STRSessionManager()
     
+    static var environmentConfigurationManager: STREnvironmentConfigurationManager = .shared
+    
     private var networkManager: SessionManager!
     init() {
         setupNetwork()
+        
     }
     
     func setupNetwork() {
@@ -32,7 +36,7 @@ public final class STRSessionManager {
     
     
     func callService<T: Mappable>(requestData: RequestData, onSuccess: @escaping (DataResponse<T>) -> Void) {
-        networkManager.request(requestData.path,
+        networkManager.request(serviceURL(with: requestData.path) ?? "",
                                method: requestData.method.key,
                                parameters: requestData.params,
                                encoding: JSONEncoding.default,
@@ -41,7 +45,7 @@ public final class STRSessionManager {
     }
     
     func callService<T: Mappable>(requestData: RequestData, onSuccess: @escaping (DataResponse<[T]>) -> Void) {
-        networkManager.request(requestData.path,
+        networkManager.request(serviceURL(with: requestData.path) ?? "",
                                method: requestData.method.key,
                                parameters: requestData.params,
                                encoding: JSONEncoding.default,
@@ -63,6 +67,29 @@ public final class STRSessionManager {
 //    }
 }
 
+//MARK: Private Method
+extension STRSessionManager {
+    
+    // Configure service URL depend on environment configuration
+    private func serviceURL(with path: String) -> URL? {
+        var urlCommonents = URLComponents()
+        urlCommonents.scheme = STRSessionManager.environmentConfigurationManager.config.dataProtocol.schema
+        urlCommonents.host = STRSessionManager.environmentConfigurationManager.config.environment.host
+        
+        if let port = STRSessionManager.environmentConfigurationManager.config.environment.port {
+            urlCommonents.port = Int(port)
+        }
+        
+        if STRSessionManager.environmentConfigurationManager.config.service.path !=  "" {
+            urlCommonents.path = "/" + STRSessionManager.environmentConfigurationManager.config.service.path + "/" + path
+        } else {
+            urlCommonents.path = "/" + path
+        }
+        
+        return urlCommonents.url
+    }
+}
+
 /*
  Configuration:
  - Setup Config
@@ -73,6 +100,7 @@ extension STRSessionManager {
         STRSessionManager.shared.config = config
         STRSessionManager.shared.delegate = config
         STRSessionManager.shared.errorHandler = config
+        STRSessionManager.shared.environmentConfig = config
     }
     
 }

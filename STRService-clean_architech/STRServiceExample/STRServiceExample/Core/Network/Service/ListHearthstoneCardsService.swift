@@ -10,7 +10,7 @@ import STRService
 final class ListHearthstoneCardsService: STRService {
     
     override var path: String {
-        return "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/classes/Mage"
+        return "cards/classes/Mage"
     }
     
     override var headers: [String: String]? {

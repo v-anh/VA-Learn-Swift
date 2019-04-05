@@ -15,6 +15,7 @@
 		663487F9224DD29D00396ECE /* STRSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663487F8224DD29D00396ECE /* STRSessionManager.swift */; };
 		6DCB2F2AFBBD79D6593A53AC /* Pods_STRServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1777BE3A1B96E8CF6C6172C7 /* Pods_STRServiceTests.framework */; };
 		8C141CDCBBE3B15D05A52420 /* Pods_STRService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DB409409BCD29A43452AE5 /* Pods_STRService.framework */; };
+		D10706C32257071F008D92E6 /* STREnvironmentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10706C22257071F008D92E6 /* STREnvironmentConfig.swift */; };
 		D120F4F9224CBD270020EDED /* STRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D120F4F8224CBD270020EDED /* STRService.swift */; };
 		D120F4FC224CC0EF0020EDED /* STREnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D120F4FB224CC0EF0020EDED /* STREnum.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		40D77C8596CBF9F0DA0D7C99 /* Pods-STRService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRService.debug.xcconfig"; path = "Target Support Files/Pods-STRService/Pods-STRService.debug.xcconfig"; sourceTree = "<group>"; };
 		663487F8224DD29D00396ECE /* STRSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRSessionManager.swift; sourceTree = "<group>"; };
 		A420FD4990298EA9D672BC6A /* Pods-STRServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRServiceTests.release.xcconfig"; path = "Target Support Files/Pods-STRServiceTests/Pods-STRServiceTests.release.xcconfig"; sourceTree = "<group>"; };
+		D10706C22257071F008D92E6 /* STREnvironmentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STREnvironmentConfig.swift; sourceTree = "<group>"; };
 		D120F4F8224CBD270020EDED /* STRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRService.swift; sourceTree = "<group>"; };
 		D120F4FB224CC0EF0020EDED /* STREnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STREnum.swift; sourceTree = "<group>"; };
 		D96549320D8FA4FE00EFCA72 /* Pods-STRService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRService.release.xcconfig"; path = "Target Support Files/Pods-STRService/Pods-STRService.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				663487F8224DD29D00396ECE /* STRSessionManager.swift */,
 				37116899221F9FC700E5B26E /* STRService.h */,
 				3711689A221F9FC700E5B26E /* Info.plist */,
+				D10706C22257071F008D92E6 /* STREnvironmentConfig.swift */,
 			);
 			path = STRService;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				371168B5221FA49A00E5B26E /* STRAPI.swift in Sources */,
 				D120F4FC224CC0EF0020EDED /* STREnum.swift in Sources */,
 				D120F4F9224CBD270020EDED /* STRService.swift in Sources */,
+				D10706C32257071F008D92E6 /* STREnvironmentConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +484,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = STRService/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

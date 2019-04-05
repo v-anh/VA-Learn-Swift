@@ -17,6 +17,6 @@ struct Profile: Mappable {
 class ProfileService: STRService {
     
     override var path: String {
-        return "https://test.com/profile"
+        return "profile"
     }
 }

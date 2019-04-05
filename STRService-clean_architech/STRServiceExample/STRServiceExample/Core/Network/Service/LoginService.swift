@@ -19,7 +19,7 @@ struct User: Mappable {
 final class LoginService: STRService {
     
     override var path: String {
-        return "https://test.com/login"
+        return "login"
     }
 }
 

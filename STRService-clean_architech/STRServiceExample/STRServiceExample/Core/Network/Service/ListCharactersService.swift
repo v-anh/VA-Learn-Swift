@@ -10,7 +10,7 @@ import STRService
 public class ListCharactersService: STRService {
     
     public override var path: String {
-        return "https://test.com/listCharacters"
+        return "listCharacters"
     }
 }
 

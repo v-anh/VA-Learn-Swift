@@ -21,6 +21,7 @@
 		A20CD76204FDA51F2F517EA5 /* Pods_STRServiceExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304B9306989DA1968C5FDAA0 /* Pods_STRServiceExampleTests.framework */; };
 		B6162F7232412B8B3247A2A1 /* Pods_STRServiceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABE779FEEE11A9CAFE343A2 /* Pods_STRServiceExample.framework */; };
 		D109DA50224344BD000DC076 /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109DA4F224344BD000DC076 /* AppDelegateExtensions.swift */; };
+		D10A34192256044800C2E03D /* STRServiceViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A34182256044800C2E03D /* STRServiceViewControllerTest.swift */; };
 		D10ED0542240F46600B5CFD4 /* ShowCharacterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED0532240F46600B5CFD4 /* ShowCharacterInteractor.swift */; };
 		D10ED0582240F4BD00B5CFD4 /* ShowCharacterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED0572240F4BD00B5CFD4 /* ShowCharacterRouter.swift */; };
 		D10ED05A2240F4E100B5CFD4 /* ShowCharacterInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10ED0592240F4E100B5CFD4 /* ShowCharacterInterfaces.swift */; };
@@ -104,6 +105,7 @@
 		B70055D2B0E4619695536F44 /* Pods-STRServiceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STRServiceExample.debug.xcconfig"; path = "Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BABE779FEEE11A9CAFE343A2 /* Pods_STRServiceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STRServiceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D109DA4F224344BD000DC076 /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
+		D10A34182256044800C2E03D /* STRServiceViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STRServiceViewControllerTest.swift; sourceTree = "<group>"; };
 		D10ED0532240F46600B5CFD4 /* ShowCharacterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterInteractor.swift; sourceTree = "<group>"; };
 		D10ED0572240F4BD00B5CFD4 /* ShowCharacterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterRouter.swift; sourceTree = "<group>"; };
 		D10ED0592240F4E100B5CFD4 /* ShowCharacterInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCharacterInterfaces.swift; sourceTree = "<group>"; };
@@ -270,6 +272,14 @@
 			path = ListCharacters;
 			sourceTree = "<group>";
 		};
+		D10A34172256042000C2E03D /* ShowSTRService */ = {
+			isa = PBXGroup;
+			children = (
+				D10A34182256044800C2E03D /* STRServiceViewControllerTest.swift */,
+			);
+			path = ShowSTRService;
+			sourceTree = "<group>";
+		};
 		D1142B702240E1E500FF7BFB /* ShowCharacter */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +412,7 @@
 		D124845922422A25009E68CC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D10A34172256042000C2E03D /* ShowSTRService */,
 				D109DA5122434927000DC076 /* ListCharacters */,
 				D124845A22422A81009E68CC /* ShowCharacter */,
 			);
@@ -765,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10A34192256044800C2E03D /* STRServiceViewControllerTest.swift in Sources */,
 				3711694C2224DD7D00E5B26E /* ListCharactersInteractorTest.swift in Sources */,
 				D124845C22422AC9009E68CC /* ShowCharacterInteractorTest.swift in Sources */,
 			);
