@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d37-sN-QAV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Show Character View Controller-->
+        <scene sceneID="LA8-Cj-rys">
+            <objects>
+                <viewController id="d37-sN-QAV" customClass="ShowCharacterViewController" customModule="STRServiceExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oFj-Qn-ZWu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7G-XC-qLI">
+                                <rect key="frame" x="0.0" y="317.5" width="375" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" red="1" green="0.49134222326979116" blue="0.90755515928690966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a62-3I-TLN">
+                                <rect key="frame" x="0.0" y="380" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a62-3I-TLN" firstAttribute="top" secondItem="K7G-XC-qLI" secondAttribute="bottom" constant="30" id="66T-lg-qKo"/>
+                            <constraint firstItem="NMy-gY-yaO" firstAttribute="trailing" secondItem="a62-3I-TLN" secondAttribute="trailing" id="CrX-rZ-EP2"/>
+                            <constraint firstItem="NMy-gY-yaO" firstAttribute="trailing" secondItem="K7G-XC-qLI" secondAttribute="trailing" id="ar4-Cy-2xo"/>
+                            <constraint firstItem="K7G-XC-qLI" firstAttribute="centerY" secondItem="oFj-Qn-ZWu" secondAttribute="centerY" id="dSP-4I-njb"/>
+                            <constraint firstItem="a62-3I-TLN" firstAttribute="leading" secondItem="NMy-gY-yaO" secondAttribute="leading" id="fja-3l-OwK"/>
+                            <constraint firstItem="K7G-XC-qLI" firstAttribute="leading" secondItem="NMy-gY-yaO" secondAttribute="leading" id="pCU-0a-oVo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NMy-gY-yaO"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptions" destination="a62-3I-TLN" id="ELb-WT-hRa"/>
+                        <outlet property="name" destination="K7G-XC-qLI" id="rlZ-FL-pxc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94X-YX-sOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="87"/>
+        </scene>
+    </scenes>
+</document>

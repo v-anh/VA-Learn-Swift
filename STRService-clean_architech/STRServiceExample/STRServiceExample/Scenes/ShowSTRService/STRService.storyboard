@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eB-rN-fmB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Service-->
+        <scene sceneID="lJe-Ts-VEZ">
+            <objects>
+                <viewController id="8eB-rN-fmB" customClass="STRServiceViewController" customModule="STRServiceExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i4k-pv-8v0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1GC-YT-IQB">
+                                <rect key="frame" x="8" y="120" width="359" height="498"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-8B-VhX">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="124.5"/>
+                                        <state key="normal" title="Users"/>
+                                        <connections>
+                                            <action selector="abtnUsers:" destination="8eB-rN-fmB" eventType="touchUpInside" id="lAF-sC-VBY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIH-6K-o7b">
+                                        <rect key="frame" x="0.0" y="124.5" width="359" height="124.5"/>
+                                        <state key="normal" title="Test refresh token"/>
+                                        <connections>
+                                            <action selector="btnRefreshToken:" destination="8eB-rN-fmB" eventType="touchUpInside" id="BeD-47-gRJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ho-By-jPN">
+                                        <rect key="frame" x="0.0" y="249" width="359" height="124.5"/>
+                                        <state key="normal" title="Get all countries"/>
+                                        <connections>
+                                            <action selector="btnGetAllCountries:" destination="8eB-rN-fmB" eventType="touchUpInside" id="ir1-AU-vYi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcJ-Ty-b4G">
+                                        <rect key="frame" x="0.0" y="373.5" width="359" height="124.5"/>
+                                        <state key="normal" title="Urban Dictionary Test"/>
+                                        <connections>
+                                            <action selector="btnUrbanDictionaryTest:" destination="8eB-rN-fmB" eventType="touchUpInside" id="RwX-p3-tWB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3A-gP-7AJ">
+                                <rect key="frame" x="8" y="28" width="119" height="30"/>
+                                <state key="normal" title="Show request log">
+                                    <color key="titleColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="showNetFox:" destination="8eB-rN-fmB" eventType="touchUpInside" id="caT-dw-gMj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1GC-YT-IQB" firstAttribute="leading" secondItem="RPn-85-t29" secondAttribute="leading" constant="8" id="6oX-ad-NCB"/>
+                            <constraint firstItem="C3A-gP-7AJ" firstAttribute="leading" secondItem="i4k-pv-8v0" secondAttribute="leading" constant="8" id="93h-zX-QBQ"/>
+                            <constraint firstItem="C3A-gP-7AJ" firstAttribute="top" secondItem="RPn-85-t29" secondAttribute="top" constant="8" id="ABz-h2-EmS"/>
+                            <constraint firstItem="RPn-85-t29" firstAttribute="bottom" secondItem="1GC-YT-IQB" secondAttribute="bottom" id="NMM-qv-RdL"/>
+                            <constraint firstItem="1GC-YT-IQB" firstAttribute="top" secondItem="RPn-85-t29" secondAttribute="top" constant="100" id="TkC-i7-j2c"/>
+                            <constraint firstItem="RPn-85-t29" firstAttribute="trailing" secondItem="1GC-YT-IQB" secondAttribute="trailing" constant="8" id="wTb-L5-t2c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RPn-85-t29"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Service" image="service" id="fSN-U0-7Wf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asA-mg-1Nv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143.19999999999999" y="60.719640179910051"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="service" width="16" height="16"/>
+    </resources>
+</document>

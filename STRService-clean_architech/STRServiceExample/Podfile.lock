@@ -1,0 +1,68 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - netfox (1.15.0)
+  - ObjectMapper (3.4.2)
+  - OHHTTPStubs/Core (7.0.0)
+  - OHHTTPStubs/Default (7.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (7.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (7.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (7.0.0)
+  - OHHTTPStubs/Swift (7.0.0):
+    - OHHTTPStubs/Default
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.3):
+    - PromiseKit/CorePromise
+  - STRService (0.0.1):
+    - Alamofire (~> 4.8.1)
+    - AlamofireObjectMapper (~> 5.2)
+    - ObjectMapper (~> 3.4.2)
+    - PromiseKit (~> 6.8.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.1)
+  - AlamofireObjectMapper (~> 5.2)
+  - netfox
+  - ObjectMapper (~> 3.4.2)
+  - OHHTTPStubs/Swift
+  - STRService (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - netfox
+    - ObjectMapper
+    - OHHTTPStubs
+    - PromiseKit
+
+EXTERNAL SOURCES:
+  STRService:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  netfox: 6ddcca687ad0a58550054fea481cb487461b5e0c
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  OHHTTPStubs: ef33a2c353110d306bb98f695435ec56ff5a26c3
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  STRService: bcc0e6592f84b82b39534a802a2347077b62b66b
+
+PODFILE CHECKSUM: d142f68ce8f104c24c1ea79c2e43ebea2586481b
+
+COCOAPODS: 1.6.1

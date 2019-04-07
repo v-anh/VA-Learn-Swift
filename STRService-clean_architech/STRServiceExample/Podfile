@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'STRServiceExample' do
+  use_frameworks!
+
+pod 'STRService',:path => '../'
+pod 'ObjectMapper', '~> 3.4.2'
+pod 'Alamofire', '~> 4.8.1'
+pod 'AlamofireObjectMapper', '~> 5.2'
+pod 'OHHTTPStubs/Swift'
+
+pod 'netfox', :configurations => ['Debug']
+
+  target 'STRServiceExampleTests' do
+    inherit! :search_paths
+    
+  end
+
+end
