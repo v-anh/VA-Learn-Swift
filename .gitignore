@@ -1,0 +1,381 @@
+STRService-clean_architech/Pods/Manifest.lock
+STRService-clean_architech/Pods/Alamofire/LICENSE
+STRService-clean_architech/Pods/Alamofire/README.md
+STRService-clean_architech/Pods/Alamofire/Source/AFError.swift
+STRService-clean_architech/Pods/Alamofire/Source/Alamofire.swift
+STRService-clean_architech/Pods/Alamofire/Source/DispatchQueue+Alamofire.swift
+STRService-clean_architech/Pods/Alamofire/Source/MultipartFormData.swift
+STRService-clean_architech/Pods/Alamofire/Source/NetworkReachabilityManager.swift
+STRService-clean_architech/Pods/Alamofire/Source/Notifications.swift
+STRService-clean_architech/Pods/Alamofire/Source/ParameterEncoding.swift
+STRService-clean_architech/Pods/Alamofire/Source/Request.swift
+STRService-clean_architech/Pods/Alamofire/Source/Response.swift
+STRService-clean_architech/Pods/Alamofire/Source/ResponseSerialization.swift
+STRService-clean_architech/Pods/Alamofire/Source/Result.swift
+STRService-clean_architech/Pods/Alamofire/Source/ServerTrustPolicy.swift
+STRService-clean_architech/Pods/Alamofire/Source/SessionDelegate.swift
+STRService-clean_architech/Pods/Alamofire/Source/SessionManager.swift
+STRService-clean_architech/Pods/Alamofire/Source/TaskDelegate.swift
+STRService-clean_architech/Pods/Alamofire/Source/Timeline.swift
+STRService-clean_architech/Pods/Alamofire/Source/Validation.swift
+STRService-clean_architech/Pods/AlamofireObjectMapper/LICENSE
+STRService-clean_architech/Pods/AlamofireObjectMapper/README.md
+STRService-clean_architech/Pods/AlamofireObjectMapper/AlamofireObjectMapper/AlamofireObjectMapper.swift
+STRService-clean_architech/Pods/ObjectMapper/LICENSE
+STRService-clean_architech/Pods/ObjectMapper/README-CN.md
+STRService-clean_architech/Pods/ObjectMapper/Sources/CodableTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/CustomDateFormatTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/DataTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/DateFormatterTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/DateTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/DictionaryTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/EnumOperators.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/EnumTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/FromJSON.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/HexColorTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/ImmutableMappable.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/IntegerOperators.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/ISO8601DateTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/Map.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/MapError.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/Mappable.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/Mapper.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/NSDecimalNumberTransform.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/Operators.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/ToJSON.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/TransformOf.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/TransformOperators.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/TransformType.swift
+STRService-clean_architech/Pods/ObjectMapper/Sources/URLTransform.swift
+STRService-clean_architech/Pods/Pods.xcodeproj/project.pbxproj
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Alamofire.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/AlamofireObjectMapper.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/ObjectMapper.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Pods-STRHost.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Pods-STRHostTests.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Pods-STRService.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/PromiseKit.xcscheme
+STRService-clean_architech/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/xcschememanagement.plist
+STRService-clean_architech/Pods/PromiseKit/LICENSE
+STRService-clean_architech/Pods/PromiseKit/README.md
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/afterlife.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSObject+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSTask+AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSTask+AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/PMKFoundation.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/Foundation/Sources/Process+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/PMKUIKit.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewController+AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewController+AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewPropertyAnimator+Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/after.m
+STRService-clean_architech/Pods/PromiseKit/Sources/after.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/AnyPromise+Private.h
+STRService-clean_architech/Pods/PromiseKit/Sources/AnyPromise.h
+STRService-clean_architech/Pods/PromiseKit/Sources/AnyPromise.m
+STRService-clean_architech/Pods/PromiseKit/Sources/AnyPromise.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Box.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Catchable.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Configuration.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/CustomStringConvertible.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Deprecations.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/dispatch_promise.m
+STRService-clean_architech/Pods/PromiseKit/Sources/Error.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/firstly.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/fwd.h
+STRService-clean_architech/Pods/PromiseKit/Sources/Guarantee.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/hang.m
+STRService-clean_architech/Pods/PromiseKit/Sources/hang.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/join.m
+STRService-clean_architech/Pods/PromiseKit/Sources/LogEvent.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/NSMethodSignatureForBlock.m
+STRService-clean_architech/Pods/PromiseKit/Sources/PMKCallVariadicBlock.m
+STRService-clean_architech/Pods/PromiseKit/Sources/Promise.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/PromiseKit.h
+STRService-clean_architech/Pods/PromiseKit/Sources/race.m
+STRService-clean_architech/Pods/PromiseKit/Sources/race.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Resolver.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/Thenable.swift
+STRService-clean_architech/Pods/PromiseKit/Sources/when.m
+STRService-clean_architech/Pods/PromiseKit/Sources/when.swift
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire-Info.plist
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire.modulemap
+STRService-clean_architech/Pods/Target Support Files/Alamofire/Alamofire.xcconfig
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-dummy.m
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-Info.plist
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-prefix.pch
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.modulemap
+STRService-clean_architech/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.xcconfig
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper-dummy.m
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper-Info.plist
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper-prefix.pch
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper.modulemap
+STRService-clean_architech/Pods/Target Support Files/ObjectMapper/ObjectMapper.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost-acknowledgements.markdown
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost-acknowledgements.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost-dummy.m
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost-Info.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost.debug.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost.modulemap
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHost/Pods-STRHost.release.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests-acknowledgements.markdown
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests-acknowledgements.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests-dummy.m
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests-Info.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests.debug.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests.modulemap
+STRService-clean_architech/Pods/Target Support Files/Pods-STRHostTests/Pods-STRHostTests.release.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService-acknowledgements.markdown
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService-acknowledgements.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService-dummy.m
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService-Info.plist
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService.debug.xcconfig
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService.modulemap
+STRService-clean_architech/Pods/Target Support Files/Pods-STRService/Pods-STRService.release.xcconfig
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit-dummy.m
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit-Info.plist
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit-prefix.pch
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit-umbrella.h
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit.modulemap
+STRService-clean_architech/Pods/Target Support Files/PromiseKit/PromiseKit.xcconfig
+STRService-clean_architech/STRService.xcodeproj/project.xcworkspace/xcuserdata/v-anh.xcuserdatad/UserInterfaceState.xcuserstate
+STRService-clean_architech/STRService.xcodeproj/xcshareddata/xcschemes/STRService.xcscheme
+STRService-clean_architech/STRService.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/xcschememanagement.plist
+STRService-clean_architech/STRService.xcworkspace/contents.xcworkspacedata
+STRService-clean_architech/STRService.xcworkspace/xcuserdata/v-anh.xcuserdatad/UserInterfaceState.xcuserstate
+STRService-clean_architech/STRServiceExample/Pods/Manifest.lock
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/README.md
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/AFError.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Alamofire.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/DispatchQueue+Alamofire.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/MultipartFormData.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/NetworkReachabilityManager.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Notifications.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/ParameterEncoding.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Request.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Response.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/ResponseSerialization.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Result.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/ServerTrustPolicy.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/SessionDelegate.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/SessionManager.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/TaskDelegate.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Timeline.swift
+STRService-clean_architech/STRServiceExample/Pods/Alamofire/Source/Validation.swift
+STRService-clean_architech/STRServiceExample/Pods/AlamofireObjectMapper/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/AlamofireObjectMapper/README.md
+STRService-clean_architech/STRServiceExample/Pods/AlamofireObjectMapper/AlamofireObjectMapper/AlamofireObjectMapper.swift
+STRService-clean_architech/STRServiceExample/Pods/Local Podspecs/STRService.podspec.json
+STRService-clean_architech/STRServiceExample/Pods/netfox/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/netfox/README.md
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFX.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXAssets.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXAuthenticationChallengeSender.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXConstants.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXDetailsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXGenericBodyDetailsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXGenericController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXHelper.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXHTTPModel.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXHTTPModelManager.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXImageBodyDetailsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXInfoController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXListController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXLoader.h
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXLoader.m
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXProtocol.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXRawBodyDetailsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXSettingsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXStatisticsController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/Core/NFXWindowController.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXDetailsController_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXHelper_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXInfoController_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXListCell_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXListController_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXSettingsController_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/netfox/netfox/iOS/NFXStatisticsController_iOS.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/README-CN.md
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/CodableTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/CustomDateFormatTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/DataTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/DateFormatterTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/DateTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/DictionaryTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/EnumOperators.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/EnumTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/FromJSON.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/HexColorTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/ImmutableMappable.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/IntegerOperators.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/ISO8601DateTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/Map.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/MapError.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/Mappable.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/Mapper.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/NSDecimalNumberTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/Operators.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/ToJSON.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/TransformOf.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/TransformOperators.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/TransformType.swift
+STRService-clean_architech/STRServiceExample/Pods/ObjectMapper/Sources/URLTransform.swift
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/README.md
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/Compatibility.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHHTTPStubs.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHHTTPStubs.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHHTTPStubsResponse.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHHTTPStubsResponse.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/JSON/OHHTTPStubsResponse+JSON.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/JSON/OHHTTPStubsResponse+JSON.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/NSURLSession/NSURLRequest+HTTPBodyTesting.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/NSURLSession/NSURLRequest+HTTPBodyTesting.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/NSURLSession/OHHTTPStubs+NSURLSessionConfiguration.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/NSURLSession/OHHTTPStubsMethodSwizzling.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/NSURLSession/OHHTTPStubsMethodSwizzling.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHPathHelpers/OHPathHelpers.h
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/OHPathHelpers/OHPathHelpers.m
+STRService-clean_architech/STRServiceExample/Pods/OHHTTPStubs/OHHTTPStubs/Sources/Swift/OHHTTPStubsSwift.swift
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/project.pbxproj
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Alamofire.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/AlamofireObjectMapper.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/netfox.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/ObjectMapper.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/OHHTTPStubs.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Pods-STRServiceExample.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/Pods-STRServiceExampleTests.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/PromiseKit.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/STRService.xcscheme
+STRService-clean_architech/STRServiceExample/Pods/Pods.xcodeproj/xcuserdata/v-anh.xcuserdatad/xcschemes/xcschememanagement.plist
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/LICENSE
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/README.md
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/afterlife.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSNotificationCenter+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSObject+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSTask+AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSTask+AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/NSURLSession+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/PMKFoundation.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/Foundation/Sources/Process+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/PMKUIKit.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIView+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewController+AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewController+AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Extensions/UIKit/Sources/UIViewPropertyAnimator+Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/after.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/after.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/AnyPromise+Private.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/AnyPromise.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/AnyPromise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/AnyPromise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Box.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Catchable.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Configuration.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/CustomStringConvertible.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Deprecations.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/dispatch_promise.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Error.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/firstly.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/fwd.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Guarantee.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/hang.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/hang.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/join.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/LogEvent.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/NSMethodSignatureForBlock.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/PMKCallVariadicBlock.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Promise.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/PromiseKit.h
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/race.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/race.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Resolver.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/Thenable.swift
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/when.m
+STRService-clean_architech/STRServiceExample/Pods/PromiseKit/Sources/when.swift
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Alamofire/Alamofire.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/netfox/netfox.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/ObjectMapper/ObjectMapper.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/OHHTTPStubs/OHHTTPStubs.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-acknowledgements.markdown
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-acknowledgements.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-frameworks.sh
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample.debug.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExample/Pods-STRServiceExample.release.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests-acknowledgements.markdown
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests-acknowledgements.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests.debug.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/Pods-STRServiceExampleTests/Pods-STRServiceExampleTests.release.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/PromiseKit/PromiseKit.xcconfig
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService-dummy.m
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService-Info.plist
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService-prefix.pch
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService-umbrella.h
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService.modulemap
+STRService-clean_architech/STRServiceExample/Pods/Target Support Files/STRService/STRService.xcconfig
+STRService-clean_architech/STRServiceExample/STRServiceExample.xcworkspace/contents.xcworkspacedata
+STRService-clean_architech/STRServiceExample/STRServiceExample.xcworkspace/xcuserdata/v-anh.xcuserdatad/UserInterfaceState.xcuserstate
