@@ -78,6 +78,7 @@ func quicksortLomuto(A:inout [Int],low: Int, high: Int) {
     }
 }
 
+///-> an other way to choose Partition https://nguyenvanhieu.vn/thuat-toan-sap-xep-quick-sort/
 func partitionLomuto(A:inout [Int],low:Int,high:Int) -> Int {
     let pivot = A[high]
     
