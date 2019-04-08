@@ -55,24 +55,54 @@ func selectionSort(A:[Int]) -> [Int] {
  [5,6|4,3,2,1]
  
  */
-func insertionSort(A:[Int]) -> [Int] {
+func insertionSort(A: inout [Int]) -> [Int] {
     guard A.count > 1 else {return A}
-    var sortedA = A
-    for x in 1..<sortedA.count {
+    for x in 1..<A.count {
         var y = x
-        var temp = sortedA[y]
-        while y > 0 && temp < sortedA[y-1] {
-            sortedA[y] = sortedA[y-1]
+        let temp = A[y]
+        while y > 0 && temp < A[y-1] {
+            A[y] = A[y-1]
             y -= 1
         }
-        sortedA[y] = temp
+        A[y] = temp
     }
-    return sortedA
+    return A
+}
+
+
+func quicksortLomuto(A:inout [Int],low: Int, high: Int) {
+    if low < high {
+        let p = partitionLomuto(A:&A, low: low, high: high)
+        quicksortLomuto(A:&A, low: low, high: p - 1)
+        quicksortLomuto(A:&A, low: p + 1, high: high)
+    }
+}
+
+func partitionLomuto(A:inout [Int],low:Int,high:Int) -> Int {
+    let pivot = A[high]
+    
+    var i = low
+    for j in low..<high {
+        if A[j] <= pivot {
+            A.swapAt(i, j)
+            print("swapAt(\(i), \(j)) then i += 1, i = \(i+1)")
+            i += 1
+            print(A)
+            print("\n")
+        }
+    }
+    (A[i], A[high]) = (A[high], A[i])
+    print(A)
+    return i
 }
 
 func main() {
     selectionSort(A: [10,9,8,7,6,5,4,3,2,1,0])
-    insertionSort(A: [10,9,8,7,6,5,4,3,2,1,0])
+    var list = [10,9,8,7,6,5,4,3,2,1,0]
+    insertionSort(A: &list)
+    
+    var list1 = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
+    quicksortLomuto(A: &list1, low: 0, high: list1.count-1)
 }
 
 main()
