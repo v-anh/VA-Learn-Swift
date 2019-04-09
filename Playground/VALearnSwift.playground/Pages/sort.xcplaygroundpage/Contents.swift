@@ -97,6 +97,50 @@ func partitionLomuto(A:inout [Int],low:Int,high:Int) -> Int {
     return i
 }
 
+
+func mergeSort(array: [Int]) -> [Int] {
+    guard array.count > 1 else {return array}
+    let mid = array.count/2
+    let left = mergeSort(array: Array(array[0..<mid]))
+    let right = mergeSort(array: Array(array[mid..<array.count]))
+    return merge(left: left, right: right)
+}
+
+func merge(left:[Int],right:[Int]) -> [Int] {
+    var leftIndex = 0
+    var rightIndex = 0
+    
+    var orderedPile = [Int]()
+    orderedPile.reserveCapacity(left.count + right.count)
+    
+    while leftIndex < left.count && rightIndex < right.count  {
+        if left[leftIndex] < right[rightIndex] {
+            orderedPile.append(left[leftIndex])
+            leftIndex += 1
+        }else if left[leftIndex] > right[rightIndex] {
+            orderedPile.append(right[rightIndex])
+            rightIndex += 1
+        }else {
+            orderedPile.append(left[leftIndex])
+            orderedPile.append(right[rightIndex])
+            leftIndex += 1
+            rightIndex += 1
+        }
+    }
+    
+    while leftIndex < left.count {
+        orderedPile.append(left[leftIndex])
+        leftIndex += 1
+    }
+    
+    while rightIndex < right.count {
+        orderedPile.append(right[rightIndex])
+        rightIndex += 1
+    }
+    return orderedPile
+}
+
+
 func main() {
     selectionSort(A: [10,9,8,7,6,5,4,3,2,1,0])
     var list = [10,9,8,7,6,5,4,3,2,1,0]
@@ -104,6 +148,8 @@ func main() {
     
     var list1 = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
     quicksortLomuto(A: &list1, low: 0, high: list1.count-1)
+    
+    mergeSort(array: [10,9,8,7,6,5,4,3,2,1,0])
 }
 
 main()
