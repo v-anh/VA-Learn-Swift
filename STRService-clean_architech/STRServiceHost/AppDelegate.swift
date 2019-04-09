@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-extension AppDelegate: STRDelegate, STRConfig {
+extension AppDelegate: STRDelegate, STRConfig,STREnvironmentConfiguration {
     func getToken(key: String) -> String {
         return "Token store in Keychain"
     }
