@@ -5,5 +5,7 @@
         <page name='Hanoi'/>
         <page name='KnightHorse'/>
         <page name='sort'/>
+        <page name='Bitwise'/>
+        <page name='String'/>
     </pages>
 </playground>
