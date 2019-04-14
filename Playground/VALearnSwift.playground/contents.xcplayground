@@ -7,5 +7,6 @@
         <page name='sort'/>
         <page name='Bitwise'/>
         <page name='String'/>
+        <page name='LinkedList'/>
     </pages>
 </playground>
