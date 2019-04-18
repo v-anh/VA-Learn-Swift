@@ -93,11 +93,79 @@ func compress(input:String) -> String {
     return compress
 }
 
-compress(input: "aabbbbcccccccd")
+func compress2(input:String) -> String {
+    if input.isEmpty {
+        return input
+    }
+    
+    var temp = input.first!
+    var result = String(temp)
+    var count = 1
+
+    for i in 1..<input.count {
+        let index = input[input.index(input.startIndex, offsetBy: i)]
+        if index == temp {
+            count += 1
+        }else {
+            result += "\(count)\(index)"
+            count = 1
+            temp = index
+        }
+        
+        if i >= (input.count - 1) {
+            result += "\(count)"
+        }
+        
+    }
+    return result
+}
 
 
+func plus(left:String,right:String) -> String {
+    var result = ""
+    if left.count > right.count {
+        result = left
+    }else{
+        result = right
+    }
+    
+    var temp = 0
+    for i in 0..<result.count {
+        var indexResult = result.index(result.startIndex, offsetBy: (result.count-1) - i)
+        var sum = 0
+        if i < left.count && i < right.count {
+            var indexLong = left[left.index(left.startIndex, offsetBy: (left.count-1) - i)]
+            var indexShort = right[right.index(right.startIndex, offsetBy: (right.count-1) - i)]
+            sum = Int(String(indexLong))! + Int(String(indexShort))! + temp
 
+        }else{
+            sum = temp + Int(String(result[indexResult]))!
+        }
+        
+        if sum >= 10 {
+            sum = (sum - 10)
+            temp = 1
+        }else{
+            temp = 0
+        }
+        
+        result.replaceSubrange(indexResult...indexResult, with: String(sum))
+    }
+    if temp > 0 {
+        result.insert("1", at: result.startIndex)
+    }
+    
+    return result
+}
 
+compress(input: "aabbbbcccccccdc")
+compress2(input: "aabbbbcccccccdc")
+plus(left: "999999999", right: "1114")
+999999999+1114
+
+//34339998
+//----1114
+//---41112
 /*
  [1,2,3,4]
  |5,6,7,8|

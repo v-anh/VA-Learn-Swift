@@ -8,5 +8,7 @@
         <page name='Bitwise'/>
         <page name='String'/>
         <page name='LinkedList'/>
+        <page name='TreeGraph'/>
+        <page name='Concurrency'/>
     </pages>
 </playground>
