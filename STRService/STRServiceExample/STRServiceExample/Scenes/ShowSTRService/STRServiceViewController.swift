@@ -1,8 +1,6 @@
 import UIKit
 import STRService
-import OHHTTPStubs
 import netfox
-import PromiseKit
 
 class STRServiceViewController: UIViewController, HasDependencies {
     
@@ -10,8 +8,6 @@ class STRServiceViewController: UIViewController, HasDependencies {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createStubForTest()
 
     }
     func testLoginService() {
@@ -48,50 +44,6 @@ class STRServiceViewController: UIViewController, HasDependencies {
             print(result)
             }.catch { (error) in
                print(error)
-        }
-    }
-    
-    func createStubForTest() {
-        stub(condition: isPath("/login") ) { _ in
-            return OHHTTPStubsResponse(
-                jsonObject: ["id": 234,
-                             "username": "NCHAI",
-                             "token": "zaqwsxcde"
-                    ],
-                statusCode: 200,
-                headers: [ "Content-Type": "application/json" ]
-            )
-        }
-        
-        stub(condition: isPath("/profile") ) { _ in
-            if UserDefaults.standard.bool(forKey: "testRefreshToken") {
-                UserDefaults.standard.set(false, forKey: "testRefreshToken")
-                return OHHTTPStubsResponse(
-                    jsonObject: ["fullname": "Ngo Chi Hai",
-                                 "avatar": "https://image.com/avatar"
-                    ],
-                    statusCode: 200,
-                    headers: [ "Content-Type": "application/json" ]
-                )
-            } else {
-                UserDefaults.standard.set(true, forKey: "testRefreshToken")
-                return OHHTTPStubsResponse(
-                    jsonObject: ["fullname": "Ngo Chi Hai",
-                                 "avatar": "https://image.com/avatar"
-                    ],
-                    statusCode: 460,
-                    headers: [ "Content-Type": "application/json" ]
-                )
-            }
-        }
-        
-        stub(condition: isPath("/refreshToken") ) { _ in
-            return OHHTTPStubsResponse(
-                jsonObject: ["token": "tghbnmghjjk"
-                ],
-                statusCode: 200,
-                headers: [ "Content-Type": "application/json" ]
-            )
         }
     }
 }

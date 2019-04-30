@@ -6,9 +6,6 @@ target 'STRServiceExample' do
 
 pod 'STRService',:path => '../'
 pod 'ObjectMapper', '~> 3.4.2'
-pod 'Alamofire', '~> 4.8.1'
-pod 'AlamofireObjectMapper', '~> 5.2'
-pod 'OHHTTPStubs/Swift'
 
 pod 'netfox', :configurations => ['Debug']
 

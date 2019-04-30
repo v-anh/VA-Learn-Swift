@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import OHHTTPStubs
 
 class ShowCharacterViewController: UIViewController, HasDependencies {
     
