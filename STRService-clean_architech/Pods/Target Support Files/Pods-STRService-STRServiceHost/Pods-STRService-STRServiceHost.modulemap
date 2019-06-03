@@ -1,0 +1,6 @@
+framework module Pods_STRService_STRServiceHost {
+  umbrella header "Pods-STRService-STRServiceHost-umbrella.h"
+
+  export *
+  module * { export * }
+}

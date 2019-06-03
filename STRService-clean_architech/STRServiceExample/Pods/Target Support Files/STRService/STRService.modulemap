@@ -1,0 +1,6 @@
+framework module STRService {
+  umbrella header "STRService-umbrella.h"
+
+  export *
+  module * { export * }
+}
