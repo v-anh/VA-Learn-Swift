@@ -32,7 +32,9 @@ class iTuneSearchInteractor: iTuneSearchPresenterToInteractor {
     }
     
     func downloadTrack(track:Track) {
-        downloadMaker.startDownload(track)
+        downloadMaker.startDownload(track) { (index, error) in
+            self.presenter?.downloadComplete(index: index, error: error)
+        }
     }
     
     func cancelDownload(track:Track) {

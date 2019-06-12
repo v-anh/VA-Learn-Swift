@@ -97,6 +97,10 @@ extension iTuneSearchViewController:UISearchBarDelegate {
 }
 
 extension iTuneSearchViewController:iTuneSearchPresenterToView {
+    func updateTrack(with index: Int) {
+        reload(index)
+    }
+    
     func searchResult(results: [Track]) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         self.data = results

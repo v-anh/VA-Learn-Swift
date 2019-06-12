@@ -9,8 +9,12 @@
 import Foundation
 
 protocol iTuneSearchPresenterToView:class {
+    //Search Delegate
     func searchResult(results:[Track])
     func showError(error:String)
+    
+    //Download Delegate
+    func updateTrack(with index:Int)
 }
 
 protocol iTuneSearchViewToPresenter:class {
@@ -54,6 +58,8 @@ protocol iTuneSearchPresenterToInteractor:class {
 
 protocol iTuneSearchInteractorToPresenter:class {
     func searchResults(results:[Track]?,error:String?)
+    
+    func downloadComplete(index:Int?, error:Error?)
 }
 
 

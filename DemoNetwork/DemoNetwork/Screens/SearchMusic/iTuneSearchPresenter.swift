@@ -50,6 +50,20 @@ class iTuneSearchPresenter: iTuneSearchViewToPresenter {
 }
 
 extension iTuneSearchPresenter: iTuneSearchInteractorToPresenter {
+    func downloadComplete(index: Int?, error: Error?) {
+        if let error = error {
+            print("downloadComplete with error: \(error.localizedDescription)")
+            self.view?.showError(error: error.localizedDescription)
+            return
+        }
+        
+        if let index = index{
+            self.view?.updateTrack(with: index)
+            return
+        }
+        
+    }
+    
     func searchResults(results: [Track]?, error: String?) {
         
         if let error = error {

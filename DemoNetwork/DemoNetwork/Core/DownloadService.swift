@@ -7,14 +7,15 @@
 //
 
 import Foundation
-
+typealias DownloadCompleteHandler = ((_ index:Int?,_ error: Error?) -> Void)
 class DownloadService:NSObject {
     
     // Get local file path: download task stores tune here; AV player plays it.
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    
     var activeDownloads : [URL:DownloadTask] = [:]
+
+    var completionHandler: DownloadCompleteHandler?
 
     private lazy var downloadSession:URLSession = {
         let config = URLSessionConfiguration.default
@@ -22,7 +23,8 @@ class DownloadService:NSObject {
         return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
     
-    func startDownload(_ track: Track) {
+    func startDownload(_ track: Track,completion:DownloadCompleteHandler?) {
+        self.completionHandler = completion
         let downloadTak = DownloadTask(track: track)
         downloadTak.task = downloadSession.downloadTask(with: track.previewURL)
         downloadTak.task?.resume()
@@ -54,13 +56,16 @@ extension DownloadService:URLSessionDownloadDelegate {
             try fileManager.copyItem(at: location, to: destinationURL)
             downloadTask?.track.downloaded = true
         } catch let error {
+            if let completion = self.completionHandler {
+                completion(nil,error)
+            }
             print("Could not copy file to disk: \(error.localizedDescription)")
         }
-        // 4
-        if let index = downloadTask?.track.index {
-            DispatchQueue.main.async {
-//                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        DispatchQueue.main.async {
+            if let completion = self.completionHandler {
+                completion(downloadTask?.track.index,nil)
             }
+            
         }
     }
     
