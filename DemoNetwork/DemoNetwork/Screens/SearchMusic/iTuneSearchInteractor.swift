@@ -9,18 +9,19 @@
 import UIKit
 
 typealias JSONDictionary = [String: Any]
-class iTuneSearchInteractor: iTuneSearchPresenterToInteractor {
+class iTuneSearchInteractor:NSObject, iTuneSearchPresenterToInteractor {
     
     var tracks: [Track] = []
     var errorMessage = ""
     
     weak var presenter: iTuneSearchInteractorToPresenter?
     
-    var activeDownloads : [URL:DownloadTask] = [:]
-    
     private var networkMaker = VANetworkWithConfig()
     
     private var downloadMaker = DownloadService()
+    
+    // Get local file path: download task stores tune here; AV player plays it.
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     
     func doSearchiTune(text: String) {
@@ -108,5 +109,44 @@ extension iTuneSearchInteractor {
                 errorMessage += "Problem parsing trackDictionary\n"
             }
         }
+    }
+}
+
+extension iTuneSearchInteractor:URLSessionDownloadDelegate {
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let sourceURL = downloadTask.originalRequest?.url else { return }
+        let downloadTask = downloadMaker.activeDownloads[sourceURL]
+        downloadMaker.activeDownloads[sourceURL] = nil
+        let destinationURL = localFilePath(for: sourceURL)
+        print(destinationURL)
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(at: destinationURL)
+        do {
+            try fileManager.copyItem(at: location, to: destinationURL)
+            downloadTask?.track.downloaded = true
+        } catch let error {
+            self.presenter?.downloadComplete(index: nil, error: error)
+            print("Could not copy file to disk: \(error.localizedDescription)")
+        }
+        DispatchQueue.main.async {
+            self.presenter?.downloadComplete(index: downloadTask?.track.index, error: nil)
+        }
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        guard let url = downloadTask.originalRequest?.url, let download = downloadMaker.activeDownloads[url] else {
+            return
+        }
+        download.progress = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)
+        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        DispatchQueue.main.async {
+            
+        }
+    }
+    
+    
+    func localFilePath(for url: URL) -> URL {
+        return documentsPath.appendingPathComponent(url.lastPathComponent)
     }
 }

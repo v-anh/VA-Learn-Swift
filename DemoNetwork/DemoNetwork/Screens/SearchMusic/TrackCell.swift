@@ -84,4 +84,9 @@ class TrackCell: UITableViewCell {
             delegate?.resumeTapped(self)
         }
     }
+    
+    func updateDisplay(progress: Float, totalSize : String) {
+        self.progress.progress = progress
+        progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totalSize)
+    }
 }

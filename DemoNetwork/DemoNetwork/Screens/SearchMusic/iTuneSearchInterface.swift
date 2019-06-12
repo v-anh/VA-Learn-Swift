@@ -60,6 +60,8 @@ protocol iTuneSearchInteractorToPresenter:class {
     func searchResults(results:[Track]?,error:String?)
     
     func downloadComplete(index:Int?, error:Error?)
+    
+    func updateTrack(index:Int?, error:Error?)
 }
 
 
