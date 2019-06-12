@@ -235,6 +235,7 @@
 				TargetAttributes = {
 					663DA65322A521C000E0B6EC = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 					663DA66722A521C200E0B6EC = {
 						CreatedOnToolsVersion = 10.2;
@@ -477,7 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = VA.DemoNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -497,7 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = VA.DemoNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

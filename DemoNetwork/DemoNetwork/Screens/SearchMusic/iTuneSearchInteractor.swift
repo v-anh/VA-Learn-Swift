@@ -18,10 +18,16 @@ class iTuneSearchInteractor:NSObject, iTuneSearchPresenterToInteractor {
     
     private var networkMaker = VANetworkWithConfig()
     
-    private var downloadMaker = DownloadService()
-    
     // Get local file path: download task stores tune here; AV player plays it.
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    private lazy var downloadSession:URLSession = {
+        let config = URLSessionConfiguration.background(withIdentifier: "backgroundSessionConfiguration")
+        config.waitsForConnectivity = true
+        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
+    }()
+    
+    private lazy var downloadMaker = DownloadService(session: self.downloadSession)
     
     
     func doSearchiTune(text: String) {
@@ -39,19 +45,23 @@ class iTuneSearchInteractor:NSObject, iTuneSearchPresenterToInteractor {
     }
     
     func cancelDownload(track:Track) {
-        
+        downloadMaker.cancelDownload(track)
     }
     
     func pauseDownloadTrack(track:Track) {
-        
+        self.downloadMaker.pauseDownload(track)
     }
     
     func resumeTrack(track:Track) {
-        
+        self.downloadMaker.resumeDownload(track)
     }
     
     func getDownloadTask(url:URL) -> DownloadTask? {
         return self.downloadMaker.activeDownloads[url]
+    }
+    
+    func getLocalFilePath(for url: URL) -> URL {
+        return documentsPath.appendingPathComponent(url.lastPathComponent)
     }
 }
 
@@ -114,11 +124,15 @@ extension iTuneSearchInteractor {
 
 extension iTuneSearchInteractor:URLSessionDownloadDelegate {
     
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        
+    }
+    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let sourceURL = downloadTask.originalRequest?.url else { return }
+        guard let sourceURL = downloadTask.currentRequest?.url else { return }
         let downloadTask = downloadMaker.activeDownloads[sourceURL]
         downloadMaker.activeDownloads[sourceURL] = nil
-        let destinationURL = localFilePath(for: sourceURL)
+        let destinationURL = getLocalFilePath(for: sourceURL)
         print(destinationURL)
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: destinationURL)
@@ -135,18 +149,27 @@ extension iTuneSearchInteractor:URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        guard let url = downloadTask.originalRequest?.url, let download = downloadMaker.activeDownloads[url] else {
+        guard let url = downloadTask.currentRequest?.url, let download = downloadMaker.activeDownloads[url] else {
             return
         }
         download.progress = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)
         let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        download.totalSize = totalSize
         DispatchQueue.main.async {
-            
+            self.presenter?.updateTrackProgress(with: download.track.index, progress: download.progress, totalSize: totalSize)
         }
     }
     
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+        print("didResumeAtOffset fileOffset \(fileOffset), expectedTotalBytes:\(expectedTotalBytes) ")
+    }
     
-    func localFilePath(for url: URL) -> URL {
-        return documentsPath.appendingPathComponent(url.lastPathComponent)
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        DispatchQueue.main.async {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate,let completionHandler = appDelegate.backgroundCompletionHandler {
+                    appDelegate.backgroundCompletionHandler = nil
+                    completionHandler()
+            }
+        }
     }
 }

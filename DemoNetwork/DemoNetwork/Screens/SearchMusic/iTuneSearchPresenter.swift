@@ -7,11 +7,9 @@
 //
 
 import UIKit
-
+import AVKit
 
 class iTuneSearchPresenter: iTuneSearchViewToPresenter {
-    
-    
     weak var view: iTuneSearchPresenterToView?
     
     var interactor: iTuneSearchPresenterToInteractor?
@@ -46,10 +44,22 @@ class iTuneSearchPresenter: iTuneSearchViewToPresenter {
         return interactor?.getDownloadTask(url: url)
     }
     
+    func playTrack(track: Track) {
+        if let url = interactor?.getLocalFilePath(for: track.previewURL) {
+            let player = AVPlayer(url: url)
+            self.router?.showPlayTrack(player: player)
+        }
+        
+    }
+    
     
 }
 
 extension iTuneSearchPresenter: iTuneSearchInteractorToPresenter {
+    func updateTrackProgress(with index: Int,progress: Float, totalSize: String) {
+        self.view?.updateTrackProgress(with: index, progress: progress, totalSize: totalSize)
+    }
+    
     func downloadComplete(index: Int?, error: Error?) {
         if let error = error {
             print("downloadComplete with error: \(error.localizedDescription)")
@@ -61,7 +71,6 @@ extension iTuneSearchPresenter: iTuneSearchInteractorToPresenter {
             self.view?.updateTrack(with: index)
             return
         }
-        
     }
     
     func searchResults(results: [Track]?, error: String?) {

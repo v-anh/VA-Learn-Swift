@@ -7,25 +7,38 @@
 //
 
 import UIKit
+import AVKit
+
 class iTuneSearchRouter: iTuneSearchPresenterToRouter {
-    static func createModule() -> iTuneSearchViewController {
+    weak var navigationController: UINavigationController?
+    static func createModule() -> UINavigationController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "iTuneSearchViewController") as? iTuneSearchViewController else {
+        guard let navigationController = storyboard.instantiateViewController(withIdentifier: "iTuneSearchNavigationController") as? UINavigationController else {
+            fatalError("iTuneSearchNavigationController doesnt exist!")
+        }
+        guard let vc = navigationController.viewControllers.first as? iTuneSearchViewController else {
             fatalError("iTuneSearchViewController doesnt exist!")
         }
-        let presenter : iTuneSearchInteractorToPresenter & iTuneSearchViewToPresenter = iTuneSearchPresenter()
-        let interactor: iTuneSearchPresenterToInteractor = iTuneSearchInteractor()
-        let router: iTuneSearchPresenterToRouter = iTuneSearchRouter()
+        let presenter  = iTuneSearchPresenter()
+        let interactor = iTuneSearchInteractor()
+        let router = iTuneSearchRouter()
         
         presenter.interactor = interactor
         presenter.router = router
         presenter.view = vc
         interactor.presenter = presenter
         vc.presenter = presenter
-        return vc
+        
+        router.navigationController = navigationController
+        return navigationController
     }
     
-    func showPlayTrack() {
-        
+    func showPlayTrack(player:AVPlayer) {
+        let playerViewController = AVPlayerViewController()
+        playerViewController.entersFullScreenWhenPlaybackBegins = true
+        playerViewController.exitsFullScreenWhenPlaybackEnds = true
+        self.navigationController?.visibleViewController?.present(playerViewController, animated: true, completion: nil)
+        playerViewController.player = player
+        player.play()
     }
 }

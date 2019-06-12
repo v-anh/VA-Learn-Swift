@@ -35,4 +35,5 @@ class DownloadTask {
     var resume:Data?
     
     var progress:Float = 0
+    var totalSize:String?
 }

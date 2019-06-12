@@ -17,20 +17,20 @@ class DownloadService:NSObject {
 
     var completionHandler: DownloadCompleteHandler?
 
-    private lazy var downloadSession:URLSession = {
-        let config = URLSessionConfiguration.default
-        config.waitsForConnectivity = true
-        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
-    }()
+    var downloadSession:URLSession
+    
+    init(session:URLSession) {
+        self.downloadSession = session
+    }
     
     func startDownload(_ track: Track,completion:DownloadCompleteHandler?) {
         self.completionHandler = completion
-        let downloadTak = DownloadTask(track: track)
-        downloadTak.task = downloadSession.downloadTask(with: track.previewURL)
-        downloadTak.task?.resume()
-        downloadTak.isDownloading = true
+        let downloadTask = DownloadTask(track: track)
+        downloadTask.task = downloadSession.downloadTask(with: track.previewURL)
+        downloadTask.task?.resume()
+        downloadTask.isDownloading = true
         
-        activeDownloads[downloadTak.track.previewURL] = downloadTak
+        activeDownloads[downloadTask.track.previewURL] = downloadTask
     }
     
     func cancelDownload(_ track: Track) {
@@ -40,49 +40,28 @@ class DownloadService:NSObject {
         }
     }
     
+    func pauseDownload(_ track: Track)  {
+        if let downloadTask = activeDownloads[track.previewURL] {
+            downloadTask.task?.cancel(byProducingResumeData: { (data) in
+                downloadTask.resume = data
+            })
+            downloadTask.isDownloading = false
+        }
+    }
+    
+    func resumeDownload(_ track: Track) {
+        if let downloadTask = activeDownloads[track.previewURL] {
+            if let resumeData = downloadTask.resume {
+                downloadTask.task = downloadSession.downloadTask(withResumeData: resumeData)
+            } else {
+                downloadTask.task = downloadSession.downloadTask(with: downloadTask.track.previewURL)
+            }
+            downloadTask.task?.resume()
+            downloadTask.isDownloading = true
+        }
+    }
+    
 }
 
-extension DownloadService:URLSessionDownloadDelegate {
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        let downloadTask = activeDownloads[sourceURL]
-        activeDownloads[sourceURL] = nil
-        let destinationURL = localFilePath(for: sourceURL)
-        print(destinationURL)
-        let fileManager = FileManager.default
-        try? fileManager.removeItem(at: destinationURL)
-        do {
-            try fileManager.copyItem(at: location, to: destinationURL)
-            downloadTask?.track.downloaded = true
-        } catch let error {
-            if let completion = self.completionHandler {
-                completion(nil,error)
-            }
-            print("Could not copy file to disk: \(error.localizedDescription)")
-        }
-        DispatchQueue.main.async {
-            if let completion = self.completionHandler {
-                completion(downloadTask?.track.index,nil)
-            }
-            
-        }
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        guard let url = downloadTask.originalRequest?.url, let download = activeDownloads[url] else {
-            return
-        }
-        download.progress = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)
-        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-        DispatchQueue.main.async {
-            
-        }
-    }
-    
-   
-    func localFilePath(for url: URL) -> URL {
-        return documentsPath.appendingPathComponent(url.lastPathComponent)
-    }
-}
+
 

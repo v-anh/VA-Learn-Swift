@@ -51,18 +51,37 @@ extension iTuneSearchViewController:UITableViewDataSource,UITableViewDelegate {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let track = data?[indexPath.row] {
+            presenter?.playTrack(track: track)
+        }
+    }
 }
 
 extension iTuneSearchViewController:TrackCellDelegate {
     func pauseTapped(_ cell: TrackCell) {
-        
+        if let indexPath = tableView.indexPath(for: cell) {
+            let track = data?[indexPath.row]
+            presenter?.pauseDownloadTrack(track: track!)
+            reload(indexPath.row)
+        }
     }
     
     func resumeTapped(_ cell: TrackCell) {
-        
+        if let indexPath = tableView.indexPath(for: cell) {
+            let track = data?[indexPath.row]
+            presenter?.resumeTrack(track: track!)
+            reload(indexPath.row)
+        }
     }
     
     func cancelTapped(_ cell: TrackCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let track = data?[indexPath.row]
+            presenter?.cancelDownload(track: track!)
+            reload(indexPath.row)
+        }
         
     }
     
@@ -97,6 +116,13 @@ extension iTuneSearchViewController:UISearchBarDelegate {
 }
 
 extension iTuneSearchViewController:iTuneSearchPresenterToView {
+    
+    func updateTrackProgress(with index: Int,progress: Float, totalSize: String) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? TrackCell {
+            cell.updateDisplay(progress: progress, totalSize: totalSize)
+        }
+    }
+    
     func updateTrack(with index: Int) {
         reload(index)
     }
@@ -109,6 +135,7 @@ extension iTuneSearchViewController:iTuneSearchPresenterToView {
     }
     
     func showError(error: String) {
+        print("iTuneSearchViewController: showError(error: \(error)")
         self.tableView.reloadData()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }

@@ -49,14 +49,19 @@ class TrackCell: UITableViewCell {
             showDownloadControls = true
             let title = download.isDownloading ? "Pause" : "Resume"
             pauseButton.setTitle(title, for: .normal)
+            self.progress.progress = downloadTask?.progress ?? 0
+            
             progressLabel.text = download.isDownloading ? "Downloading..." : "Paused"
+            if let progress = downloadTask?.progress,
+                let totolSize = downloadTask?.totalSize, progress > 0 {
+                progressLabel.text = String(format: "%.1f%% of %@", progress * 100, totolSize)
+            }
         }
         
         pauseButton.isHidden = !showDownloadControls
         cancelButton.isHidden = !showDownloadControls
         progress.isHidden = !showDownloadControls
         progressLabel.isHidden = !showDownloadControls
-        
         self.title.text = track.name
         self.artist.text = track.artist
         

@@ -6,7 +6,8 @@
 //  Copyright © 2019 Anh Tran. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import AVFoundation
 
 protocol iTuneSearchPresenterToView:class {
     //Search Delegate
@@ -15,6 +16,7 @@ protocol iTuneSearchPresenterToView:class {
     
     //Download Delegate
     func updateTrack(with index:Int)
+    func updateTrackProgress(with index: Int,progress: Float, totalSize: String)
 }
 
 protocol iTuneSearchViewToPresenter:class {
@@ -30,13 +32,14 @@ protocol iTuneSearchViewToPresenter:class {
     func pauseDownloadTrack(track:Track)
     func resumeTrack(track:Track)
     
+    func playTrack(track:Track)
     func getDownloadTask(url:URL) -> DownloadTask?
 }
 
 protocol iTuneSearchPresenterToRouter:class {
-    static func createModule() -> iTuneSearchViewController
+    static func createModule() -> UINavigationController
     
-    func showPlayTrack()
+    func showPlayTrack(player:AVPlayer)
 }
 
 protocol iTuneSearchPresenterToInteractor:class {
@@ -52,6 +55,7 @@ protocol iTuneSearchPresenterToInteractor:class {
     func resumeTrack(track:Track)
     
     func getDownloadTask(url:URL) -> DownloadTask?
+    func getLocalFilePath(for url:URL) -> URL
 }
 
 
@@ -61,7 +65,7 @@ protocol iTuneSearchInteractorToPresenter:class {
     
     func downloadComplete(index:Int?, error:Error?)
     
-    func updateTrack(index:Int?, error:Error?)
+    func updateTrackProgress(with index: Int,progress: Float, totalSize: String)
 }
 
 
