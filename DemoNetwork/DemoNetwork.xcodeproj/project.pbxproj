@@ -21,6 +21,16 @@
 		665E356622AE0C080067A240 /* LoadImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E356522AE0C080067A240 /* LoadImagePresenter.swift */; };
 		665E356822AE0C180067A240 /* LoadImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E356722AE0C180067A240 /* LoadImageInteractor.swift */; };
 		665E356A22AE0C270067A240 /* LoadImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E356922AE0C270067A240 /* LoadImageRouter.swift */; };
+		665F8B1522B77A030072F5E2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665F8B1422B77A030072F5E2 /* Result.swift */; };
+		665F8B1722B77B940072F5E2 /* NetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665F8B1622B77B940072F5E2 /* NetworkInterface.swift */; };
+		66C8E4D422B0F8C0009CC538 /* MainTweeterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4D322B0F8C0009CC538 /* MainTweeterInterface.swift */; };
+		66C8E4D622B10161009CC538 /* MainTweeterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4D522B10161009CC538 /* MainTweeterPresenter.swift */; };
+		66C8E4D822B10177009CC538 /* MainTweeterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4D722B10177009CC538 /* MainTweeterInteractor.swift */; };
+		66C8E4DA22B101A0009CC538 /* MainTweeterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4D922B101A0009CC538 /* MainTweeterRouter.swift */; };
+		66C8E4DC22B101B2009CC538 /* MainTweeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4DB22B101B2009CC538 /* MainTweeterViewController.swift */; };
+		66C8E4E122B10F05009CC538 /* PostTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4E022B10F05009CC538 /* PostTweetViewController.swift */; };
+		66C8E4EB22B1132B009CC538 /* PostTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4EA22B1132B009CC538 /* PostTweetViewModel.swift */; };
+		66C8E4ED22B115A4009CC538 /* TweetMessageSpliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8E4EC22B115A4009CC538 /* TweetMessageSpliter.swift */; };
 		66E7952022AF5CC300FA9A5E /* iTuneSearchInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7951F22AF5CC300FA9A5E /* iTuneSearchInterface.swift */; };
 		66E7952322AF5CE200FA9A5E /* iTuneSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7952222AF5CE200FA9A5E /* iTuneSearchViewController.swift */; };
 		66E7952522AF5CEC00FA9A5E /* iTuneSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7952422AF5CEC00FA9A5E /* iTuneSearchPresenter.swift */; };
@@ -60,6 +70,16 @@
 		665E356522AE0C080067A240 /* LoadImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImagePresenter.swift; sourceTree = "<group>"; };
 		665E356722AE0C180067A240 /* LoadImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageInteractor.swift; sourceTree = "<group>"; };
 		665E356922AE0C270067A240 /* LoadImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageRouter.swift; sourceTree = "<group>"; };
+		665F8B1422B77A030072F5E2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		665F8B1622B77B940072F5E2 /* NetworkInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterface.swift; sourceTree = "<group>"; };
+		66C8E4D322B0F8C0009CC538 /* MainTweeterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTweeterInterface.swift; sourceTree = "<group>"; };
+		66C8E4D522B10161009CC538 /* MainTweeterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTweeterPresenter.swift; sourceTree = "<group>"; };
+		66C8E4D722B10177009CC538 /* MainTweeterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTweeterInteractor.swift; sourceTree = "<group>"; };
+		66C8E4D922B101A0009CC538 /* MainTweeterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTweeterRouter.swift; sourceTree = "<group>"; };
+		66C8E4DB22B101B2009CC538 /* MainTweeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTweeterViewController.swift; sourceTree = "<group>"; };
+		66C8E4E022B10F05009CC538 /* PostTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTweetViewController.swift; sourceTree = "<group>"; };
+		66C8E4EA22B1132B009CC538 /* PostTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTweetViewModel.swift; sourceTree = "<group>"; };
+		66C8E4EC22B115A4009CC538 /* TweetMessageSpliter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetMessageSpliter.swift; sourceTree = "<group>"; };
 		66E7951F22AF5CC300FA9A5E /* iTuneSearchInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTuneSearchInterface.swift; sourceTree = "<group>"; };
 		66E7952222AF5CE200FA9A5E /* iTuneSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTuneSearchViewController.swift; sourceTree = "<group>"; };
 		66E7952422AF5CEC00FA9A5E /* iTuneSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTuneSearchPresenter.swift; sourceTree = "<group>"; };
@@ -119,6 +139,7 @@
 		663DA65622A521C000E0B6EC /* DemoNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				66C8E4D122B0EDB9009CC538 /* StringHelper */,
 				665E356B22AE0C2D0067A240 /* Core */,
 				665E355E22AE0B600067A240 /* Screens */,
 				663DA65722A521C000E0B6EC /* AppDelegate.swift */,
@@ -143,6 +164,8 @@
 		665E355E22AE0B600067A240 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				66C8E4DF22B10EEB009CC538 /* PostTweet */,
+				66C8E4D222B0F74D009CC538 /* MainTweeter */,
 				66E7952122AF5CC700FA9A5E /* LoadImage */,
 				66E7951E22AF5C9700FA9A5E /* SearchMusic */,
 			);
@@ -153,9 +176,40 @@
 			isa = PBXGroup;
 			children = (
 				663DA67722A52C8500E0B6EC /* VANetwork.swift */,
+				665F8B1422B77A030072F5E2 /* Result.swift */,
 				66E7952E22AFA7AF00FA9A5E /* DownloadService.swift */,
+				665F8B1622B77B940072F5E2 /* NetworkInterface.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		66C8E4D122B0EDB9009CC538 /* StringHelper */ = {
+			isa = PBXGroup;
+			children = (
+				66C8E4EC22B115A4009CC538 /* TweetMessageSpliter.swift */,
+			);
+			path = StringHelper;
+			sourceTree = "<group>";
+		};
+		66C8E4D222B0F74D009CC538 /* MainTweeter */ = {
+			isa = PBXGroup;
+			children = (
+				66C8E4D322B0F8C0009CC538 /* MainTweeterInterface.swift */,
+				66C8E4D522B10161009CC538 /* MainTweeterPresenter.swift */,
+				66C8E4D922B101A0009CC538 /* MainTweeterRouter.swift */,
+				66C8E4DB22B101B2009CC538 /* MainTweeterViewController.swift */,
+				66C8E4D722B10177009CC538 /* MainTweeterInteractor.swift */,
+			);
+			path = MainTweeter;
+			sourceTree = "<group>";
+		};
+		66C8E4DF22B10EEB009CC538 /* PostTweet */ = {
+			isa = PBXGroup;
+			children = (
+				66C8E4E022B10F05009CC538 /* PostTweetViewController.swift */,
+				66C8E4EA22B1132B009CC538 /* PostTweetViewModel.swift */,
+			);
+			path = PostTweet;
 			sourceTree = "<group>";
 		};
 		66E7951E22AF5C9700FA9A5E /* SearchMusic */ = {
@@ -288,21 +342,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				66E7952522AF5CEC00FA9A5E /* iTuneSearchPresenter.swift in Sources */,
+				66C8E4D422B0F8C0009CC538 /* MainTweeterInterface.swift in Sources */,
 				663DA67822A52C8500E0B6EC /* VANetwork.swift in Sources */,
+				66C8E4E122B10F05009CC538 /* PostTweetViewController.swift in Sources */,
 				66E7952B22AF5E6600FA9A5E /* iTuneSearchEntity.swift in Sources */,
 				66E7952322AF5CE200FA9A5E /* iTuneSearchViewController.swift in Sources */,
+				66C8E4EB22B1132B009CC538 /* PostTweetViewModel.swift in Sources */,
+				665F8B1722B77B940072F5E2 /* NetworkInterface.swift in Sources */,
 				66E7952F22AFA7AF00FA9A5E /* DownloadService.swift in Sources */,
 				665E356622AE0C080067A240 /* LoadImagePresenter.swift in Sources */,
+				66C8E4ED22B115A4009CC538 /* TweetMessageSpliter.swift in Sources */,
+				66C8E4D622B10161009CC538 /* MainTweeterPresenter.swift in Sources */,
 				665E356822AE0C180067A240 /* LoadImageInteractor.swift in Sources */,
 				665E356A22AE0C270067A240 /* LoadImageRouter.swift in Sources */,
 				66E7952922AF5CFF00FA9A5E /* iTuneSearchRouter.swift in Sources */,
+				665F8B1522B77A030072F5E2 /* Result.swift in Sources */,
 				665E356422AE0BD60067A240 /* LoadImageEntity.swift in Sources */,
+				66C8E4DA22B101A0009CC538 /* MainTweeterRouter.swift in Sources */,
 				66E7952022AF5CC300FA9A5E /* iTuneSearchInterface.swift in Sources */,
+				66C8E4DC22B101B2009CC538 /* MainTweeterViewController.swift in Sources */,
 				663DA65A22A521C000E0B6EC /* ViewController.swift in Sources */,
 				663DA65822A521C000E0B6EC /* AppDelegate.swift in Sources */,
 				66E7952722AF5CF400FA9A5E /* iTuneSearchInteractor.swift in Sources */,
 				665E356222AE0BC70067A240 /* LoadImageViewController.swift in Sources */,
 				665E356022AE0BA70067A240 /* LoadImageInterfaces.swift in Sources */,
+				66C8E4D822B10177009CC538 /* MainTweeterInteractor.swift in Sources */,
 				66E7952D22AF62FB00FA9A5E /* TrackCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

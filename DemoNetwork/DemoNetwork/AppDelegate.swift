@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var backgroundCompletionHandler : (() -> Void)?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//        // Override point for customization after application launch.
+//        let navigationController = UINavigationController(rootViewController: iTuneSearchRouter.createModule())
         window?.rootViewController = iTuneSearchRouter.createModule()
         return true
     }
