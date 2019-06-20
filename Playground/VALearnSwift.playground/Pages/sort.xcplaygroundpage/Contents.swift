@@ -142,18 +142,38 @@ func merge(left:[Int],right:[Int]) -> [Int] {
 
 
 func main() {
-    selectionSort(A: [10,9,8,7,6,5,4,3,2,1,0])
+//    selectionSort(A: [10,9,8,7,6,5,4,3,2,1,0])
     var list = [10,9,8,7,6,5,4,3,2,1,0]
-    insertionSort(A: &list)
+//    insertionSort(A: &list)
+    let message = list.map { String($0) }.joined(separator: " ")
+    print(message)
+//    var list1 = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
+//    quicksortLomuto(A: &list1, low: 0, high: list1.count-1)
     
-    var list1 = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
-    quicksortLomuto(A: &list1, low: 0, high: list1.count-1)
-    
-    mergeSort(array: [10,9,8,7,6,5,4,3,2,1,0])
+//    mergeSort(array: [10,9,8,7,6,5,4,3,2,1,0])
 }
 
-main()
+//main()
 
+func reverseArray(a: [Int]) -> [Int] {
+    var left = 0
+    var right = a.count-1
+    var result = a
+    while(left <= right) {
+        if left == right {
+            break
+        }else{
+            result[left] = a[right]
+            result[right] = a[left]
+        }
+        left+=1
+        right-=1
+    }
+    print(result.map{String($0)}.joined(separator:" "))
+    return result
+}
+
+let res = reverseArray(a: [1,4,3,2])
 
 
 
