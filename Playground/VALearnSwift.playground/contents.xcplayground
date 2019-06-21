@@ -11,5 +11,6 @@
         <page name='Tree'/>
         <page name='Concurrency'/>
         <page name='Graph'/>
+        <page name='HeapPlayGround'/>
     </pages>
 </playground>
