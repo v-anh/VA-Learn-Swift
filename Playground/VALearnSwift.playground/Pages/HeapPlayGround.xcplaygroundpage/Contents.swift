@@ -5,7 +5,7 @@ import Foundation
 var str = "Hello, playground"
 
 //: [Next](@next)
-public class Heap {
+public struct Heap {
     var element:[Int]
     
     public init(array:[Int]) {
@@ -41,23 +41,45 @@ public class Heap {
         return (index - 1) / 2
     }
     
-    func buildheap() {
+    internal mutating func shiftDown(_ index: Int) {
+        shiftDown(at: index, until: element.count)
+    }
+    
+    internal mutating func buildheap() {
         for index in (0..<count/2).reversed() {
-            siftDown(at: index)
+            print(index)
+            self.shiftDown(index)
         }
     }
     
-    func siftUp(at index:Int) {
-        
+    internal mutating func siftUp(at index:Int) {
+        var childIndex = index
+        let child = element[childIndex]
+        var parentIndex = self.parentIndex(of: childIndex)
+        while childIndex > 0 && child > element[parentIndex] {
+            element[childIndex] = element[parentIndex]
+            child = parentIndex
+            parentIndex = self.parentIndex(of: childIndex)
+        }
+        element[childIndex] = child
     }
     
-    func siftDown(at index:Int,until endIndex:Int) {
+    internal mutating func shiftDown(at index:Int,until endIndex:Int) {
         let leftIndex = self.leftIndex(of: index)
         let rightIndex = leftIndex + 1
         var first = index
-        if leftIndex < endIndex && element[leftIndex] < element[first] {
+        if leftIndex < endIndex && element[leftIndex] > element[first] {
             first = leftIndex
         }
+        if rightIndex < endIndex && element[rightIndex] > element[first] {
+            first = rightIndex
+        }
+
+        if first == index {return}
+        element.swapAt(index, first)
+        shiftDown(at: first, until: endIndex)
     }
-    
 }
+print([10, 7, 2, 5, 1, 16])
+var a = Heap(array: [10, 7, 2, 5, 1, 16])
+print(a.element)
