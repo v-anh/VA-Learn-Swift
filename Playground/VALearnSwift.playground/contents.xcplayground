@@ -12,5 +12,7 @@
         <page name='Concurrency'/>
         <page name='Graph'/>
         <page name='HeapPlayGround'/>
+        <page name='Stack'/>
+        <page name='Queue'/>
     </pages>
 </playground>

@@ -25,7 +25,7 @@ public struct Heap<T> {
         }
     }
     
-    public mutating func remove(at index:Int) -> T? {
+    @discardableResult public mutating func remove(at index:Int) -> T? {
         guard index < nodes.count else {return nil}
         let size = nodes.count - 1
         if index != size {
