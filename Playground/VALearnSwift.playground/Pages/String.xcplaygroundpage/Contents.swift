@@ -9,7 +9,7 @@
  pale, bale -> true
  pale, bae -> false
  */
-
+import Foundation
 
 func oneEdited(first:String,second:String) -> Bool {
     if first.count == second.count {
@@ -258,44 +258,28 @@ class Node<T>{
 }
 class Stack<T> {
     private var head:Node<T>? = nil
-    private var tail:Node<T>? = nil
     
     func push(item:T) {
         let node = Node(data:item)
-        if tail != nil {
-            print("tail != nil")
-            node.next = tail
-        }
-        tail = node
-        
-        if head == nil {
-            head = tail
-        }
+        node.next = head
+        head = node
     }
     
     func pop() -> T? {
-        guard let last = self.tail else {
-            print("error")
+        guard let head = self.head else {
             return nil
         }
-        
-        tail = last.next
-        if tail == nil {
-            print("awdawd")
-            self.head = nil
-        }
-        
-        return last.data
+        self.head = head.next
+        return head.data
     }
     
     
     func peek() -> T? {
-        guard let last = self.tail else {
-            print("error")
+        guard let head = self.head else {
             return nil
         }
         
-        return last.data
+        return head.data
     }
     
     var isEmpty :Bool {
@@ -360,3 +344,186 @@ stackMin.peek()?.min
 stackMin.pop()?.val
 
 stackMin.peek()?.min
+
+stackMin.push(val: 3)
+stackMin.peek()?.val
+stackMin.peek()?.min
+
+
+var valueTypeSing = "valueTypeSing"
+
+func change(string:String) {
+    var a = string + "more string"
+    print(a)
+}
+print(valueTypeSing)
+change(string: valueTypeSing)
+print(valueTypeSing)
+var welcome = "hello"
+welcome.trimmingCharacters(in: .whitespaces)
+
+print(String(welcome.sorted()))
+welcome.insert(contentsOf: " there", at: welcome.endIndex)
+print(welcome)
+
+let greeting = "Guten Tag!"
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+
+func permutation(s:String,t:String) -> Bool {
+    if s.count != t.count {
+        return false
+    }
+    
+    var letters = [Character:Int]()
+    for c in s {
+        if let count = letters[c] {
+            letters[c] = count + 1
+        }else{
+            letters[c] = 1
+        }
+    }
+    for c in t {
+        guard let count = letters[c], count < 1 else {
+            return false
+        }
+        letters[c] = count - 1
+    }
+    return true
+}
+
+permutation(s: "hello1", t: "helll0")
+
+func URLify(t:String) -> String {
+    var textArray = t.components(separatedBy: .whitespacesAndNewlines)
+//    var textArray = t.split(separator: " ")
+    return textArray.filter({!$0.isEmpty}).joined(separator: "%20")
+}
+
+print(URLify(t: "Mr John Smith       "))
+
+
+/*
+ One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+ EXAMPLE
+ pale, ple true
+ pales, pale -> true
+ pale, bale -> true
+ pale, bae -> false
+ */
+func oneWayEdit(first:String,second:String) -> Bool {
+    if abs(first.count-second.count)>1 {
+        return false
+    }
+    let s1 = first.count < second.count ? first : second
+    let s2 = first.count < second.count ? second : first
+    var index1 = 0
+    var index2 = 0
+    var foundDifference = false
+    while index1 < s1.count && index2 < s2.count {
+        let charIndex1 = s1.index(s1.startIndex, offsetBy: index1)
+        let charIndex2 = s2.index(s2.startIndex, offsetBy: index2)
+        if s1[charIndex1] != s2[charIndex2] {
+            if foundDifference {
+                return false
+            }
+            foundDifference = true
+            if s1.count == s2.count { //Replace
+                index1 += 1
+                index2 += 1
+            }else{
+                index2 += 1
+            }
+        }else{
+            index1 += 1
+            index2 += 1
+        }
+    }
+    return true
+}
+
+func replace(first:String,second:String) -> Bool {
+    var found = false
+    for i in 0..<first.count {
+        let index1 = first.index(first.startIndex, offsetBy: i)
+        let index2 = second.index(second.startIndex, offsetBy: i)
+        if first[index1] != second[index2] {
+            if found {
+                return false
+            }
+            found = true
+        }
+    }
+    return true
+}
+
+func insert(first:String,second:String) -> Bool {
+    var index1 = 0
+    var index2 = 0
+    var found = 0
+    for i in 0..<first.count {
+        let index1 = first.index(first.startIndex, offsetBy: i)
+        let index2 = second.index(second.startIndex, offsetBy: i + found)
+        if first[index1] != second[index2] {
+            if found > 0 {
+                return false
+            }
+            found = 1
+        }
+    }
+    return true
+}
+
+func oneWayEdit2(first:String,second:String) -> Bool {
+    if abs(first.count-second.count)>1 {
+        return false
+    }
+    if first.count == second.count {
+        return replace(first: first, second: second)
+    }else if first.count < second.count {
+        return insert(first: first, second: second)
+    }else {
+        return insert(first: second, second: first)
+    }
+}
+
+
+oneWayEdit(first: "pale", second: "ple")
+oneWayEdit(first: "pales", second: "bales")
+oneWayEdit(first: "pale", second: "bale")
+oneWayEdit(first: "pale", second: "bae")
+
+oneWayEdit2(first: "pale", second: "ple")
+oneWayEdit2(first: "pales", second: "bales")
+oneWayEdit2(first: "pale", second: "bale")
+oneWayEdit2(first: "pale", second: "bae")
+
+
+/*
+ String Compression: Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the "compressed" string would not become smaller than the original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).
+ */
+
+func compress(text:String) -> String {
+    if text.isEmpty || text.count <= 2 {
+        return text
+    }
+    var temp = ""
+    var index = 0
+    var count = 0
+    while index < text.count {
+        count += 1
+        if index+1 >= text.count || text[text.index(text.startIndex, offsetBy: index)] != text[text.index(text.startIndex, offsetBy: index+1)]   {
+            temp += "\(text[text.index(text.startIndex, offsetBy: index)] )\(count)"
+            count = 0
+        }
+        index += 1
+    }
+    if temp.count >= text.count {
+        return text
+    }
+    return temp
+}
+//abbbb
+print(compress(text: "aabcccccaaa"),compress(text: "aabcccccaaa") == "a2b1c5a3")
+print(compress(text: "aabbccddeeff"),compress(text: "aabbccddeeff") == "aabbccddeeff")
+print(compress(text: "aabbccddeeff"),compress(text: "abcdef") == "abcdef")
