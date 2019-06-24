@@ -527,3 +527,134 @@ func compress(text:String) -> String {
 print(compress(text: "aabcccccaaa"),compress(text: "aabcccccaaa") == "a2b1c5a3")
 print(compress(text: "aabbccddeeff"),compress(text: "aabbccddeeff") == "aabbccddeeff")
 print(compress(text: "aabbccddeeff"),compress(text: "abcdef") == "abcdef")
+
+
+/*
+ Word Break Problem | DP-32
+ Given an input string and a dictionary of words, find out if the input string can be segmented into a space-separated sequence of dictionary words. See following examples for more details.
+ Consider the following dictionary
+ { i, like, sam, sung, samsung, mobile, ice,
+ cream, icecream, man, go, mango}
+ 
+ Input:  ilike
+ Output: Yes
+ The string can be segmented as "i like".
+ 
+ Input:  ilikesamsung
+ Output: Yes
+ The string can be segmented as "i like samsung"
+ or "i like sam sung".
+ */
+
+func dictionaryContain(text:String,dictionary:[String]) -> Bool {
+    if (text.count == 0)  {return true}
+    var start = 0
+    var end = 1
+    var found = false
+    
+    var dictionaryMap = [String:Int]()
+    for index in dictionary {
+        dictionaryMap[index] = 1
+    }
+    while (start < text.count && end <= text.count) {
+        let startIndex = text.index(text.startIndex, offsetBy: start)
+        let endIndex = text.index(text.startIndex, offsetBy: end)
+        let range = startIndex..<endIndex
+        let textIndex = String(text[range])
+        print(textIndex)
+        if dictionaryMap[textIndex] != nil {
+            start = end
+            end += 1
+            found = true
+        }else{
+            end += 1
+            found = false
+        }
+    }
+    return found
+}
+
+func dictionaryContain2(text:String,dictionary:[String]) -> Bool {
+    if (text.count == 0)  {return true}
+    for i in 1...text.count {
+        let startIndex = text.index(text.startIndex, offsetBy: i)
+        let textIndex = String(text[..<startIndex])
+        print(textIndex)
+        let nextText = String(text[startIndex...])
+        if dictionary.contains(textIndex) && dictionaryContain2(text: nextText, dictionary: dictionary) {
+            return true
+        }
+    }
+    return false
+}
+
+func dictionaryContainDB(text:String,dictionary:[String]) -> Bool {
+    if (text.count == 0)  {return true}
+    var wb = [Int:Bool]()
+    for i in 1...text.count {
+        let startIndex = text.index(text.startIndex, offsetBy: i)
+        let textIndex = String(text[..<startIndex])
+        
+        if wb[i] == nil && dictionary.contains(textIndex) {
+            wb[i] = true
+        }
+        if wb[i] != nil  {
+            if i == text.count {
+                return true
+            }
+            for j in (i+1)...text.count {
+                let jStart = text.index(text.startIndex, offsetBy: i)
+                let jEnd = text.index(text.startIndex, offsetBy: j)
+                let jText = String(text[jStart..<jEnd])
+                if wb[j] == nil && dictionary.contains(jText) {
+                    wb[j] = true
+                }
+            }
+        }
+    }
+    print(wb)
+    return false
+}
+let text1 = "likesamsungi"
+let text2 = "iiiiiiii"
+let text3 = ""
+let text4 = "ilikelikeimangoiii"
+let text5 = "samsungandmango"
+let text6 = "samsungandmangok"
+let dictionary = ["mobile","likesamsungi","kesa","","su","","","man","mango","icecream","and",
+                  "go","i","like","ice","cream"]
+print(dictionaryContain2(text: text1, dictionary: dictionary) == true)
+print(dictionaryContain2(text: text2, dictionary: dictionary) == true)
+print(dictionaryContain2(text: text3, dictionary: dictionary) == true)
+print(dictionaryContain2(text: text4, dictionary: dictionary) == true)
+print(dictionaryContain2(text: text5, dictionary: dictionary) == true)
+print(dictionaryContain2(text: text6, dictionary: dictionary) == true)
+
+/*
+ Count of distinct substrings
+ */
+//ababa
+func countDistinctSubstring(text:String) -> Int {
+    var start = 0
+    var index = 0
+    var distincDictionary = ["":1]
+    while (start < text.count) {
+        if index == text.count {
+            start += 1
+            index = start
+        }else{
+            index += 1
+        }
+        let startIndex = text.index(text.startIndex, offsetBy: start)
+        let endIndex = text.index(text.startIndex, offsetBy: index)
+        let range = startIndex..<endIndex
+        let textIndex = String(text[range])
+        print(textIndex)
+        distincDictionary[textIndex] = 1
+        
+    }
+    return distincDictionary.count
+}
+
+print(countDistinctSubstring(text: "ababa") == 10)
+print(countDistinctSubstring(text: "ab") == 4)
