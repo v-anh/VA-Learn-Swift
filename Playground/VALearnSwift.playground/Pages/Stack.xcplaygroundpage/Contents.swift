@@ -27,3 +27,4 @@ stack.push(data: 7)
 stack.push(data: 8)
 stack.pop()
 stack.peek()
+
