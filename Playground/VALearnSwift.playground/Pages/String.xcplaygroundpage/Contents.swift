@@ -658,3 +658,31 @@ func countDistinctSubstring(text:String) -> Int {
 
 print(countDistinctSubstring(text: "ababa") == 10)
 print(countDistinctSubstring(text: "ab") == 4)
+
+
+/**
+ 1-9 -> 9 -> 9*1
+ 10-99 -> 90 -> 9 * 10
+ 100-999 -> 900 -> 9 * 100
+ */
+
+func countPosibleCharForChunks(for chunkCount:Int) -> Int{
+    var leftSide = 0
+    var i = 1
+    var chunkCountTemp = chunkCount
+    while i <= chunkCount {
+        var countOfConsecutive = (9*i)
+        if countOfConsecutive > chunkCountTemp {
+            countOfConsecutive = chunkCountTemp
+        }
+        let count = i.numberOfDigits
+        
+        leftSide += (countOfConsecutive)*(count+1)
+        print(leftSide)
+        chunkCountTemp = chunkCountTemp - countOfConsecutive
+        i = i*10
+    }
+    return leftSide + chunkCount.numberOfDigits*chunkCount
+}
+print(countPosibleCharForChunks(for: 10))
+//print(leftSide)
