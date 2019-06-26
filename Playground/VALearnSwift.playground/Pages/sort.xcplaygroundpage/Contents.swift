@@ -254,3 +254,35 @@ print(quickSortNew(array: [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]))
 var array = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
 quickSortNewLumoto(array: &array, low: 0, high: array.count-1)
 print(array)
+func mergedTwoArray(a:[Int],b:[Int]) -> [Int] {
+    var buffer = [Int]()
+    buffer.reserveCapacity(a.count + b.count)
+    var indexA = 0
+    var indexB = 0
+    while indexA < a.count && indexB < b.count  {
+        if a[indexA] < b[indexB] {
+            buffer.append(a[indexA])
+            indexA += 1
+        }else if a[indexA] > b[indexB] {
+            buffer.append(b[indexB])
+            indexB += 1
+        }else{
+            buffer.append(a[indexA])
+            indexA += 1
+            buffer.append(b[indexB])
+            indexB += 1
+        }
+    }
+    while indexA < a.count {
+        buffer.append(a[indexA])
+        indexA += 1
+    }
+    while indexB < b.count {
+        buffer.append(b[indexB])
+        indexB += 1
+    }
+    return buffer
+}
+
+
+mergedTwoArray(a: [3,6,7,8], b: [1,2,3,4,5])
