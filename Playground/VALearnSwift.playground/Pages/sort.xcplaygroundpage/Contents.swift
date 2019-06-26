@@ -177,3 +177,80 @@ let res = reverseArray(a: [1,4,3,2])
 
 
 
+func mergrSortNew(array:[Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    let divide = array.count/2
+    let left = mergrSortNew(array: Array(array[0..<divide]))
+    let right = mergrSortNew(array: Array(array[divide..<array.count]))
+    return mergeNew(left: left, right: right)
+}
+
+func mergeNew(left:[Int],right:[Int]) -> [Int] {
+    var result = [Int]()
+    result.reserveCapacity(left.count+right.count)
+    var leftIndex = 0
+    var rightIndex = 0
+    while leftIndex < left.count && rightIndex < right.count {
+        if left[leftIndex] < right[rightIndex] {
+            result.append(left[leftIndex])
+            leftIndex += 1
+        }else if left[leftIndex] > right[rightIndex] {
+            result.append(right[rightIndex])
+            rightIndex += 1
+        }else{
+            result.append(left[leftIndex])
+            result.append(right[rightIndex])
+            leftIndex += 1
+            rightIndex += 1
+        }
+    }
+    while leftIndex < left.count {
+        result.append(left[leftIndex])
+        leftIndex += 1
+    }
+    while rightIndex < right.count {
+        result.append(right[rightIndex])
+        rightIndex += 1
+    }
+    return result
+}
+
+print(mergrSortNew(array: [2, 1, 5, 4, 9]))
+
+
+func quickSortNew(array:[Int]) -> [Int] {
+    guard array.count > 1 else { return array }
+    let pivot = array[array.count/2]
+    let left = array.filter({$0 < pivot})
+    let mindle = array.filter({$0 == pivot})
+    let right = array.filter({$0 > pivot})
+    
+    return quickSortNew(array: left) + mindle + quickSortNew(array: right)
+}
+
+func quickSortNewLumoto(array: inout [Int],low:Int,high:Int) {
+    if low < high {
+        let pi = partitionLumoto(array: &array, low: low, high: high)
+        quickSortNewLumoto(array: &array, low: low, high: pi-1)
+        quickSortNewLumoto(array: &array, low: pi+1, high:high)
+    }
+}
+
+func partitionLumoto(array:inout [Int],low:Int,high:Int) -> Int {
+    let pivot = array[high]
+    var i = low
+    for j in low..<high {
+        if array[j] <= pivot {
+            (array[i], array[j]) = (array[j],array[i])
+            i += 1
+        }
+    }
+    
+    (array[i], array[high]) = (array[high],array[i])
+    return i
+}
+
+print(quickSortNew(array: [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]))
+var array = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
+quickSortNewLumoto(array: &array, low: 0, high: array.count-1)
+print(array)

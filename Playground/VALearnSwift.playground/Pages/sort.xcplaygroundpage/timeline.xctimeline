@@ -3,8 +3,13 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/anhtran/VA-Learn-Swift/Playground/VALearnSwift.playground/Pages/sort.xcplaygroundpage#CharacterRangeLen=79&amp;CharacterRangeLoc=3587&amp;EndingColumnNumber=18&amp;EndingLineNumber=148&amp;StartingColumnNumber=4&amp;StartingLineNumber=147&amp;Timestamp=582634559.402457"
+         documentLocation = "file:///Users/anhtran/VA-Learn-Swift/Playground/VALearnSwift.playground/Pages/sort.xcplaygroundpage#CharacterRangeLen=79&amp;CharacterRangeLoc=3587&amp;EndingColumnNumber=18&amp;EndingLineNumber=148&amp;StartingColumnNumber=4&amp;StartingLineNumber=147&amp;Timestamp=583227353.019662"
          selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/anhtran/VA-Learn-Swift/Playground/VALearnSwift.playground/Pages/sort.xcplaygroundpage#CharacterRangeLen=19&amp;CharacterRangeLoc=6355&amp;EndingColumnNumber=0&amp;EndingLineNumber=244&amp;StartingColumnNumber=36&amp;StartingLineNumber=243&amp;Timestamp=583227353.0198081"
+         selectedRepresentationIndex = "1"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
    </TimelineItems>

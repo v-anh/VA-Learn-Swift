@@ -728,3 +728,47 @@ func splitMessage(message:String,chunkCount:Int) -> [String] {
 let input = "Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come back later. Tip: Bookmark this page now."
 let input2 = "Apart from counting words and characters, o00 r 0 o nline editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text"
 print(splitMessage(message: input2))
+
+
+var a2 = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+
+func rotateMatrix(matrix:[[Int]]) -> [[Int]] {
+    if matrix.count == 0 || matrix.count != matrix[0].count {
+        return matrix
+    }
+    
+    
+    print("input ------------------ ")
+    for a in matrix {
+        print(a)
+    }
+    var result = matrix
+    let n = matrix.count
+    let layer = n/2
+    for l in 0..<layer {
+        let start = l
+        let end = n - 1 - l
+        for i in start..<end {
+
+            let offset = i - start
+            let temp = result[start][i]
+            //left to top
+            result[start][i] = result[end-offset][start]
+            
+            //bot to left
+            result[end-offset][start] = result[end][end-offset]
+
+            //right to bot
+            result[end][end-offset] = result[i][end]
+
+            //top to right
+            result[i][end] = temp
+        }
+    }
+    return result
+}
+let result = rotateMatrix(matrix: a2)
+print("===result===")
+for a in result {
+    print(a)
+}
