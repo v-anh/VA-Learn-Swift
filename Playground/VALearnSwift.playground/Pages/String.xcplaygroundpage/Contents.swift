@@ -630,6 +630,14 @@ print(dictionaryContain2(text: text4, dictionary: dictionary) == true)
 print(dictionaryContain2(text: text5, dictionary: dictionary) == true)
 print(dictionaryContain2(text: text6, dictionary: dictionary) == true)
 
+
+extension Int {
+    // Return number of digits
+    var numberOfDigits: Int {
+        return String(self).count
+    }
+}
+
 /*
  Count of distinct substrings
  */
@@ -666,7 +674,8 @@ print(countDistinctSubstring(text: "ab") == 4)
  100-999 -> 900 -> 9 * 100
  */
 
-func countPosibleCharForChunks(for chunkCount:Int) -> Int{
+func countPosibleCharForChunks(for message:String) -> Int{
+    let chunkCount = message.count/50
     var leftSide = 0
     var i = 1
     var chunkCountTemp = chunkCount
@@ -682,7 +691,40 @@ func countPosibleCharForChunks(for chunkCount:Int) -> Int{
         chunkCountTemp = chunkCountTemp - countOfConsecutive
         i = i*10
     }
-    return leftSide + chunkCount.numberOfDigits*chunkCount
+    return ((leftSide + chunkCount.numberOfDigits*chunkCount)+message.count)/50
 }
-print(countPosibleCharForChunks(for: 10))
-//print(leftSide)
+
+func splitMessage(message:String) -> [String] {
+    var realMessage = message.components(separatedBy: .whitespacesAndNewlines).filter({!$0.isEmpty}).joined(separator: " ")
+    var chunkCount = countPosibleCharForChunks(for: realMessage)
+    let splitedMessages = splitMessage(message: realMessage, chunkCount: chunkCount)
+    if splitedMessages.count.numberOfDigits > chunkCount.numberOfDigits {
+        return splitMessage(message: realMessage, chunkCount: splitedMessages.count)
+    }
+    return splitedMessages
+}
+
+func splitMessage(message:String,chunkCount:Int) -> [String] {
+    var index = 1
+    var chunks = [String]()
+    var chunk = ""
+    let words = message.split(separator: " ")
+    for word in words {
+        if chunk.count + index.numberOfDigits + chunkCount.numberOfDigits + 2 + word.count > 50 {
+            chunks.append("\(index)/%d\(chunk)")
+            index += 1
+            chunk = ""
+        }
+        chunk.append(" \(word)")
+    }
+    chunks.append("\(index)/%d\(chunk)")
+    let chunkCount = chunks.count
+    chunks.enumerated().forEach { (index, chunk) in
+        chunks[index] = String(format: chunk, chunkCount)
+    }
+    return chunks
+}
+
+let input = "Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come back later. Tip: Bookmark this page now."
+let input2 = "Apart from counting words and characters, o00 r 0 o nline editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text"
+print(splitMessage(message: input2))

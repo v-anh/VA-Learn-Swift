@@ -24,7 +24,4 @@ func fibonacy(M:Int) -> [Int] {
     return fibonacies
 }
 
-func main(){
-}
-
-main()
+fibonacy(M: 10)

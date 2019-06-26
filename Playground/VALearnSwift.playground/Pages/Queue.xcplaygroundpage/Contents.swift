@@ -159,3 +159,67 @@ q.dequeue()
 q.dequeue()
 q.data             // [{Some "Grace"}]
 q.count             // 1
+
+
+
+class Node{
+    var data:Int
+    var next:Node?
+    init(data:Int) {
+        self.data = data
+    }
+}
+class LinkedListQueue {
+    var head:Node?
+    var tail:Node?
+    func enqueue(data:Int) {
+        let node = Node(data: data)
+        if head == nil {
+            head = node
+            tail = head
+        }else{
+            tail?.next = node
+            tail = node
+        }
+    }
+    
+    func dequeue() -> Int? {
+        guard let head = self.head else {return nil}
+        let data = head.data
+        self.head = head.next
+        if self.head == nil {
+            tail = nil
+        }
+        return data
+    }
+    
+    func peek() -> Int? {
+        guard let head = self.head else {return nil}
+        let data = head.data
+        return data
+    }
+}
+
+var queue = LinkedListQueue()
+queue.enqueue(data: 1)
+queue.enqueue(data: 2)
+queue.enqueue(data: 3)
+queue.enqueue(data: 4)
+queue.enqueue(data: 5)
+queue.enqueue(data: 6)
+queue.head?.data
+
+queue.tail?.data
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+
+queue.head?.data
+
+queue.tail?.data
+queue.dequeue()

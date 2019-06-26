@@ -9,3 +9,6 @@ a.remove()
 print(a.nodes)
 a.insert(value: 88)
 print(a.nodes)
+
+
+
