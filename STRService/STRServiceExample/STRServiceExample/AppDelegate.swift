@@ -7,6 +7,7 @@ import PromiseKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    //fixthis
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -36,6 +37,11 @@ extension AppDelegate: STRDelegate, STRConfig {
 
 extension AppDelegate: STRAPIErrorHandling {
     func onNetworkNotReachable(api: STRService) -> Promise<Retry> {
+        //
+        //
+        // test rebase
+        //
+        //
         return Promise<Retry> { seal in
             seal.fulfill(false)
         }
