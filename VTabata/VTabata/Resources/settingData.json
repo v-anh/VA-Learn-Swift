@@ -1,0 +1,45 @@
+{
+    "id": 1001,
+    "title": "ABC Setting",
+    "settings": [
+        {
+            "id": 1001,
+            "title": "name",
+            "value": "Join",
+            "type": 0
+        },
+        {
+            "id": 1002,
+            "title": "Cool Down",
+            "value": "Join",
+            "type": 1
+        },{
+            "id": 1003,
+            "title": "name",
+            "value": "Join",
+            "type": 2
+        },{
+            "id": 1004,
+            "title": "name",
+            "value": "Join",
+            "type": 3
+        },{
+            "id": 1004,
+            "title": "name",
+            "value": "Join",
+            "type": 0
+        },{
+            "id": 1005,
+            "title": "name",
+            "value": "Join",
+            "type": 1
+        },{
+            "id": 1006,
+            "title": "name",
+            "value": "Join",
+            "type": 2
+        }
+    ]
+}
+
+
